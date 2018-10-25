@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, Image, ScrollView, ImageBackground } from 'react-native';
+import { View, Text, TouchableOpacity, Image, ScrollView, ImageBackground, Alert } from 'react-native';
 import styles from '../../styles/home';
 import PlayerHeader from '../../components/Player/Header';
 import vars from '../../styles/variables'
 
+import * as gameActions from '../../actions/game_actions';
+
+import { ACTION_CABLE_URL } from '../../config/api';
+import RNActionCable from 'react-native-actioncable';
+import ActionCableProvider, { ActionCable } from 'react-actioncable-provider';
+
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 class HomeScreen extends Component{
   static navigationOptions = {
@@ -13,12 +20,56 @@ class HomeScreen extends Component{
     )
   }
 
+  constructor(){
+    super();
+
+    this.state = {
+      connected: false,
+      
+    }
+    this.cable = RNActionCable.createConsumer(`${ACTION_CABLE_URL}`)
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this._handleReceivedCable = this._handleReceivedCable.bind(this)
+    this._handleActiveGame = this._handleActiveGame.bind(this)
+  }
+
+  componentDidMount() {
+    const auth = this.props.auth;
+    this.props.game_actions.fetch_active_game(auth);
+    this._handleActiveGame();
+  }
+
+  _handleActiveGame() {
+    this.subscription = this.cable.subscriptions.create('GameRoomChannel', {
+      connected: Alert.alert(''),
+      received: (data) => this._handleReceivedCable(data.game),
+    })
+  }
+
+  _handleReceivedCable(game) {
+    const auth = this.props.auth;
+    if (game.status == "Active") {
+      this.props.game_actions.fetch_active_game(auth)
+    } else {
+      this.props.game_actions.removeInactiveGame(auth)
+    }
+    console.log(`GAME STATUS CABLE IS`, game)
+  }
+
+  onReceived = (data) => {
+    console.log(`onReceived STATE: `, data)
+    this.setState({ game: data.name, ...this.state.game })
+  }
+
   getGame(){
+    const { game } = this.props;
+
     return (
       <TouchableOpacity>
         <ImageBackground source={require('../../img/game-bg-1.png')} resizeMode='cover' style={styles.listContainer}>
           <View style={styles.overlay}/>
-          <Text style={styles.listTitle}>Game: {this.props.game}</Text>
+          <ActionCable channel={{channel: 'GameRoomChannel'}} onReceived={this.onReceived} />
+          <Text style={styles.listTitle}>Game: {game.activeGame && game.activeGame[0] && game.activeGame[0].name}</Text>
         </ImageBackground>
       </TouchableOpacity>
     )
@@ -37,14 +88,16 @@ class HomeScreen extends Component{
   }
 }
 function mapStateToProps(state){
+  console.log(`STATE IS`, state)
   return{
+    auth: state.auth,
     game: state.game
   }
 }
 
 function mapDispatchToProps(dispatch){
   return{
-    getGame: () => dispatch({ type: 'GET_GAME'})
+    game_actions: bindActionCreators(gameActions, dispatch),
   }
 }
 

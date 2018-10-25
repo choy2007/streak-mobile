@@ -85,30 +85,12 @@ export function login(state) {
   }
 }
 
+
 export function logout(auth) {
   return dispatch => {
-    dispatch(sessionRequest())
-    fetch(`${API_KEY}/sessions/logout`, {
-      method: 'POST',
-      headers: {
-        'X-Access-Type': 'User',
-        'X-Access-Token': auth.access_token,
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      }
-    })
-    .then(response => response.json())
-    .then(responsejson => {
-      removeData('email');
-      removeData('password');
-
-      dispatch(logoutRequest());
-    })
-    .catch(error => {
-      dispatch(sessionFailed());
-      
-      ALERT.alert('Server error. Please contact the admin.');
-      console.log(error);
-    })
+    removeData('username');
+    removeData('password');
+    removeData('token');
+    dispatch(NavigationActions.navigate({ routeName: 'Login' }));
   }
 }

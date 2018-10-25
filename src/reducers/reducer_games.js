@@ -1,7 +1,6 @@
 const initialState = {
-  list: [], 
   isFetching: true,
-  activeGame: {}
+  activeGame: []
 }
 
 export default function(state = initialState, action) {
@@ -13,28 +12,28 @@ export default function(state = initialState, action) {
     case 'FETCH_GAME_SUCCESS':
       return Object.assign({}, state, {
         isFetching: false,
-        list: action.payload
+        activeGame: action.payload
       })
     case 'FETCH_GAME_FAILED':
       return Object.assign({}, state, {
         isFetching: false,
       })
-    case 'UPDATE_ACTIVE_GAME':
+    case 'FETCH_ACTIVE_GAME':
       return Object.assign({}, state, {
         activeGame: action.payload,
       })
     case 'ADD_ACTIVE_GAME':
-      if (state.list.find(game => game.id === action.payload.id)) {
+      if (state.activeGame.find(game => game.id === action.payload.id)) {
         return { ...state }
       } else {
         return { 
           ...state,
-          list: [...state.list, action.payload]
+          activeGame: [...state.activeGame, action.payload]
         }
       }
     case 'REMOVE_INACTIVE_GAME':
       return Object.assign({}, state, {
-        list: state.list.filter(game => game.id !== action.payload.id)
+        activeGame: state.activeGame.filter(game => game.id !== action.payload.id)
       })
     default:
       return state

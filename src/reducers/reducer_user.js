@@ -1,7 +1,8 @@
 const initialState = {
   user: {},
-  isAuthenticated: true,
+  isAuthenticated: false,
   isFetching: false,
+  token: ''
 }
 
 export default function(state = initialState, action) {
@@ -19,6 +20,7 @@ export default function(state = initialState, action) {
         isFetching: false,
         isAuthenticated: true,
         user: action.payload.data,
+        token: action.payload.token
       })
     case 'SESSION_FAILED':
       return Object.assign({}, state, {
