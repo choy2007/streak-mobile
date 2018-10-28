@@ -28,7 +28,6 @@ class HomeScreen extends Component{
       
     }
     this.cable = RNActionCable.createConsumer(`${ACTION_CABLE_URL}`)
-    this.componentDidMount = this.componentDidMount.bind(this)
     this._handleReceivedCable = this._handleReceivedCable.bind(this)
     this._handleActiveGame = this._handleActiveGame.bind(this)
   }
@@ -61,11 +60,17 @@ class HomeScreen extends Component{
     this.setState({ game: data.name, ...this.state.game })
   }
 
+  clickGame(game, auth) {
+    const { navigate } = this.props.navigation; 
+    this.props.game_actions.userJoin(auth, game.activeGame[0].id)
+    navigate('Waiting', { game });
+  }
+
   getGame(){
-    const { game } = this.props;
+    const { game, auth, navigation: { navigate } } = this.props;
 
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => this.clickGame(game, auth)}>
         <ImageBackground source={require('../../img/game-bg-1.png')} resizeMode='cover' style={styles.listContainer}>
           <View style={styles.overlay}/>
           <ActionCable channel={{channel: 'GameRoomChannel'}} onReceived={this.onReceived} />
@@ -76,7 +81,6 @@ class HomeScreen extends Component{
   }
 
   render(){
-    const { navigate } = this.props.navigation;
     return(
       <View style={styles.container}>
         <PlayerHeader title="Home" />
@@ -87,6 +91,7 @@ class HomeScreen extends Component{
     )
   }
 }
+
 function mapStateToProps(state){
   console.log(`STATE IS`, state)
   return{

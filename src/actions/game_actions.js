@@ -1,6 +1,6 @@
 import { Alert, AlertIOS, Platform } from 'react-native';
 import { API_KEY } from  '../config/api';
-import { NavigationActions } from 'react-navigation'
+import { NavigationActions } from 'react-navigation';
  
 const ALERT = (Platform.OS === 'ios') ? AlertIOS : Alert 
 
@@ -41,6 +41,25 @@ export function fetchActiveGame(game) {
   return {
     type: 'FETCH_ACTIVE_GAME',
     payload: game
+  }
+}
+
+export function userJoin(auth, game_id) {
+  return dispatch => {
+    console.log(auth.user.user.id, game_id)
+    fetch(`${API_KEY}/games_users`,{
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        user_id: auth.user.user.id,
+        game_id: game_id,
+      })
+    })
+    .then(response => response.json())
+
   }
 }
 
@@ -100,3 +119,7 @@ export function fetch_active_game(token, id) {
     })
   }
 }
+
+
+
+

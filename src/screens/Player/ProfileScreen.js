@@ -20,17 +20,21 @@ class ProfileScreen extends Component{
     )
   }
 
+  componentDidMount(){
+    const auth = this.props.auth;
+  }
+
   render(){
-    const { 
-      navigation: { navigate }, 
-      auth: { user },
-      login_actions
-    } = this.props
+    const { auth } = this.props;
+    const { navigate } = this.props;
     return(
       <View style={styles.container}>
         <PlayerHeader title="Profile" />
-        <Text> Profile </Text>
+        <Text> Email </Text>
         <TouchableOpacity onPress={() => this.props.login_actions.logout()} style={{flex: 1, flexDirection: 'row', borderColor: '#fff', borderBottomWidth: 0}}>
+            <View>
+              <Text> { auth.user.user.email } </Text>
+            </View>
             <View style={styles.iconContainer}>
               <Image source={require('../../img/logout.png')} style={styles.iconStyle}/>
             </View>
