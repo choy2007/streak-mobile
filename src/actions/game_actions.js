@@ -44,6 +44,36 @@ export function fetchActiveGame(game) {
   }
 }
 
+export function fetchQuestion(game) {
+  return {
+    type: 'FETCH_QUESTION',
+    payload: game
+  }
+}
+
+export function fetch_question(game_id){
+  return dispatch => {
+    console.log(`GAME ID`, game_id)
+    fetch(`${API_KEY}/games/${game_id}`,{
+      method: 'GET',
+      header: {
+        Accept: 'application/json',
+        'X-Access-Type': "User",
+        'Content-Type': 'application/json'
+      },
+    })
+    .then(response => response.json())
+    .then(responsejson => {
+      console.log(`responsejson`, responsejson)
+      if (responsejson.status === 200) {
+        dispatch(fetchQuestion(responsejson.data))
+      } else {
+        ALERT.alert('You are not allowed to access this.');
+      }
+    })
+  }
+}
+
 export function userJoin(auth, game_id) {
   return dispatch => {
     console.log(auth.user.user.id, game_id)
@@ -60,6 +90,24 @@ export function userJoin(auth, game_id) {
     })
     .then(response => response.json())
 
+  }
+}
+
+export function answerQuestion(auth, question_id, game_id) {
+  return dispatch => {
+    fetch(`${API_KEY}/game/${game_id}/question/${question_id}`,{
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        user_id: auth.user.user.id,
+        game_id: game_id,
+        question_id: question_id
+      })
+    })
+    .then(response => response.json())
   }
 }
 
@@ -119,7 +167,5 @@ export function fetch_active_game(token, id) {
     })
   }
 }
-
-
 
 

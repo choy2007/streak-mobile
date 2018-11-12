@@ -24,15 +24,27 @@ class WaitingScreen extends Component{
 
     }
     this.cable = RNActionCable.createConsumer(`${ACTION_CABLE_URL}`)
+    this._handleReceivedCable = this._handleReceivedCable.bind(this)
+    this._handleGameStart = this._handleGameStart.bind(this)
   }
 
   componentDidMount(){
     const auth = this.props.auth;
-    
+    this._handleGameStart();
   }
 
-  componentWillUnmount(){
-    console.log('Unmount')
+  _handleGameStart() {
+    this.subscription = this.cable.subscriptions.create('GameRoomChannel', {
+      received: (data) => this._handleReceivedCable(data.game),
+    })
+  }
+
+  _handleReceivedCable(game) {
+    const { auth, navigation: { navigate } } = this.props;
+    if (game.status == "Ingame") {
+      navigate('Game');
+    } 
+    console.log(`GAME STATUS CABLE IS`, game)
   }
 
   render(){
