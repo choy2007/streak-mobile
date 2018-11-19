@@ -70,13 +70,24 @@ class HomeScreen extends Component{
     const { game, auth, navigation: { navigate } } = this.props;
 
     return (
-      <TouchableOpacity onPress={() => this.clickGame(game, auth)}>
-        <ImageBackground source={require('../../img/game-bg-1.png')} resizeMode='cover' style={styles.listContainer}>
-          <View style={styles.overlay}/>
+        <View>  
           <ActionCable channel={{channel: 'GameRoomChannel'}} onReceived={this.onReceived} />
-          <Text style={styles.listTitle}>Game: {game.activeGame && game.activeGame[0] && game.activeGame[0].name}</Text>
-        </ImageBackground>
-      </TouchableOpacity>
+          { game.activeGame.length > 0 
+            ?
+              <TouchableOpacity onPress={() => this.clickGame(game, auth)}>
+                <ImageBackground source={require('../../img/game-bg-1.png')} resizeMode='cover' style={styles.listContainer}>
+                  <View style={styles.overlay}/>
+                  <Text style={styles.listTitle}>Game: {game.activeGame && game.activeGame[0] && game.activeGame[0].name}</Text>
+                </ImageBackground>
+              </TouchableOpacity>
+            :
+              <ImageBackground source={require('../../img/game-bg-1.png')} resizeMode='cover' style={styles.listContainer}>
+                <View style={styles.overlay}/>
+                <Text style={styles.listTitle}> No current games ongoing! </Text>
+              </ImageBackground>
+
+          }
+        </View>
     )
   }
 
