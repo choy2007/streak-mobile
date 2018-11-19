@@ -14,7 +14,6 @@ import ActionCableProvider, { ActionCable } from 'react-actioncable-provider';
 
 const cable = RNActionCable.createConsumer('ws://localhost:3000/cable');
 
-
 export default class App extends Component<Props> {
   render() {
     return (
