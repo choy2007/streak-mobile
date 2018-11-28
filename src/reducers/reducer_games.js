@@ -1,5 +1,5 @@
 const initialState = {
-  isFetching: true,
+  isFetching: false,
   activeGame: [],
   users: {},
   questions: []
@@ -22,6 +22,7 @@ export default function(state = initialState, action) {
       })
     case 'FETCH_ACTIVE_GAME':
       return Object.assign({}, state, {
+        isFetching: true,
         activeGame: action.payload,
       })
     case 'FETCH_QUESTION':

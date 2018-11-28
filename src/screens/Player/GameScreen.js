@@ -19,7 +19,7 @@ class GameScreen extends Component{
 
     this.state = {
       question: '',
-      answer: ''
+      answer: '',
     }
 
     this.cable = RNActionCable.createConsumer(`${ACTION_CABLE_URL}`)

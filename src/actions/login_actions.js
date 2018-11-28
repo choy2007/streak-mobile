@@ -64,6 +64,7 @@ export function login(state) {
     .then(responsejson => {
       console.log(responsejson)
       if (responsejson.status === 200) {
+        dispatch(sessionRequest(responsejson));
         dispatch(loginSuccess(responsejson));
 
         storeData('email', state.email);

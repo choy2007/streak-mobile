@@ -32,10 +32,12 @@ module.exports = StyleSheet.create({
   nameStyle: {
     fontSize: 22,
     paddingVertical: 2,
+    fontFamily: vars.fontFamily
   },
   otherNameStyle: {
     fontSize: 16,
     paddingVertical: 2,
+    fontFamily: vars.fontFamily,
     color: vars.colorGray
   },
   settingsContainer: {

@@ -93,18 +93,19 @@ export function userJoin(auth, game_id) {
   }
 }
 
-export function answerQuestion(auth, question_id, game_id) {
+export function answerQuestion(choice, question_id, user_id) {
   return dispatch => {
-    fetch(`${API_KEY}/game/${game_id}/question/${question_id}`,{
+    fetch(`${API_KEY}/questions/answer`,{
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        user_id: auth.user.user.id,
-        game_id: game_id,
+        answer: choice,
+        user_id: user_id,
         question_id: question_id
+
       })
     })
     .then(response => response.json())

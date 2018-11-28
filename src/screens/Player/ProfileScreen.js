@@ -29,12 +29,16 @@ class ProfileScreen extends Component{
     const { navigate } = this.props;
     return(
       <View style={styles.container}>
-        <PlayerHeader title="Profile" />
-        <Text> Email </Text>
+        <View style={styles.accountContainer}>
+          <View style={styles.imageContainer}>
+            <View style={styles.imageStyle}/>
+          </View>
+          <View style={styles.detailsContainer}>
+            <Text style={styles.nameStyle}>{auth.user.user.first_name} {auth.user.user.last_name}</Text>
+            <Text style={styles.otherNameStyle}>{auth.user.user.email}</Text>
+          </View>
+        </View>
         <TouchableOpacity onPress={() => this.props.login_actions.logout()} style={{flex: 1, flexDirection: 'row', borderColor: '#fff', borderBottomWidth: 0}}>
-            <View>
-              <Text> { auth.user.user.email } </Text>
-            </View>
             <View style={styles.iconContainer}>
               <Image source={require('../../img/logout.png')} style={styles.iconStyle}/>
             </View>

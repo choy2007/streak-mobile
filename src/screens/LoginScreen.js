@@ -36,6 +36,7 @@ class LoginScreen extends Component {
     if (email && password) {
       login_actions.login({ email: email, password: password });
     }
+
   }
 
   render() {

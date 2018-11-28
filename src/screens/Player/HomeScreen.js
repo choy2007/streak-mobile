@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, Image, ScrollView, ImageBackground, Alert
 import styles from '../../styles/home';
 import PlayerHeader from '../../components/Player/Header';
 import vars from '../../styles/variables'
+import Loading from '../../components/Loading';
 
 import * as gameActions from '../../actions/game_actions';
 
@@ -70,7 +71,8 @@ class HomeScreen extends Component{
     const { game, auth, navigation: { navigate } } = this.props;
 
     return (
-        <View>  
+        <View>
+
           <ActionCable channel={{channel: 'GameRoomChannel'}} onReceived={this.onReceived} />
           { game.activeGame.length > 0 
             ?
@@ -92,6 +94,10 @@ class HomeScreen extends Component{
   }
 
   render(){
+    const { game, navigation: {navigate}} = this.props;
+    if (game.isFetching) {
+      return <Loading />
+    }
     return(
       <View style={styles.container}>
         <PlayerHeader title="Home" />
