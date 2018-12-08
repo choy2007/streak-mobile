@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView, ImageBackground, Alert } from 'react-native';
-import styles from '../../styles/waiting';
+import styles from '../../styles/prize';
 import PlayerHeader from '../../components/Player/Header';
 import AnimatedEllipsis from 'react-native-animated-ellipsis';
 
@@ -16,7 +16,7 @@ import ActionCableProvider, { ActionCable } from 'react-actioncable-provider';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-class WaitingScreen extends Component{
+class PrizeScreen extends Component{
   constructor(){
     super();
 
@@ -41,26 +41,31 @@ class WaitingScreen extends Component{
 
   _handleReceivedCable(game) {
     const { auth, navigation: { navigate } } = this.props;
-    if (game.status == "Prize") {
-      navigate('Prize');
+    if (game.status == "Ingame") {
+      navigate('Game');
     } 
     console.log(`GAME STATUS CABLE IS`, game)
   }
 
   render(){
+    const { game } = this.props;
+    console.log(`GAME STATUS IS`, game)
     return(
       <MainBackground>
         <View style={styles.container}>
-          <Text style={styles.waitingTitle}> 
-            Waiting for Players 
-            <AnimatedEllipsis style={{color: 'white'}} />
-          </Text>
+          <View style={styles.prizeContainer}>
+            <Text style={styles.titleText}>
+              Prize for today:
+            </Text>
+            <Text style={styles.prizeText}>
+              {game.activeGame && game.activeGame[0] && game.activeGame[0].prize}
+            </Text>
+          </View>
         </View>
       </MainBackground>
     )
   }
 }
-
 
 function mapStateToProps(state) {
   return {
@@ -75,5 +80,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-
-export default connect (mapStateToProps, mapDispatchToProps)(WaitingScreen);
+export default connect (mapStateToProps, mapDispatchToProps)(PrizeScreen);

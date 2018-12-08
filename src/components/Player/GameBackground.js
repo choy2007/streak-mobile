@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { ImageBackground } from 'react-native';
 import styles from '../../styles/game-bg';
 
-export default class MainBackground extends Component {
+export default class GameBackground extends Component {
   render() {
     return (
-      <ImageBackground source={require('../../img/bg.png')} style={styles.container}>
-        { this.props.children }
+      <ImageBackground source={require('../../img/game-bg.png')} style={styles.container}>
+        {this.props.children}
       </ImageBackground>
     )
   }
 }
-

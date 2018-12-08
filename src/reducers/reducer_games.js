@@ -2,11 +2,16 @@ const initialState = {
   isFetching: false,
   activeGame: [],
   users: {},
-  questions: []
+  questions: [],
+  type: 'ready' 
 }
 
 export default function(state = initialState, action) {
   switch(action.type) {
+    case 'UPDATE_TYPE':
+      return Object.assign({}, state, {
+        type: action.payload
+      })
     case 'FETCH_GAME_REQUEST':
       return Object.assign({}, state, {
         isFetching: true

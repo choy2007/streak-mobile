@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView, ImageBackground, Alert } from 'react-native';
 import styles from '../../styles/home';
+
+import GameBackground from '../../components/Player/GameBackground';
+import GameHeader from '../../components/Player/GameHeader';
+import GamePrize from '../../components/Player/Prize';
+import PlayerReady from '../../components/Player/Ready';
 import PlayerQuestion from '../../components/Player/Question';
+import PlayerPoint from '../../components/Player/Point';
+
 import vars from '../../styles/variables'
 
 import * as gameActions from '../../actions/game_actions';
@@ -25,17 +32,30 @@ class GameScreen extends Component{
     this.cable = RNActionCable.createConsumer(`${ACTION_CABLE_URL}`)
   }
 
+  getView(){
+    const { game } = this.props;
+    switch(game.type){
+      case 'ready':
+        return <PlayerReady />
+      case 'game':
+        return <PlayerQuestion game={game} />
+    }
+  }
+
   componentDidMount(){
     const { game, auth } = this.props;
     this.props.game_actions.fetch_question(game.activeGame[0].id)
     console.log(`GAME QUESTION STATE`, game, auth)
   }
-
+  
   render(){
     const { game, auth, navigation: { navigate } } = this.props;
     return(
       <View style={styles.container}>
-        <PlayerQuestion />
+        <GameHeader timer={game.questions && game.questions[0] && game.questions[0].timer}/>
+        <GameBackground>
+          { this.getView() }
+        </GameBackground>
       </View>
     )
   }

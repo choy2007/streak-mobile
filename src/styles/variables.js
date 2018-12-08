@@ -4,5 +4,6 @@ export default vars = {
   colorText: "#FFF",
   colorWhite: "#FFF",
   colorGray: "#A8B6C8",
-  fontFamily: "Avenir"
+  fontFamily: "Avenir",
+  colorBlack: "#000"
 }

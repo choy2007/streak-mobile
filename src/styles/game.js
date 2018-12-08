@@ -10,15 +10,17 @@ module.exports = StyleSheet.create({
   },
   question: {
     flex: 2,
-    marginTop: height*.07,
+    marginTop: height*.05,
   },
   choiceContainer: {
-    flex: 3,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   listContainer1: {
     backgroundColor: vars.colorPrimary,
     justifyContent: 'center',
-    padding: 10
+    padding: 10,
+    bottom: 5
   },
   listTitle: {
     fontSize: 25,

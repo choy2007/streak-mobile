@@ -51,6 +51,13 @@ export function fetchQuestion(game) {
   }
 }
 
+export function update_type(type) {
+  return {
+    type: 'UPDATE_TYPE',
+    payload: type
+  }
+}
+
 export function fetch_question(game_id){
   return dispatch => {
     console.log(`GAME ID`, game_id)
