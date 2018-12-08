@@ -4,7 +4,7 @@ import styles from '../../styles/prize';
 import PlayerHeader from '../../components/Player/Header';
 import AnimatedEllipsis from 'react-native-animated-ellipsis';
 
-import MainBackground from '../../components/Player/MainBackground';
+import GameBackground from '../../components/Player/GameBackground';
 import * as gameActions from '../../actions/game_actions';
 
 import { NavigationActions } from 'react-navigation';
@@ -12,7 +12,7 @@ import { NavigationActions } from 'react-navigation';
 import { ACTION_CABLE_URL } from '../../config/api';
 import RNActionCable from 'react-native-actioncable';
 import ActionCableProvider, { ActionCable } from 'react-actioncable-provider';
-
+  
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -51,7 +51,7 @@ class PrizeScreen extends Component{
     const { game } = this.props;
     console.log(`GAME STATUS IS`, game)
     return(
-      <MainBackground>
+      <GameBackground>
         <View style={styles.container}>
           <View style={styles.prizeContainer}>
             <Text style={styles.titleText}>
@@ -62,7 +62,7 @@ class PrizeScreen extends Component{
             </Text>
           </View>
         </View>
-      </MainBackground>
+      </GameBackground>
     )
   }
 }
