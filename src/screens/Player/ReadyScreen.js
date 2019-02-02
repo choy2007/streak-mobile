@@ -16,7 +16,7 @@ import ActionCableProvider, { ActionCable } from 'react-actioncable-provider';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-class PrizeScreen extends Component{
+class ReadyScreen extends Component{
   constructor(){
     super();
 
@@ -41,8 +41,8 @@ class PrizeScreen extends Component{
 
   _handleReceivedCable(game) {
     const { auth, navigation: { navigate } } = this.props;
-    if (game.status == "Ready") {
-      navigate('Game');
+    if (game.status == "Ingame") {
+     navigate('Game');
     } 
     console.log(`GAME STATUS CABLE IS`, game)
   }
@@ -55,10 +55,10 @@ class PrizeScreen extends Component{
         <View style={styles.container}>
           <View style={styles.prizeContainer}>
             <Text style={styles.titleText}>
-              Prize for today:
+              Question 1 test
             </Text>
             <Text style={styles.prizeText}>
-              {game.activeGame && game.activeGame[0] && game.activeGame[0].prize}
+              Ready
             </Text>
           </View>
         </View>
@@ -80,4 +80,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(PrizeScreen);
+export default connect (mapStateToProps, mapDispatchToProps)(ReadyScreen);

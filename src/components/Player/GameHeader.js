@@ -20,31 +20,33 @@ class GameHeader extends Component{
     }
   }
   
-  componentDidMount() {
-    setInterval(() => {
-      if(this.state.timer>0){
-        this.setState({timer: this.state.timer - 1})
-      } 
-    }, 1000)
+  getView(){
+    const { game } = this.props;
+    switch(game.type){
+      case 'ready':
+        return (
+          <Text style={styles.questionTimer}> READY </Text>
+        );
+      case 'game':
+        setInterval(() => {
+            if(this.state.timer>0){
+              this.setState({timer: this.state.timer -= 1})
+            }
+          }, 1000)
+        return (
+          <Text style={styles.questionTimer}> {this.state.timer} </Text>
+        );
+    }
   }
-
-  // decreaseTimer(timer){
-  //   x = timer;
-  //   while(x>0) {
-  //     this.setState({ timer: x-- })
-  //   }
-  // }
-  
-  // setTimer() {
-  //   setTimeout(() => this.decreaseTimer(this.props.timer), 1000)
-  // }
 
   render() {
     const { title, back, close }  = this.props;
     return(
       <View style={styles.container}>
         <Text style={styles.exitButtonStyle}> Exit </Text>
-        <Text style={styles.questionTimer}> 0 </Text>
+        <Text style={styles.questionTimer}> 
+          {this.getView()} 
+        </Text>
         <Text style={styles.currentScore}> Score </Text>
       </View>
     )

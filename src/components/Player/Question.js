@@ -17,7 +17,7 @@ class PlayerQuestion extends Component {
 
     this.state = {
       choices: '',
-      timer: null
+      timer: null,
     }
   }
 
@@ -36,7 +36,7 @@ class PlayerQuestion extends Component {
     }
   }
 
-
+  
   render() {
     const { game: { questions } }  = this.props;
     return(

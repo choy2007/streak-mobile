@@ -8,6 +8,8 @@ import ActionCableProvider, { ActionCable } from 'react-actioncable-provider';
 
 import * as gameActions from '../../actions/game_actions';
 
+import { NavigationActions } from 'react-navigation';
+  
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
