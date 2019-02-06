@@ -43,13 +43,16 @@ class LoginScreen extends Component {
     const { navigation: { navigate }, login_actions  } = this.props
     return (
         <MainBackground>
-          <View style={styles.logoContainer}>
-            <View style={styles.headerContainer}>
-              
-            </View>
-            <Image source={require('../img/peach-logo.png')} style={styles.logoStyle}/>
-          </View>
+          
           <View style={styles.formContainer}>
+            <View style={styles.logoContainer}>
+              <View style={styles.headerContainer}>
+                
+              </View>
+
+              <Image source={require('../img/logo1.png')} style={styles.logoStyle}/>
+              {/* <Image source={require('../img/peach-logo.png')} style={styles.logoStyle}/> */}
+            </View>
             <View style={styles.inputContainer}>
 
               <TextInput
@@ -78,7 +81,7 @@ class LoginScreen extends Component {
             </TouchableOpacity>
         
             <View style={styles.otherLinks}>
-              <Text style={{flex: 1, color: '#FFF' }}>Forgot Password</Text>
+              <Text style={{color: '#000', fontWeight: 'bold' }}>Forgot Password?</Text>
             </View>
           </View>
         </MainBackground>

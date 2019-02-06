@@ -14,26 +14,36 @@ module.exports = StyleSheet.create({
     justifyContent: 'center'
   },
   logoStyle: {
-    resizeMode: 'contain',
+    width: 175,
+    height: 175,
+    flex: 1,
+    position: 'relative'
   },
   formContainer: {
-    flex: 2,
+    flex: 1,
     marginHorizontal: 30,
+    marginVertical: 175,
   },
   inputContainer: {
     backgroundColor: '#fff',  
     borderColor: '#000', 
-    borderRadius: 10, 
-    padding: 15, 
+    borderRadius: 50, 
+    padding: 12.5, 
     flexDirection: 'row',
-    marginVertical: 5 
-
+    marginVertical: 5,
+    shadowOffset: { width: 0.5, height: 0.5 },
+    shadowOpacity: 0.5,
+    shadowRadius: 0.5,
   },
   buttonContainer: {
-    backgroundColor: variables.colorSecondary,
-    borderRadius: 20,
-    padding: 15,
-    marginVertical: 10
+    //backgroundColor: variables.colorSecondary,
+    backgroundColor: '#ffda82',
+    borderRadius: 50,
+    padding: 10,
+    marginVertical: 10,
+    shadowOffset: { width: 0.5, height: 0.5 },
+    shadowOpacity: 0.5,
+    shadowRadius: 0.5,
   },
   orStyle: {
     marginVertical: 10,
@@ -44,13 +54,13 @@ module.exports = StyleSheet.create({
   buttonText: {
     textAlign: 'center',
     fontFamily: variables.fontFamily,
-    fontSize: 16 
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#FFF'
   },
   otherLinks: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 10
   }
 })
