@@ -16,8 +16,31 @@ class GameHeader extends Component{
     super();
 
     this.state = {
-      timer: 10
+      timer: null,
+      type: 'ready',
+      setIntervalTimer: null,
     }
+  }
+
+  componentDidUpdate(){
+    if (this.props.game.type === 'game') {
+      if (this.state.type !== 'game') {
+        let setIntervalTimer = setInterval(() => {
+            if(this.state.timer>0){
+              console.log(`this state timer`, this.state.timer)
+              this.setState({timer: this.state.timer - 1})
+            }
+          }, 1000)
+        this.setState({ timer: 10, type: 'game', setIntervalTimer})
+      } else if (this.state.timer === 0 && this.state.type === 'game'){
+        clearInterval(this.state.setInterval)
+        this.setState({ type: 'ready', setIntervalTimer: null })
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.setInterval)
   }
   
   getView(){
@@ -28,9 +51,11 @@ class GameHeader extends Component{
           <Text style={styles.questionTimer}> READY </Text>
         );
       case 'game':
+        console.log(`game state is `, game.type)
         setInterval(() => {
             if(this.state.timer>0){
-              this.setState({timer: this.state.timer -= 1})
+              console.log(`this state timer`, this.state.timer)
+              this.setState({timer: this.state.timer - 1})
             }
           }, 1000)
         return (
@@ -45,7 +70,7 @@ class GameHeader extends Component{
       <View style={styles.container}>
         <Text style={styles.exitButtonStyle}> Exit </Text>
         <Text style={styles.questionTimer}> 
-          {this.getView()} 
+          {this.state.timer? this.state.timer : "READY" }
         </Text>
         <Text style={styles.currentScore}> Score </Text>
       </View>
