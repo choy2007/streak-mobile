@@ -10,15 +10,17 @@ const TabPlayerRoutes = TabNavigator({
     swipeEnabled: true,
     lazy: false,
     tabBarOptions: {
-      activeTintColor: vars.colorPrimary,  // Color of tab when pressed
-      inactiveTintColor: '#b5b5b5', // Color of tab when not pressed
+      //activeTintColor: vars.colorPrimary,  // Color of tab when pressed
+      activeTintColor: '#fdded4',
+      //inactiveTintColor: '#b5b5b5', // Color of tab when not pressed
+      inactiveTintColor: 'white',
       showIcon: 'true', // Shows an icon for both iOS and Android
       showLabel: (Platform.OS !== 'android'), //No label for Android
       labelStyle: {
         fontSize: 11,
       },
       style: {
-        backgroundColor: '#fff', // Makes Android tab bar white instead of standard blue
+        backgroundColor: 'gray', // Makes Android tab bar white instead of standard blue
         height: (Platform.OS === 'ios') ? 48 : 50 
       }
     },

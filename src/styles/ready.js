@@ -9,23 +9,31 @@ module.exports = StyleSheet.create({
     justifyContent: 'center',
     marginTop: height*.07,
   },
-
   readyContainer: {
     alignItems: 'center',
     justifyContent: 'center'
   },
   readyLogo: {
-    resizeMode: 'contain',
+    width: 175,
+    height: 175,
+    position: 'relative', 
+    marginBottom: height*.025,
+    marginTop: height*.025,
   },
   titleText: {
     textAlign: 'center',
     color: vars.colorBlack,
-    fontSize: 16
+    fontSize: 20,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
   readyText: {
     textAlign: 'center',
-    color: vars.colorPrimary,
-    fontSize: 16
+    //color: vars.colorPrimary,
+    color: '#fdded4',
+    fontSize: 60,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
   
 })

@@ -54,12 +54,13 @@ class PrizeScreen extends Component{
       <GameBackground>
         <View style={styles.container}>
           <View style={styles.prizeContainer}>
-            <Text style={styles.titleText}>
-              Prize for today:
-            </Text>
-            <Text style={styles.prizeText}>
-              {game.activeGame && game.activeGame[0] && game.activeGame[0].prize}
-            </Text>
+            <Image source={require('../../img/trophy.png')} resizeMode='cover' style={styles.prizeLogo}/>
+              <Text style={styles.titleText}>
+                Today's Prize
+              </Text>
+              <Text style={styles.prizeText}>
+                {game.activeGame && game.activeGame[0] && game.activeGame[0].prize}
+              </Text>
           </View>
         </View>
       </GameBackground>

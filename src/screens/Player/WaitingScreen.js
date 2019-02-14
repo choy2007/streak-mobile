@@ -50,12 +50,17 @@ class WaitingScreen extends Component{
   render(){
     return(
       <MainBackground>
-        <View style={styles.container}>
+        <ImageBackground source={require('../../img/f-bg.png')} resizeMode='cover' style={styles.container}>
+          <View style={styles.container}>
+          <View style={styles.logoContainer}>
+            <Image source={require('../../img/f-logo-1.png')} style={styles.logoStyle}/>
+          </View>
           <Text style={styles.waitingTitle}> 
-            Waiting for Players 
-            <AnimatedEllipsis style={{color: 'white'}} />
+            Waiting for other players
+            <AnimatedEllipsis style={{color: 'black'}} />
           </Text>
         </View>
+        </ImageBackground>
       </MainBackground>
     )
   }

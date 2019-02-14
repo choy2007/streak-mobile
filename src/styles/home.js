@@ -7,15 +7,19 @@ module.exports = StyleSheet.create({
     flex: 1,
   },
   listContainer: {
-    height: height/5,
-    backgroundColor: 'red',
+    height: height/1,
+    backgroundColor: 'white',
     justifyContent: 'center',
-    padding: 10
   },
   listTitle: {
-    fontSize: 25,
+    fontSize: 24,
     fontFamily: 'Avenir',
-    color: vars.colorText
+    //fontFamily: 'SF-Pro-Display-Regular',
+    //color: vars.colorText
+    color: '#000',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    textAlign: 'center',
   },
   overlay: {
     position: 'absolute',
@@ -23,7 +27,7 @@ module.exports = StyleSheet.create({
     right: 0,
     bottom: 0,
     left: 0,
-    backgroundColor: 'black',
-    opacity: 0.5
+    backgroundColor: 'white',
+    opacity: 0.70
   }
 })

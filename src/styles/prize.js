@@ -1,31 +1,48 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import variables from './variables';
 const { width, height } = Dimensions.get('window');
+import variables from './variables';
 
 module.exports = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: height*.07,
   },
-
+  logoContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
+    paddingBottom: 50
+  },
+  logoStyle: {
+    width: 50,
+    height: 50,
+  },
   prizeContainer: {
     alignItems: 'center',
     justifyContent: 'center'
   },
   prizeLogo: {
-    resizeMode: 'contain',
+    width: 175,
+    height: 175,
+    position: 'relative', 
+    marginBottom: height*.025,
+    marginTop: height*.025,
   },
   titleText: {
     textAlign: 'center',
     color: vars.colorBlack,
-    fontSize: 16
+    fontSize: 20,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
   prizeText: {
     textAlign: 'center',
-    color: vars.colorPrimary,
-    fontSize: 16
+    //color: vars.colorBlack,
+    color: '#fdded4',
+    fontSize: 60,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
   
 })

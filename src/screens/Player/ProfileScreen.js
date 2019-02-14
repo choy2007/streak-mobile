@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ImageBackground } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { connect } from 'react-redux';
@@ -29,23 +29,29 @@ class ProfileScreen extends Component{
     const { navigate } = this.props;
     return(
       <View style={styles.container}>
-        <View style={styles.accountContainer}>
-          <View style={styles.imageContainer}>
-            <View style={styles.imageStyle}/>
+        <ImageBackground source={require('../../img/home-bg.png')} resizeMode='cover' style={styles.listContainer}>
+        <View style={styles.overlay}/>
+          <View style={styles.logoContainer}>
+            <Image source={require('../../img/f-logo-1.png')} style={styles.logoStyle}/>
           </View>
-          <View style={styles.detailsContainer}>
-            <Text style={styles.nameStyle}>{auth.user.user.first_name} {auth.user.user.last_name}</Text>
-            <Text style={styles.otherNameStyle}>{auth.user.user.email}</Text>
+          <View style={styles.accountContainer}>
+            <View style={styles.imageContainer}>
+              <View style={styles.imageStyle}/>
+            </View>
+            <View style={styles.detailsContainer}>
+              <Text style={styles.nameStyle}>{auth.user.user.first_name} {auth.user.user.last_name}</Text>
+              <Text style={styles.otherNameStyle}>{auth.user.user.email}</Text>
+            </View>
           </View>
-        </View>
-        <TouchableOpacity onPress={() => this.props.login_actions.logout()} style={{flex: 1, flexDirection: 'row', borderColor: '#fff', borderBottomWidth: 0}}>
-            <View style={styles.iconContainer}>
-              <Image source={require('../../img/logout.png')} style={styles.iconStyle}/>
-            </View>
-            <View style={styles.settingTextContainer}>
-              <Text>Logout</Text>
-            </View>
+          <TouchableOpacity onPress={() => this.props.login_actions.logout()} style={{flex: 1, borderColor: '#fff', borderBottomWidth: 0}}>
+              <View style={styles.iconContainer}>
+                <Image source={require('../../img/logout.png')} style={styles.iconStyle}/>
+              </View>
+              <View style={styles.settingTextContainer}>
+                <Text>Logout</Text>
+              </View>
           </TouchableOpacity>
+        </ImageBackground>
       </View>
     )
   }

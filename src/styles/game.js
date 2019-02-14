@@ -17,10 +17,13 @@ module.exports = StyleSheet.create({
     justifyContent: 'center'
   },
   listContainer1: {
-    backgroundColor: vars.colorPrimary,
+    //backgroundColor: vars.colorPrimary,
+    backgroundColor: '#ffda82',
+    borderRadius: 50,
     justifyContent: 'center',
-    padding: 10,
-    bottom: 5
+    paddingHorizontal: 100,
+    bottom: 5,
+    marginBottom: 15
   },
   listTitle: {
     fontSize: 25,

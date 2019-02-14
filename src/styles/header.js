@@ -6,7 +6,8 @@ module.exports = StyleSheet.create({
   container: {
     top: 0,
     height: height*.10,
-    backgroundColor: vars.colorSecondary,
+    //backgroundColor: variables.colorSecondary,
+    backgroundColor: '#ffda82',
     justifyContent: 'center',
     paddingHorizontal: 30,
     flexDirection: 'row'
