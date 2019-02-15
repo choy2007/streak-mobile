@@ -5,7 +5,7 @@ import styles from '../../styles/game-bg';
 export default class MainBackground extends Component {
   render() {
     return (
-      <ImageBackground source={require('../../img/bg.png')} style={styles.container}>
+      <ImageBackground source={require('../../img/bg1.png')} style={styles.container}>
         { this.props.children }
       </ImageBackground>
     )
