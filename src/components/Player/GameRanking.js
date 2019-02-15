@@ -11,12 +11,12 @@ import * as gameActions from '../../actions/game_actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-class Point extends Component {
+class GameRanking extends Component {
   constructor(){
     super();
 
     this.state = {
-      timer: 5
+      timer: 10
     }
   }
 
@@ -25,14 +25,14 @@ class Point extends Component {
       if(this.state.timer>0){
         this.setState({timer: this.state.timer - 1})
       } else {
-        this.props.game_actions.update_type('ranking');
+        this.props.game_actions.update_type('ready');
       }
     }, 1000)
   }
 
   render() {
     return (
-      <Text> POINT COMPONENT </Text>
+      <Text> GAME RANKING </Text>
     )
   }
 }
@@ -51,4 +51,4 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(Point);
+export default connect (mapStateToProps, mapDispatchToProps)(GameRanking);

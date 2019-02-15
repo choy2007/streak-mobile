@@ -8,6 +8,7 @@ import GamePrize from '../../components/Player/Prize';
 import PlayerReady from '../../components/Player/Ready';
 import PlayerQuestion from '../../components/Player/Question';
 import PlayerPoint from '../../components/Player/Point';
+import GameRanking from '../../components/Player/GameRanking';
 
 import vars from '../../styles/variables'
 
@@ -38,7 +39,11 @@ class GameScreen extends Component{
       case 'ready':
         return <PlayerReady />
       case 'game':
-        return <PlayerQuestion game={game} />
+        return <PlayerQuestion game={game}/>
+      case 'point':
+        return <PlayerPoint />
+      case 'ranking':
+        return <GameRanking />
     }
   }
 
@@ -47,7 +52,8 @@ class GameScreen extends Component{
     this.props.game_actions.fetch_question(game.activeGame[0].id)
     console.log(`GAME QUESTION STATE`, game, auth)
   }
-  
+
+
   render(){
     const { game, auth, navigation: { navigate } } = this.props;
     return(
