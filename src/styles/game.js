@@ -21,12 +21,13 @@ module.exports = StyleSheet.create({
     backgroundColor: '#ffda82',
     borderRadius: 50,
     justifyContent: 'center',
-    paddingHorizontal: 100,
-    bottom: 5,
+    //paddingHorizontal: 100,
+    //paddingVertical: 15,
+    //bottom: 5,
     marginBottom: 15
   },
   listTitle: {
-    fontSize: 25,
+    //fontSize: 25,
     fontFamily: 'Avenir',
     color: vars.colorText,
     padding: 10
