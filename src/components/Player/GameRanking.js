@@ -21,13 +21,18 @@ class GameRanking extends Component {
   }
 
   componentDidMount() {
-    setInterval(() => {
-      if(this.state.timer>0){
-        this.setState({timer: this.state.timer - 1})
-      } else {
-        this.props.game_actions.update_type('ready');
-      }
-    }, 1000)
+    this._mounted = true;
+    // setInterval(() => {
+    //   if(this.state.timer>0){
+    //     this.setState({timer: this.state.timer - 1})
+    //   } else {
+    //     this.props.game_actions.update_type('ready');
+    //   }
+    // }, 1000)
+  }
+
+  componentWillUnmount(){
+    this._mounted = false;
   }
 
   render() {

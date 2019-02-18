@@ -21,7 +21,8 @@ class Point extends Component {
   }
 
   componentDidMount() {
-    setInterval(() => {
+    this._mounted = true;
+    let interval = setInterval(() => {
       if(this.state.timer>0){
         this.setState({timer: this.state.timer - 1})
       } else {
@@ -30,6 +31,10 @@ class Point extends Component {
     }, 1000)
   }
 
+  componentWillUnmount() {
+    this._mounted = false;
+    clearInterval(this.state.interval)
+  }
   render() {
     return (
       <Text> POINT COMPONENT </Text>

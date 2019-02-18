@@ -18,6 +18,7 @@ class PlayerQuestion extends Component {
     this.state = {
       choices: '',
       timer: null,
+      disabled: false
     }
   }
 
@@ -27,14 +28,20 @@ class PlayerQuestion extends Component {
   }
 
   componentDidMount(){
-    this.setState({timer: this.getTimer()})
-    setInterval(() => {
-      if(this.state.timer>0){
-        this.setState({timer: this.state.timer - 1})
-      } else {
-        this.props.game_actions.update_type('point');
-      }
-    }, 1000)
+    this._mounted = true;
+    // this.setState({timer: this.getTimer()})
+    // let interval = setInterval(() => {
+    //   if(this.state.timer>0){
+    //     this.setState({timer: this.state.timer - 1})
+    //   } else {
+    //     this.props.game_actions.update_type('point');
+    //   }
+    // }, 1000)
+  }
+
+  componentWillUnmount(){
+    this._mounted = false;
+    clearInterval(this.state.interval)
   }
 
   getChoices() {

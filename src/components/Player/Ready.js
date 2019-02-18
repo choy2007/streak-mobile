@@ -22,15 +22,15 @@ class Ready extends Component {
     }
   }
 
-  componentDidMount() {
-    setInterval(() => {
-      if(this.state.timer>0){
-        this.setState({timer: this.state.timer - 1})
-      } else {
-        this.props.game_actions.update_type('game');
-      }
-    }, 1000)
-  }
+  // componentDidMount() {
+  //   setInterval(() => {
+  //     if(this.state.timer>0){
+  //       this.setState({timer: this.state.timer - 1})
+  //     } else {
+  //       this.props.game_actions.update_type('game');
+  //     }
+  //   }, 1000)
+  // }
 
   render() {
     const { game } = this.props;

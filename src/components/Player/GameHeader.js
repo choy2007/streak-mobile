@@ -28,6 +28,7 @@ class GameHeader extends Component{
   }
 
   componentDidUpdate(){
+    this._mounted = true;
     if (this.props.game.type === 'game') {
       if (this.state.type !== 'game') {
         let setIntervalTimer = setInterval(() => {
@@ -48,6 +49,7 @@ class GameHeader extends Component{
   }
 
   componentWillUnmount() {
+    this._mounted = false;
     clearInterval(this.state.setInterval)
   }
   
