@@ -1,6 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import variables from './variables';
 const { width, height } = Dimensions.get('window');
+import RF from "react-native-responsive-fontsize";
 
 module.exports = StyleSheet.create({
   container: {
@@ -23,7 +24,7 @@ module.exports = StyleSheet.create({
   titleText: {
     textAlign: 'center',
     color: vars.colorBlack,
-    fontSize: 20,
+    fontSize: RF(4),
     fontWeight: 'bold',
     textTransform: 'uppercase',
   },
@@ -31,7 +32,7 @@ module.exports = StyleSheet.create({
     textAlign: 'center',
     //color: vars.colorPrimary,
     color: '#fdded4',
-    fontSize: 60,
+    fontSize: RF(10),
     fontWeight: 'bold',
     textTransform: 'uppercase',
   },

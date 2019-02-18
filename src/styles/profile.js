@@ -1,6 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
 import variables from './variables';
+import RF from "react-native-responsive-fontsize";
 
 module.exports = StyleSheet.create({
   container: {
@@ -54,7 +55,7 @@ module.exports = StyleSheet.create({
     //paddingLeft: 20
   },
   nameStyle: {
-    fontSize: 22,
+    fontSize: RF(3.5),
     //paddingVertical: 2,
     fontFamily: vars.fontFamily,
     fontWeight: 'bold',
@@ -62,7 +63,7 @@ module.exports = StyleSheet.create({
     color: '#EB9592',
   },
   otherNameStyle: {
-    fontSize: 16,
+    fontSize: RF(2.5),
     //paddingVertical: 2,
     fontFamily: vars.fontFamily,
     fontWeight: 'bold',

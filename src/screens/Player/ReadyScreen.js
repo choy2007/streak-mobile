@@ -53,7 +53,6 @@ class ReadyScreen extends Component{
     return(
       <GameBackground>
         <View style={styles.container}>
-        <Image source={require('../../img/trophy.png')} resizeMode='cover' style={styles.readyLogo}/>
           <View style={styles.readyContainer}>
               <Text style={styles.titleText}>
                 Question 1 test

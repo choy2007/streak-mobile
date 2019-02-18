@@ -54,11 +54,11 @@ class WaitingScreen extends Component{
           <View style={styles.container}>
           <View style={styles.logoContainer}>
             <Image source={require('../../img/f-logo-1.png')} style={styles.logoStyle}/>
-          </View>
-          <Text style={styles.waitingTitle}> 
+            <Text style={styles.waitingTitle}> 
             Waiting for other players
             <AnimatedEllipsis style={{color: 'black'}} />
-          </Text>
+            </Text>
+          </View>
         </View>
         </ImageBackground>
       </MainBackground>

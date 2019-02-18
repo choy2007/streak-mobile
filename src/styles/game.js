@@ -1,12 +1,14 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import variables from './variables';
 const { width, height } = Dimensions.get('window');
+import RF from "react-native-responsive-fontsize";
 
 module.exports = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginTop: 30
   },
   question: {
     flex: 2,
@@ -18,18 +20,20 @@ module.exports = StyleSheet.create({
   },
   listContainer1: {
     //backgroundColor: vars.colorPrimary,
-    backgroundColor: '#ffda82',
+    backgroundColor: '#EB9592',
     borderRadius: 50,
     justifyContent: 'center',
-    //paddingHorizontal: 100,
-    //paddingVertical: 15,
-    //bottom: 5,
-    marginBottom: 15
+    width: 250,
+    height: 100,
+    margin: 5
   },
   listTitle: {
-    //fontSize: 25,
+    fontSize: RF(2.75),
     fontFamily: 'Avenir',
     color: vars.colorText,
-    padding: 10
+    fontWeight: 'bold',
+    textAlign: 'center',
+    lineHeight: 20,
+    padding: 11
   },
 })

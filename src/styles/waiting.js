@@ -1,5 +1,6 @@
 import { StyleSheet, Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
+import RF from "react-native-responsive-fontsize";
 
 module.exports = StyleSheet.create({
   container: {
@@ -10,12 +11,12 @@ module.exports = StyleSheet.create({
   waitingTitle: {
     color: '#000',
     fontFamily: 'Avenir',
-    fontSize: 20,
+    fontSize: RF(3.5),
     fontWeight: 'bold',
   },
   logoContainer: {
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   logoStyle: {
     width: 175,

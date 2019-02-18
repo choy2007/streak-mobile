@@ -1,6 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import variables from './variables';
 const { width, height } = Dimensions.get('window');
+import RF from "react-native-responsive-fontsize";
 
 module.exports = StyleSheet.create({
   container: {
@@ -12,7 +13,7 @@ module.exports = StyleSheet.create({
     justifyContent: 'center',
   },
   listTitle: {
-    fontSize: 24,
+    fontSize: RF(4),
     fontFamily: 'Avenir',
     //fontFamily: 'SF-Pro-Display-Regular',
     //color: vars.colorText
