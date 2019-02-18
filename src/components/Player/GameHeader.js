@@ -22,16 +22,25 @@ class GameHeader extends Component{
     }
   }
 
+  getTimer(){
+    const { game } = this.props;
+    return game.questions.find(question => question.active === true).timer 
+  }
+
   componentDidUpdate(){
+    this._mounted = true;
     if (this.props.game.type === 'game') {
       if (this.state.type !== 'game') {
         let setIntervalTimer = setInterval(() => {
             if(this.state.timer>0){
               console.log(`this state timer`, this.state.timer)
               this.setState({timer: this.state.timer - 1})
+            } else {
+              clearInterval(this.state.setInterval)
+              this.setState({ type: 'point', setIntervalTimer: null })
             }
           }, 1000)
-        this.setState({ timer: 10, type: 'game', setIntervalTimer})
+        this.setState({ timer: this.getTimer(), type: 'game', setIntervalTimer: null})
       } else if (this.state.timer === 0 && this.state.type === 'game'){
         clearInterval(this.state.setInterval)
         this.setState({ type: 'ready', setIntervalTimer: null })
@@ -40,6 +49,7 @@ class GameHeader extends Component{
   }
 
   componentWillUnmount() {
+    this._mounted = false;
     clearInterval(this.state.setInterval)
   }
   
@@ -52,14 +62,19 @@ class GameHeader extends Component{
         );
       case 'game':
         console.log(`game state is `, game.type)
-        setInterval(() => {
+        let setIntervalTimer = setInterval(() => {
             if(this.state.timer>0){
               console.log(`this state timer`, this.state.timer)
               this.setState({timer: this.state.timer - 1})
             }
           }, 1000)
+          this.setState({timer: this.getTimer(), type: 'game', setInterval: null})
         return (
           <Text style={styles.questionTimer}> {this.state.timer} </Text>
+        );
+      case 'point':
+        return (
+          <Text style={styles.questionTimer}> POINT </Text>
         );
     }
   }

@@ -18,24 +18,44 @@ class PlayerQuestion extends Component {
     this.state = {
       choices: '',
       timer: null,
+      disabled: false
     }
+  }
+
+  getTimer(){
+    const { game } = this.props;
+    return game.questions.find(question => question.active === true).timer 
+  }
+
+  componentDidMount(){
+    this._mounted = true;
+    // this.setState({timer: this.getTimer()})
+    // let interval = setInterval(() => {
+    //   if(this.state.timer>0){
+    //     this.setState({timer: this.state.timer - 1})
+    //   } else {
+    //     this.props.game_actions.update_type('point');
+    //   }
+    // }, 1000)
+  }
+
+  componentWillUnmount(){
+    this._mounted = false;
+    clearInterval(this.state.interval)
   }
 
   getChoices() {
-    const { game: { questions } , auth, game_actions } = this.props;
-    if (questions[0]){
-      return questions[0].choices.map(choice => {
-        return (
-          <TouchableOpacity onPress={() => game_actions.answerQuestion(choice, questions[0].id, auth.user.user.id)} key={choice}>
-            <View style={styles.listContainer1}>
-              <Text style={styles.listTitle}>{choice}</Text>
-            </View>
-          </TouchableOpacity>
-        )
-      })
-    }
+    const { game, auth, game_actions } = this.props;
+      return game.questions.find(question => question.active === true).choices.map(choice => {
+          return (
+            <TouchableOpacity onPress={() => game_actions.answerQuestion(choice, game.questions.find(question => question.active === true).id, auth.user.user.id)} key={choice}>
+              <View style={styles.listContainer1}>
+                <Text style={styles.listTitle}>{choice}</Text>
+              </View>
+            </TouchableOpacity>
+          )
+        })
   }
-
   
   render() {
     const { game: { questions } }  = this.props;
@@ -53,7 +73,7 @@ class PlayerQuestion extends Component {
 function mapStateToProps(state){
   return{
     auth: state.auth,
-    //game: state.game
+    game: state.game
   }
 }
 

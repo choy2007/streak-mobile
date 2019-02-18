@@ -8,6 +8,7 @@ import GamePrize from '../../components/Player/Prize';
 import PlayerReady from '../../components/Player/Ready';
 import PlayerQuestion from '../../components/Player/Question';
 import PlayerPoint from '../../components/Player/Point';
+import GameRanking from '../../components/Player/GameRanking';
 
 import vars from '../../styles/variables'
 
@@ -29,7 +30,35 @@ class GameScreen extends Component{
       answer: '',
     }
 
-    this.cable = RNActionCable.createConsumer(`${ACTION_CABLE_URL}`)
+    this.cable = RNActionCable.createConsumer(`${ACTION_CABLE_URL}`);
+    this._handleReceivedCable = this._handleReceivedCable.bind(this)
+    this._handleGameStart = this._handleGameStart.bind(this)
+  }
+
+  componentDidMount(){
+    const auth = this.props.auth;
+    const { game } = this.props;
+    this.props.game_actions.fetch_question(game.activeGame[0].id)
+    this._handleGameStart();
+  }
+
+  _handleGameStart() {
+    this.subscription = this.cable.subscriptions.create('GameRoomChannel', {
+      received: (data) => this._handleReceivedCable(data.game),
+    })
+  }
+
+  _handleReceivedCable(game) {
+    const { auth, navigation: { navigate } } = this.props;
+    if (game.stats == "Ready"){
+      this.props.game_actions.update_type('ready');
+    }
+    if (game.status == "Ingame") {
+      this.props.game_actions.update_type('game');
+    }
+    if (game.status == "Ranking"){
+      this.props.game_actions.update_type('ranking');
+    }
   }
 
   getView(){
@@ -38,21 +67,20 @@ class GameScreen extends Component{
       case 'ready':
         return <PlayerReady />
       case 'game':
-        return <PlayerQuestion game={game} />
+        return <PlayerQuestion game={game}/>
+      case 'point':
+        return <PlayerPoint />
+      case 'ranking':
+        return <GameRanking />
     }
   }
 
-  componentDidMount(){
-    const { game, auth } = this.props;
-    this.props.game_actions.fetch_question(game.activeGame[0].id)
-    console.log(`GAME QUESTION STATE`, game, auth)
-  }
-  
+
   render(){
     const { game, auth, navigation: { navigate } } = this.props;
     return(
       <View style={styles.container}>
-        <GameHeader timer={game.questions && game.questions[0] && game.questions[0].timer}/>
+        <GameHeader />
         <GameBackground>
           { this.getView() }
         </GameBackground>
