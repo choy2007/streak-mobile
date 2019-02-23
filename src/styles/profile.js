@@ -33,9 +33,8 @@ module.exports = StyleSheet.create({
   },
   accountContainer: {
     flex: 1,
-    //flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 75,
+    padding: 50,
     alignItems: 'center',
   },
   imageContainer: {
@@ -69,29 +68,46 @@ module.exports = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  settingsContainer: {
-    flex: 3,
+  buttonContainer: {
+    backgroundColor: '#fdded4',
+    borderRadius: 40,
     paddingHorizontal: 40,
-    marginBottom: '15%'
+    paddingVertical: 6,
+    shadowOffset: { width: 0.5, height: 0.5 },
+    shadowOpacity: 0.5,
+    shadowRadius: 0.5,
   },
-  settingStyle: {
-    flex: 1,
-    flexDirection: 'row',
-    borderColor: vars.colorGray,
-    borderBottomWidth: 1
+  buttonText: {
+    textAlign: 'center',
+    fontFamily: variables.fontFamily,
+    fontSize: RF(2.5),
+    fontWeight: 'bold',
+    color: '#000',
   },
-  iconContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  iconStyle: {
-    width: 25, 
-    height: 25,
-    resizeMode: 'contain'
-  },
-  settingTextContainer: {
-    flex: 2,
-    justifyContent: 'center'
-  }
+  // settingsContainer: {
+  //   flex: 3,
+  //   paddingHorizontal: 40,
+  //   marginBottom: '15%'
+  // },
+  // settingStyle: {
+  //   flex: 1,
+  //   flexDirection: 'row',
+  //   borderColor: vars.colorGray,
+  //   borderBottomWidth: 1
+  // },
+  // iconContainer: {
+  //   flex: 1,
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  // },
+  // iconStyle: {
+  //   width: 25, 
+  //   height: 25,
+  //   resizeMode: 'contain'
+  // },
+  // settingTextContainer: {
+  //   flex: 2,
+  //   justifyContent: 'center'
+  // },
+  
 })

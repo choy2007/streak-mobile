@@ -1,7 +1,9 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import variables from './variables';
-const { width, height } = Dimensions.get('window');
 import RF from "react-native-responsive-fontsize";
+var { width, height } = Dimensions.get('window');
+var DEVICE_WIDTH = Dimensions.get('window').width;
+var DEVICE_HEIGHT = Dimensions.get('window').height;
 
 module.exports = StyleSheet.create({
   container: {
@@ -23,8 +25,10 @@ module.exports = StyleSheet.create({
     backgroundColor: '#EB9592',
     borderRadius: 50,
     justifyContent: 'center',
-    width: 250,
-    height: 100,
+    //width: 250,
+    //height: 100,
+    //width: (DEVICE_WIDTH/2)+75,
+    //height: (DEVICE_HEIGHT/6)-12.5,
     margin: 5
   },
   listTitle: {
@@ -34,6 +38,5 @@ module.exports = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     lineHeight: 20,
-    padding: 11
   },
 })

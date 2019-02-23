@@ -23,7 +23,7 @@ module.exports = StyleSheet.create({
   formContainer: {
     flex: 1,
     marginHorizontal: 30,
-    marginVertical: 175,
+    marginVertical: 170,
   },
   inputContainer: {
     backgroundColor: '#fff',  
