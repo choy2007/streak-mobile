@@ -22,18 +22,14 @@ class Point extends Component {
 
   componentDidMount() {
     this._mounted = true;
-    let interval = setInterval(() => {
-      if(this.state.timer>0){
-        this.setState({timer: this.state.timer - 1})
-      } else {
-        this.props.game_actions.update_type('ranking');
-      }
-    }, 1000)
+  }
+
+  getScore(){
+    const { game, auth, game_actions } = this.props;
   }
 
   componentWillUnmount() {
     this._mounted = false;
-    clearInterval(this.state.interval)
   }
   render() {
     return (

@@ -37,6 +37,7 @@ class GameHeader extends Component{
               this.setState({timer: this.state.timer - 1})
             } else {
               clearInterval(this.state.setInterval)
+              this.setState({timer: null})
               this.setState({ type: 'point', setIntervalTimer: null })
             }
           }, 1000)

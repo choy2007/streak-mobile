@@ -111,11 +111,14 @@ export function answerQuestion(choice, question_id, user_id) {
       body: JSON.stringify({
         answer: choice,
         user_id: user_id,
-        question_id: question_id
-
+        question_id: question_id,
       })
     })
     .then(response => response.json())
+    .then((responseData) =>{
+      console.log();
+      Alert.alert(JSON.stringify(responseData.message));
+    })
   }
 }
 
@@ -175,5 +178,4 @@ export function fetch_active_game(token, id) {
     })
   }
 }
-
 

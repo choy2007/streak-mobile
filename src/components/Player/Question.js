@@ -24,25 +24,25 @@ class PlayerQuestion extends Component {
 
   getTimer(){
     const { game } = this.props;
-    return game.questions.find(question => question.active === true).timer 
+    return game.questions.find(question => question.active === true).timer
   }
 
   componentDidMount(){
+    const { game, auth, game_actions } = this.props;
     this._mounted = true;
-    // this.setState({timer: this.getTimer()})
-    // let interval = setInterval(() => {
-    //   if(this.state.timer>0){
-    //     this.setState({timer: this.state.timer - 1})
-    //   } else {
-    //     this.props.game_actions.update_type('point');
-    //   }
-    // }, 1000)
   }
+
+
+  _answerQuestion(){
+    const { game, auth, game_actions } = this.props;
+  }
+
 
   componentWillUnmount(){
     this._mounted = false;
     clearInterval(this.state.interval)
   }
+
 
   getChoices() {
     const { game, auth, game_actions } = this.props;
