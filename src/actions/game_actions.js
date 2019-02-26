@@ -51,6 +51,20 @@ export function fetchQuestion(game) {
   }
 }
 
+export function fetchScore(score){
+  return {
+    type: 'FETCH_SCORE',
+    payload: score
+  }
+}
+
+export function fetchGameRanking(ranking){
+  return {
+    type: 'FETCH_GAME_RANKING',
+    payload: ranking
+  }
+}
+
 export function update_type(type) {
   return {
     type: 'UPDATE_TYPE',
@@ -115,9 +129,48 @@ export function answerQuestion(choice, question_id, user_id) {
       })
     })
     .then(response => response.json())
-    .then((responseData) =>{
-      console.log();
-      Alert.alert(JSON.stringify(responseData.message));
+  }
+}
+
+export function fetch_score(user_id, question_id){
+  return dispatch => {
+    fetch(`${API_KEY}/scores/?user_id=${user_id}&question_id=${question_id}`,{
+      method: 'GET',
+      header: {
+        Accept: 'application/json',
+        'X-Access-Type': "User",
+        'Content-Type': 'applicatio/json'
+      },
+    })
+    .then(response => response.json())
+    .then(responsejson => {
+      console.log(`responsejson`, responsejson)
+      if (responsejson.status === 200) {
+        dispatch(fetchScore(responsejson.message))
+      } else {
+        ALERT.alert('You are not allowed to access this.');
+      }
+    })
+  }
+}
+
+export function fetch_game_ranking(game_id){
+  return dispatch => {
+    fetch(`${API_KEY}/games_users/?game_id=${game_id}`, {
+      method: 'GET',
+      header: {
+        Accept: 'application/json',
+        'X-Access-Type': "User",
+        'Content-Type': 'application/json'
+      },
+    })
+    .then(response => response.json())
+    .then(responsejson => {
+      if (responsejson.status === 200){
+        dispatch(fetchGameRanking(responsejson.data))
+      } else {
+        ALERT.alert('You are not allowed to access this.');
+      }
     })
   }
 }

@@ -9,6 +9,8 @@ import PlayerReady from '../../components/Player/Ready';
 import PlayerQuestion from '../../components/Player/Question';
 import PlayerPoint from '../../components/Player/Point';
 import GameRanking from '../../components/Player/GameRanking';
+import TopScorer from '../../components/Player/TopScorer';
+
 
 import vars from '../../styles/variables'
 
@@ -59,6 +61,9 @@ class GameScreen extends Component{
     if (game.status == "Ranking"){
       this.props.game_actions.update_type('ranking');
     }
+    if (game.stats == "Done"){
+      this.props.game_actions.update_type('top_scorer');
+    }
   }
 
   getView(){
@@ -72,6 +77,8 @@ class GameScreen extends Component{
         return <PlayerPoint />
       case 'ranking':
         return <GameRanking />
+      case 'top_scorer':
+        return <TopScorer />
     }
   }
 
@@ -80,7 +87,7 @@ class GameScreen extends Component{
     const { game, auth, navigation: { navigate } } = this.props;
     return(
       <View style={styles.container}>
-        <GameHeader />
+        <GameHeader navigate={navigate} />
         <GameBackground>
           { this.getView() }
         </GameBackground>

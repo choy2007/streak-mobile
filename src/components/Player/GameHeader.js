@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import styles from '../../styles/game-header';
 
 import { ACTION_CABLE_URL } from '../../config/api';
 import RNActionCable from 'react-native-actioncable';
 import ActionCableProvider, { ActionCable } from 'react-actioncable-provider';
+import { NavigationActions } from 'react-navigation';
+import ExitButton from './ExitButton';
 
 import * as gameActions from '../../actions/game_actions';
 
@@ -12,13 +14,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 class GameHeader extends Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
 
     this.state = {
       timer: null,
       type: 'ready',
-      setIntervalTimer: null,
+      setIntervalTimer: null
     }
   }
 
@@ -36,14 +38,13 @@ class GameHeader extends Component{
               console.log(`this state timer`, this.state.timer)
               this.setState({timer: this.state.timer - 1})
             } else {
-              clearInterval(this.state.setInterval)
-              this.setState({timer: null})
-              this.setState({ type: 'point', setIntervalTimer: null })
+              clearInterval(setIntervalTimer);
             }
           }, 1000)
         this.setState({ timer: this.getTimer(), type: 'game', setIntervalTimer: null})
       } else if (this.state.timer === 0 && this.state.type === 'game'){
-        clearInterval(this.state.setInterval)
+        this.setState({ timer: 0 })
+        this.props.game_actions.update_type('point')
         this.setState({ type: 'ready', setIntervalTimer: null })
       }
     }
@@ -51,8 +52,9 @@ class GameHeader extends Component{
 
   componentWillUnmount() {
     this._mounted = false;
-    clearInterval(this.state.setInterval)
+    clearInterval(this.state.setIntervalTimer);
   }
+
   
   getView(){
     const { game } = this.props;
@@ -81,12 +83,12 @@ class GameHeader extends Component{
   }
 
   render() {
-    const { title, back, close }  = this.props;
+    const { title, back, close, navigate }  = this.props;
     return(
       <View style={styles.container}>
-        <Text style={styles.exitButtonStyle}> Exit </Text>
+        <ExitButton navigate={navigate} />
         <Text style={styles.questionTimer}> 
-          {this.state.timer? this.state.timer : "READY" }
+          {this.state.timer? this.state.timer : "STREAK" }
         </Text>
         <Text style={styles.currentScore}> Score </Text>
       </View>

@@ -1,6 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import variables from './variables';
 const { width, height } = Dimensions.get('window');
+import RF from "react-native-responsive-fontsize";
 
 module.exports = StyleSheet.create({
   container: {
@@ -9,23 +10,31 @@ module.exports = StyleSheet.create({
     justifyContent: 'center',
     marginTop: height*.07,
   },
-
   readyContainer: {
     alignItems: 'center',
     justifyContent: 'center'
   },
   readyLogo: {
-    resizeMode: 'contain',
+    width: 175,
+    height: 175,
+    position: 'relative', 
+    marginBottom: height*.025,
+    marginTop: height*.025,
   },
   titleText: {
     textAlign: 'center',
     color: vars.colorBlack,
-    fontSize: 16
+    fontSize: RF(4),
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
   readyText: {
     textAlign: 'center',
-    color: vars.colorPrimary,
-    fontSize: 16
+    //color: vars.colorPrimary,
+    color: '#fdded4',
+    fontSize: RF(10),
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
   
 })

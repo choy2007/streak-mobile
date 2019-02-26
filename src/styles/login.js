@@ -1,6 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
 import variables from './variables';
+import RF from "react-native-responsive-fontsize";
 
 module.exports = StyleSheet.create({
   headerContainer: {
@@ -22,7 +23,7 @@ module.exports = StyleSheet.create({
   formContainer: {
     flex: 1,
     marginHorizontal: 30,
-    marginVertical: 175,
+    marginVertical: 170,
   },
   inputContainer: {
     backgroundColor: '#fff',  
@@ -49,12 +50,12 @@ module.exports = StyleSheet.create({
     marginVertical: 10,
     textAlign: 'center',
     color: variables.colorText,
-    fontSize: 16
+    fontSize: RF(3),
   },
   buttonText: {
     textAlign: 'center',
     fontFamily: variables.fontFamily,
-    fontSize: 16,
+    fontSize: RF(3),
     fontWeight: 'bold',
     color: '#FFF'
   },

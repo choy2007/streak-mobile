@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView, ImageBackground, Alert } from 'react-native';
-import styles from '../../styles/prize';
+import styles from '../../styles/ready';
 import PlayerHeader from '../../components/Player/Header';
 import AnimatedEllipsis from 'react-native-animated-ellipsis';
 
@@ -53,13 +53,13 @@ class ReadyScreen extends Component{
     return(
       <GameBackground>
         <View style={styles.container}>
-          <View style={styles.prizeContainer}>
-            <Text style={styles.titleText}>
-              Question 1 test
-            </Text>
-            <Text style={styles.prizeText}>
-              Ready
-            </Text>
+          <View style={styles.readyContainer}>
+              <Text style={styles.titleText}>
+                Question 1 test
+              </Text>
+              <Text style={styles.readyText}>
+                Ready
+              </Text>
           </View>
         </View>
       </GameBackground>

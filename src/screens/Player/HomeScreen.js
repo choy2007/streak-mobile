@@ -77,15 +77,15 @@ class HomeScreen extends Component{
           { game.activeGame.length > 0 
             ?
               <TouchableOpacity onPress={() => this.clickGame(game, auth)}>
-                <ImageBackground source={require('../../img/game-bg-1.png')} resizeMode='cover' style={styles.listContainer}>
+                <ImageBackground source={require('../../img/home-bg.png')} resizeMode='cover' style={styles.listContainer}>
                   <View style={styles.overlay}/>
-                  <Text style={styles.listTitle}>Game: {game.activeGame && game.activeGame[0] && game.activeGame[0].name}</Text>
+                  <Text style={styles.listTitle}>{game.activeGame && game.activeGame[0] && game.activeGame[0].name}</Text>
                 </ImageBackground>
               </TouchableOpacity>
             :
-              <ImageBackground source={require('../../img/game-bg-1.png')} resizeMode='cover' style={styles.listContainer}>
+              <ImageBackground source={require('../../img/home-bg.png')} resizeMode='cover' style={styles.listContainer}>
                 <View style={styles.overlay}/>
-                <Text style={styles.listTitle}> No current games ongoing! </Text>
+                <Text style={styles.listTitle}>No current games ongoing!</Text>
               </ImageBackground>
 
           }

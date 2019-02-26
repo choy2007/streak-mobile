@@ -1,21 +1,26 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import variables from './variables';
 const { width, height } = Dimensions.get('window');
+import RF from "react-native-responsive-fontsize";
 
 module.exports = StyleSheet.create({
   container: {
     flex: 1,
   },
   listContainer: {
-    height: height/5,
-    backgroundColor: 'red',
+    height: height/1,
+    backgroundColor: 'white',
     justifyContent: 'center',
-    padding: 10
   },
   listTitle: {
-    fontSize: 25,
+    fontSize: RF(4),
     fontFamily: 'Avenir',
-    color: vars.colorText
+    //fontFamily: 'SF-Pro-Display-Regular',
+    //color: vars.colorText
+    color: '#000',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    textAlign: 'center',
   },
   overlay: {
     position: 'absolute',
@@ -23,7 +28,7 @@ module.exports = StyleSheet.create({
     right: 0,
     bottom: 0,
     left: 0,
-    backgroundColor: 'black',
-    opacity: 0.5
+    backgroundColor: 'white',
+    opacity: 0.70
   }
 })
