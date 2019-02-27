@@ -58,7 +58,9 @@ class GameHeader extends Component{
     switch(game.type){
       case 'ready':
         return (
+          <View style={styles.timerContainer}>
           <Text style={styles.questionTimer}> READY </Text>
+          </View>
         );
       case 'game':
         console.log(`game state is `, game.type)
@@ -70,11 +72,15 @@ class GameHeader extends Component{
           }, 1000)
           this.setState({timer: this.getTimer(), type: 'game', setInterval: null})
         return (
+          <View style={styles.timerContainer}>
           <Text style={styles.questionTimer}> {this.state.timer} </Text>
+          </View>
         );
       case 'point':
         return (
+          <View style={styles.timerContainer}>
           <Text style={styles.questionTimer}> POINT </Text>
+          </View>
         );
     }
   }
@@ -84,9 +90,11 @@ class GameHeader extends Component{
     return(
       <View style={styles.container}>
         <Text style={styles.exitButtonStyle}> Exit </Text>
+        <View style={styles.timerContainer}>
         <Text style={styles.questionTimer}> 
           {this.state.timer? this.state.timer : "READY" }
         </Text>
+        </View>
         <Text style={styles.currentScore}> Score </Text>
       </View>
     )

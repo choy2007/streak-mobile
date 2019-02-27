@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, Image, ScrollView, ImageBackground, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, Image, ScrollView, ImageBackground,Dimensions, Alert } from 'react-native';
 import styles from '../../styles/game';
 import vars from '../../styles/variables'
 import * as gameActions from '../../actions/game_actions';
@@ -10,6 +10,8 @@ import ActionCableProvider, { ActionCable } from 'react-actioncable-provider';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+var DEVICE_WIDTH = Dimensions.get('window').width;
+var DEVICE_HEIGHT = Dimensions.get('window').height;
 
 class PlayerQuestion extends Component {
   constructor(){
@@ -44,18 +46,33 @@ class PlayerQuestion extends Component {
     clearInterval(this.state.interval)
   }
 
-  getChoices() {
+  // getChoices() {
+  //   const { game, auth, game_actions } = this.props;
+  //     return game.questions.find(question => question.active === true).choices.map(choice => {
+        
+  //       return (
+          
+  //         <TouchableOpacity onPress={() => game_actions.answerQuestion(choice, game.questions.find(question => question.active === true).id, auth.user.user.id)} key={choice}>
+  //             <View style={styles.listContainer1}>
+  //               <Text style={styles.listTitle}>{choice}</Text>
+  //             </View>
+  //           </TouchableOpacity>
+          
+  //         )
+  //       })
+  // }
+    getChoices() {
     const { game, auth, game_actions } = this.props;
       return game.questions.find(question => question.active === true).choices.map(choice => {
-          return (
-            <TouchableOpacity onPress={() => game_actions.answerQuestion(choice, game.questions.find(question => question.active === true).id, auth.user.user.id)} key={choice}>
-              <View style={styles.listContainer1}>
-                <Text style={styles.listTitle}>{choice}</Text>
-              </View>
-            </TouchableOpacity>
-          )
-        })
-  }
+        return (
+          <TouchableOpacity onPress={() => game_actions.answerQuestion(choice, game.questions.find(question => question.active === true).id, auth.user.user.id)} key={choice}>
+            {choice != ''? <View style={styles.listContainer1}>
+              <Text style={styles.listTitle}>{choice}</Text>
+            </View>:null}
+          </TouchableOpacity>
+        )
+      })
+    }
   
   render() {
     const { game: { questions } }  = this.props;
