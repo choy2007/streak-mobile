@@ -37,4 +37,10 @@ module.exports = StyleSheet.create({
     lineHeight: 20,
     paddingTop: 5
   },
+  // loading_spinner:{
+  //     alignItems:'center',
+  //     position: 'absolute',
+  //     left: (width/2)-40,
+  //     top: height/2,
+  // }
 })

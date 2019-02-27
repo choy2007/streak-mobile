@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, ListItem } from 'react-native';
 import styles from '../../styles/point';
 
 import { ACTION_CABLE_URL } from '../../config/api';
@@ -16,19 +16,13 @@ class GameRanking extends Component {
     super();
 
     this.state = {
-      timer: 10
     }
   }
 
   componentDidMount() {
     this._mounted = true;
-    // setInterval(() => {
-    //   if(this.state.timer>0){
-    //     this.setState({timer: this.state.timer - 1})
-    //   } else {
-    //     this.props.game_actions.update_type('ready');
-    //   }
-    // }, 1000)
+    const { game, auth, game_actions } = this.props;
+    this.props.game_actions.fetch_game_ranking(game.activeGame[0].id);
   }
 
   componentWillUnmount(){
@@ -36,9 +30,13 @@ class GameRanking extends Component {
   }
 
   render() {
-    return (
-      <Text> GAME RANKING </Text>
-    )
+    const { game } = this.props;
+    console.log(game)
+    return game.ranking.map(player => {
+      return(
+          <Text key={player.user} style={{backgroundColor: 'red'}}>{player.user}{player.score}</Text>
+        )
+    })
   }
 }
 

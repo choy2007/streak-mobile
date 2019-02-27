@@ -38,7 +38,7 @@ class Ready extends Component {
       <View style={styles.container}>
         <View style={styles.readyContainer}>
           <Text style={styles.titleText}>
-            Question 1
+            Question
           </Text>
           <Text style={styles.readyText}>
             Ready

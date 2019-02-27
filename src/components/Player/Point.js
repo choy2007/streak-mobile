@@ -16,28 +16,34 @@ class Point extends Component {
     super();
 
     this.state = {
-      timer: 5
+      point: ""
     }
   }
 
   componentDidMount() {
     this._mounted = true;
-    let interval = setInterval(() => {
-      if(this.state.timer>0){
-        this.setState({timer: this.state.timer - 1})
-      } else {
-        this.props.game_actions.update_type('ranking');
-      }
-    }, 1000)
+    const { game, auth, game_actions } = this.props;
+    this.props.game_actions.fetch_score(auth.user.user.id, this.getQuestionId());
+  }
+
+  getQuestionId(){
+    const { game } = this.props;
+    return game.questions.find(question => question.active === true).id 
   }
 
   componentWillUnmount() {
     this._mounted = false;
-    clearInterval(this.state.interval)
   }
   render() {
+    const { game, auth } = this.props;
     return (
-      <Text> POINT COMPONENT </Text>
+      <View style={styles.container}>
+        <View style={styles.readyContainer}>
+          <Text style={styles.titleText}>
+            { game.score }
+          </Text>
+        </View>
+      </View>
     )
   }
 }

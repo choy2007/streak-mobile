@@ -3,6 +3,8 @@ const initialState = {
   activeGame: [],
   users: {},
   questions: [],
+  score: [],
+  ranking: [],
   type: 'ready' 
 }
 
@@ -33,6 +35,14 @@ export default function(state = initialState, action) {
     case 'FETCH_QUESTION':
       return Object.assign({}, state, {
         questions: action.payload,
+      })
+    case 'FETCH_SCORE':
+      return Object.assign({}, state, {
+        score: action.payload,
+      })
+    case 'FETCH_GAME_RANKING':
+      return Object.assign({}, state, {
+        ranking: action.payload,
       })
     case 'USER_JOIN':
       return Object.assign({}, state, {
