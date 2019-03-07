@@ -86,7 +86,11 @@ export function login(state) {
   }
 }
 
+export function change_password(password){
+  return dispath => {
 
+  }
+}
 export function logout(auth) {
   return dispatch => {
     removeData('username');

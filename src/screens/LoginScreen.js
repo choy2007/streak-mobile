@@ -3,7 +3,9 @@ import {
   View, 
   Image, 
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform,
+  KeyboardAvoidingView
 } from 'react-native';
 import { Button, Headline, Text } from 'react-native-paper';
 
@@ -43,12 +45,17 @@ class LoginScreen extends Component {
     const { navigation: { navigate }, login_actions  } = this.props
     return (
         <MainBackground>
+        
           
-          <View style={styles.formContainer}>
+        
+          <KeyboardAvoidingView
+            style={styles.formContainer}
+            behavior={Platform.OS === "ios" ? "padding" : null}
+          >
             <View style={styles.logoContainer}>
               <View style={styles.headerContainer}>
               </View>
-              <Image source={require('../img/f-logo-1.png')} style={styles.logoStyle}/>
+              <Image source={require('../img/f-logo-1.png')} style={styles.logoStyle} resizeMode='contain'/>
             </View>
             <View style={styles.inputContainer}>
 
@@ -57,7 +64,8 @@ class LoginScreen extends Component {
                 autoCorrect={false}
                 value={this.state.email}
                 onChangeText={email => this.setState({ email })}
-                style={{ flex: 8 }}
+                style={{ flex: 1, color: "black" }}
+                underlineColorAndroid="#D3D3D3"
                 placeholder="Email"
               />
             </View>
@@ -66,8 +74,9 @@ class LoginScreen extends Component {
               <TextInput
                 value={this.state.password}
                 onChangeText={password => this.setState({ password })}
-                style={{ flex: 8 }}
+                style={{ flex: 1, height: Platform.OS == 'android' ? 40 : 20}}
                 placeholder="Password"
+                underlineColorAndroid="#D3D3D3"
                 secureTextEntry={true}
               />
             </View>
@@ -80,7 +89,8 @@ class LoginScreen extends Component {
             <View style={styles.otherLinks}>
               <Text style={{color: '#000', fontWeight: 'bold' }}>Forgot Password?</Text>
             </View>
-          </View>
+          </KeyboardAvoidingView>
+
         </MainBackground>
     )
   }

@@ -30,6 +30,7 @@ class GameScreen extends Component{
     this.state = {
       question: '',
       answer: '',
+      score: null
     }
 
     this.cable = RNActionCable.createConsumer(`${ACTION_CABLE_URL}`);
@@ -42,6 +43,13 @@ class GameScreen extends Component{
     const { game } = this.props;
     this.props.game_actions.fetch_question(game.activeGame[0].id)
     this._handleGameStart();
+  }
+
+  getScore(){
+    const { game, auth } = this.props;
+    this.props.game_actions.fetch_user_score(game.activeGame[0].id, auth.user.user.id);
+    console.log(`USER SCORE IS`, game)
+    return game.user_score
   }
 
   _handleGameStart() {
@@ -60,6 +68,7 @@ class GameScreen extends Component{
     }
     if (game.status == "Ranking"){
       this.props.game_actions.update_type('ranking');
+      this.setState({score: this.getScore()})
     }
     if (game.stats == "Done"){
       this.props.game_actions.update_type('top_scorer');
@@ -87,7 +96,7 @@ class GameScreen extends Component{
     const { game, auth, navigation: { navigate } } = this.props;
     return(
       <View style={styles.container}>
-        <GameHeader navigate={navigate} />
+        <GameHeader navigate={navigate} score={this.state.score} />
         <GameBackground>
           { this.getView() }
         </GameBackground>

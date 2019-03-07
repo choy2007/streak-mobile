@@ -1,6 +1,8 @@
 import { Alert, AlertIOS, Platform } from 'react-native';
 import { API_KEY } from  '../config/api';
 import { NavigationActions } from 'react-navigation';
+
+var PushNotification = require('react-native-push-notification');
  
 const ALERT = (Platform.OS === 'ios') ? AlertIOS : Alert 
 
@@ -58,6 +60,20 @@ export function fetchScore(score){
   }
 }
 
+export function fetchScoreSuccess(score){
+  return {
+    type: 'FETCH_SCORE_SUCCESS',
+    payload: score
+  }
+}
+
+export function fetchUserScore(user_score){
+  return {
+    type: 'FETCH_USER_SCORE',
+    payload: user_score
+  }
+}
+
 export function fetchGameRanking(ranking){
   return {
     type: 'FETCH_GAME_RANKING',
@@ -71,6 +87,7 @@ export function update_type(type) {
     payload: type
   }
 }
+
 
 export function fetch_question(game_id){
   return dispatch => {
@@ -139,7 +156,7 @@ export function fetch_score(user_id, question_id){
       header: {
         Accept: 'application/json',
         'X-Access-Type': "User",
-        'Content-Type': 'applicatio/json'
+        'Content-Type': 'application/json'
       },
     })
     .then(response => response.json())
@@ -168,6 +185,27 @@ export function fetch_game_ranking(game_id){
     .then(responsejson => {
       if (responsejson.status === 200){
         dispatch(fetchGameRanking(responsejson.data))
+      } else {
+        ALERT.alert('You are not allowed to access this.');
+      }
+    })
+  }
+}
+
+export function fetch_user_score(game_id, user_id){
+  return dispatch => {
+    fetch(`${API_KEY}/games_user/score?game_id=${game_id}&user_id${user_id}`, {
+      method: 'GET',
+      header: {
+        Accept: 'application/json',
+        'X-Access-Type': "User",
+        'Content-Type': 'application/json'
+      },
+    })
+    .then(response => response.json())
+    .then(responsejson => {
+      if(responsejson.status === 200){
+        dispatch(fetchUserScore(responsejson.data))
       } else {
         ALERT.alert('You are not allowed to access this.');
       }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, Alert } from 'react-native';
 import { withNavigation, NavigationActions } from 'react-navigation';
+import styles from '../../styles/game-header';
 
 class ExitButton extends React.Component {
   button() {
@@ -18,7 +19,7 @@ class ExitButton extends React.Component {
   render() {
     const { navigate } = this.props;
     return(
-      <TouchableOpacity onPress={()=>this.button()}>
+      <TouchableOpacity style={styles.exitButtonStyle} onPress={()=>this.button()}>
           <Text>Exit</Text>
       </TouchableOpacity>
     )

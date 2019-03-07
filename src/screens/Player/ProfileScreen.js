@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ImageBackground, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { connect } from 'react-redux';
@@ -30,7 +30,9 @@ class ProfileScreen extends Component{
     return(
       <View style={styles.container}>
         <ImageBackground source={require('../../img/home-bg.png')} resizeMode='cover' style={styles.listContainer}>
+        
         <View style={styles.overlay}/>
+          <ScrollView>
           <View style={styles.logoContainer}>
             <Image source={require('../../img/f-logo-1.png')} style={styles.logoStyle}/>
           </View>
@@ -48,6 +50,7 @@ class ProfileScreen extends Component{
               </View>
             </TouchableOpacity>
           </View>
+          </ScrollView>
           {/*<TouchableOpacity onPress={() => this.props.login_actions.logout()} style={{flex: 1, borderColor: '#fff', borderBottomWidth: 0}}>
               <View style={styles.buttonContainer}>
                 <Image source={require('../../img/logout.png')} style={styles.iconStyle}/>
@@ -57,6 +60,7 @@ class ProfileScreen extends Component{
                 <Text>Logout</Text>
               </View>
           </TouchableOpacity>*/}
+          
         </ImageBackground>
       </View>
     )

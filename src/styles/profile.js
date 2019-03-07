@@ -15,6 +15,7 @@ module.exports = StyleSheet.create({
   },
   overlay: {
     position: 'absolute',
+    flex: 1,
     top: 0,
     right: 0,
     bottom: 0,
