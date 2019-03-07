@@ -34,7 +34,7 @@ class ProfileScreen extends Component{
         <View style={styles.overlay}/>
           <ScrollView>
           <View style={styles.logoContainer}>
-            <Image source={require('../../img/f-logo-1.png')} style={styles.logoStyle}/>
+            <Image source={require('../../img/f-logo-1.png')} style={styles.logoStyle} resizeMode='contain'/>
           </View>
           <View style={styles.accountContainer}>
             <View style={styles.imageContainer}>

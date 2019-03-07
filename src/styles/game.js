@@ -8,11 +8,11 @@ module.exports = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 30
+    // marginTop: 30
   },
-  question: {
-    marginTop: height*.05,
-  },
+  // question: {
+  //   marginTop: height*.05,
+  // },
   choiceContainer: {
     alignItems: 'center',
     justifyContent: 'center'
@@ -25,7 +25,7 @@ module.exports = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     width: (width/2)+75,
-    height: (height/6)-12.5,
+    height: (height/7),
     margin: 5
   },
   listTitle: {
@@ -35,12 +35,5 @@ module.exports = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     lineHeight: 20,
-    paddingTop: 5
   },
-  // loading_spinner:{
-  //     alignItems:'center',
-  //     position: 'absolute',
-  //     left: (width/2)-40,
-  //     top: height/2,
-  // }
 })

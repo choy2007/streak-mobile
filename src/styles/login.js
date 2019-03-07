@@ -24,7 +24,6 @@ module.exports = StyleSheet.create({
     flex: 1,
     marginHorizontal: 30,
     marginVertical: height/5
-
   },
   inputContainer: {
     backgroundColor: '#fff',  

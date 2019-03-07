@@ -20,7 +20,7 @@ class ExitButton extends React.Component {
     const { navigate } = this.props;
     return(
       <TouchableOpacity style={styles.exitButtonStyle} onPress={()=>this.button()}>
-          <Text>Exit</Text>
+          <Text>X</Text>
       </TouchableOpacity>
     )
   }
