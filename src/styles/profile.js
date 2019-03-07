@@ -14,6 +14,7 @@ module.exports = StyleSheet.create({
     justifyContent: 'center',
   },
   overlay: {
+    flex: 1,
     position: 'absolute',
     top: 0,
     right: 0,
@@ -28,13 +29,12 @@ module.exports = StyleSheet.create({
     justifyContent: 'center'
   },
   logoStyle: {
-    width: 50,
-    height: 50,
+    width: width/9,
+    height: height/9,
   },
   accountContainer: {
     flex: 1,
     justifyContent: 'space-between',
-    padding: 50,
     alignItems: 'center',
   },
   imageContainer: {

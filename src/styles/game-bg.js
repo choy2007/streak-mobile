@@ -9,6 +9,22 @@ module.exports = StyleSheet.create({
     bottom: 0, 
     right: 0, 
     width: 'auto', 
-    height: 'auto' 
-  }
+    height: 'auto',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  centerContainer: {
+    flex: 1,
+    position: 'absolute',
+    width: width/1.25,
+    height: height/1.25,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logoStyle: {
+    width: width/9,
+    height: height/9,
+  },
 })

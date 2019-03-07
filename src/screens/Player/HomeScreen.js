@@ -79,13 +79,19 @@ class HomeScreen extends Component{
               <TouchableOpacity onPress={() => this.clickGame(game, auth)}>
                 <ImageBackground source={require('../../img/home-bg.png')} resizeMode='cover' style={styles.listContainer}>
                   <View style={styles.overlay}/>
-                  <Text style={styles.listTitle}>{game.activeGame && game.activeGame[0] && game.activeGame[0].name}</Text>
+                  <View style={styles.logoContainer}>
+                    <Image source={require('../../img/f-logo-1.png')} style={styles.logoStyle} resizeMode='contain'/>
+                  </View>
+                    <Text style={styles.listTitle}>{game.activeGame && game.activeGame[0] && game.activeGame[0].name}</Text>
                 </ImageBackground>
               </TouchableOpacity>
             :
               <ImageBackground source={require('../../img/home-bg.png')} resizeMode='cover' style={styles.listContainer}>
                 <View style={styles.overlay}/>
-                <Text style={styles.listTitle}>No current games ongoing!</Text>
+                <View style={styles.logoContainer}>
+                  <Image source={require('../../img/f-logo-1.png')} style={styles.logoStyle} resizeMode='contain'/>
+                </View>  
+                  <Text style={styles.listTitle}>No current games ongoing!</Text>
               </ImageBackground>
 
           }
@@ -100,10 +106,7 @@ class HomeScreen extends Component{
     }
     return(
       <View style={styles.container}>
-        <PlayerHeader title="Home" />
-        <ScrollView>
-          {this.getGame()}
-        </ScrollView>
+        {this.getGame()}
       </View>
     )
   }

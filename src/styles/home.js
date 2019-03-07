@@ -15,8 +15,6 @@ module.exports = StyleSheet.create({
   listTitle: {
     fontSize: RF(4),
     fontFamily: 'Avenir',
-    //fontFamily: 'SF-Pro-Display-Regular',
-    //color: vars.colorText
     color: '#000',
     fontWeight: 'bold',
     textTransform: 'uppercase',
@@ -30,5 +28,14 @@ module.exports = StyleSheet.create({
     left: 0,
     backgroundColor: 'white',
     opacity: 0.70
-  }
+  },
+  logoContainer: {
+    padding: 25,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  logoStyle: {
+    width: width/9,
+    height: height/9,
+  },
 })

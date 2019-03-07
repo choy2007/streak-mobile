@@ -92,13 +92,19 @@ class GameHeader extends Component{
     const { title, back, close, navigate }  = this.props;
     return(
       <View style={styles.container}>
+        <View style={styles.buttonContainer}>
         <ExitButton style={styles.exitButtonStyle} navigate={navigate} />
-        <View style={styles.timerContainer}>
-          <Text style={styles.questionTimer}> 
-            {this.state.timer? this.state.timer : "STREAK" }
-          </Text>
         </View>
+
+        <View style={styles.buttonContainer}>
+        <Text style={styles.questionTimer}> 
+          {this.state.timer? this.state.timer : "STREAK" }
+        </Text>
+        </View>
+
+        <View style={styles.buttonContainer}>
         <Text style={styles.currentScore}> Score </Text>
+        </View>
       </View>
     )
   }

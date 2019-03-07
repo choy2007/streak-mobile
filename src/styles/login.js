@@ -15,15 +15,15 @@ module.exports = StyleSheet.create({
     justifyContent: 'center'
   },
   logoStyle: {
-    width: 175,
-    height: 175,
+    width: width/2,
+    height: height/2,
     flex: 1,
     position: 'relative'
   },
   formContainer: {
     flex: 1,
     marginHorizontal: 30,
-    marginVertical: 170,
+    marginVertical: height/5
   },
   inputContainer: {
     backgroundColor: '#fff',  
@@ -32,7 +32,7 @@ module.exports = StyleSheet.create({
     padding: 12.5, 
     flexDirection: 'row',
     marginVertical: 5,
-    shadowOffset: { width: 0.5, height: 0.5 },
+    shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 0.5,
     shadowRadius: 0.5,
   },

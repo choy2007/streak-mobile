@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import styles from '../../styles/ready';
 
 import { ACTION_CABLE_URL } from '../../config/api';
@@ -37,11 +37,12 @@ class Ready extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.readyContainer}>
+        <Image source={require('../../img/ready.png')} style={styles.readyLogo}/>
           <Text style={styles.titleText}>
             Question
           </Text>
           <Text style={styles.readyText}>
-            Ready
+            Ready!
           </Text>
         </View>
       </View>
