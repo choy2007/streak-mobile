@@ -17,7 +17,7 @@ module.exports = StyleSheet.create({
   choiceContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 30
+    paddingBottom: 30
   },
   listContainer1: {
     //backgroundColor: vars.colorPrimary,

@@ -12,7 +12,7 @@ module.exports = StyleSheet.create({
   prizeContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 30
+    paddingBottom: 30
   },
   prizeLogo: {
     width: 175,

@@ -12,7 +12,7 @@ module.exports = StyleSheet.create({
   readyContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 30
+    paddingBottom: 30
   },
   readyLogo: {
     width: 175,
