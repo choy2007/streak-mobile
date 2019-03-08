@@ -76,21 +76,26 @@ class HomeScreen extends Component{
           <ActionCable channel={{channel: 'GameRoomChannel'}} onReceived={this.onReceived} />
           { game.activeGame.length > 0 
             ?
-              <TouchableOpacity onPress={() => this.clickGame(game, auth)}>
+              // <TouchableOpacity onPress={() => this.clickGame(game, auth)}>
                 <ImageBackground source={require('../../img/home-bg.png')} resizeMode='cover' style={styles.listContainer}>
                   <View style={styles.overlay}/>
                   <View style={styles.logoContainer}>
                     <Image source={require('../../img/f-logo-1.png')} style={styles.logoStyle} resizeMode='contain'/>
                   </View>
-                    <Text style={styles.listTitle}>{game.activeGame && game.activeGame[0] && game.activeGame[0].name}</Text>
+                  <Text style={styles.listTitle}>{game.activeGame && game.activeGame[0] && game.activeGame[0].name}</Text>
+                  <TouchableOpacity onPress={() => this.clickGame(game, auth)}>
+                    <View style={styles.buttonContainer}>
+                      <Text style={styles.buttonText}>PLAY</Text>
+                    </View>
+                  </TouchableOpacity>
                 </ImageBackground>
-              </TouchableOpacity>
+              // </TouchableOpacity>
             :
               <ImageBackground source={require('../../img/home-bg.png')} resizeMode='cover' style={styles.listContainer}>
                 <View style={styles.overlay}/>
-                <View style={styles.logoContainer}>
+                {/* <View style={styles.logoContainer}> */}
                   <Image source={require('../../img/f-logo-1.png')} style={styles.logoStyle} resizeMode='contain'/>
-                </View>  
+                {/* </View>   */}
                   <Text style={styles.listTitle}>No current games ongoing!</Text>
               </ImageBackground>
 

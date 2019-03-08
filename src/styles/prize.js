@@ -9,26 +9,17 @@ module.exports = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  logoContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
-    paddingBottom: 50
-  },
-  logoStyle: {
-    width: 50,
-    height: 50,
-  },
   prizeContainer: {
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginBottom: 30
   },
   prizeLogo: {
     width: 175,
     height: 175,
     position: 'relative', 
     marginBottom: height*.025,
-    marginTop: height*.025,
+    // marginTop: height*.025,
   },
   titleText: {
     textAlign: 'center',

@@ -8,17 +8,17 @@ module.exports = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    //marginTop: height*.07,
   },
   readyContainer: {
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginBottom: 30
   },
   readyLogo: {
     width: 175,
     height: 175,
     position: 'relative', 
-    //marginBottom: height*.025,
+    marginBottom: height*.025,
     //marginTop: height*.025,
   },
   titleText: {

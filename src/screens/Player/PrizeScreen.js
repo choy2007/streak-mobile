@@ -54,7 +54,7 @@ class PrizeScreen extends Component{
       <GameBackground>
         <View style={styles.container}>
           <View style={styles.prizeContainer}>
-            <Image source={require('../../img/trophy.png')} resizeMode='cover' style={styles.prizeLogo}/>
+            <Image source={require('../../img/trophy.png')} resizeMode='contain' style={styles.prizeLogo}/>
               <Text style={styles.titleText}>
                 Today's Prize
               </Text>
