@@ -16,7 +16,7 @@ import styles from '../../styles/profile';
 class ProfileScreen extends Component{
   static navigationOptions = {
     tabBarIcon: ({tintColor}) => (
-      <Image source={require('../../img/profile-icon.png')} style={{tintColor}} />
+      <Image source={require('../../img/f-profile.png')} style={{tintColor}} resizeMode='cover'/>
     )
   }
 

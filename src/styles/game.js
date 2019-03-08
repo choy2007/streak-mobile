@@ -28,6 +28,16 @@ module.exports = StyleSheet.create({
     height: (height/7),
     margin: 5
   },
+  listContainer2: {
+    backgroundColor: '#796367',
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: (width/2)+75,
+    height: (height/7),
+    margin: 5
+  },
   listTitle: {
     fontSize: RF(2.75),
     fontFamily: 'Avenir',
