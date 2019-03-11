@@ -34,8 +34,8 @@ const navigator = StackNavigator({
   Waiting: { screen: WaitingScreen, navigationOptions: { header: null, gesturesEnabled: false } },
   Prize: { screen: PrizeScreen, navigationOptions: { header: null, gesturesEnabled: false } },
   Ready: { screen: ReadyScreen, navigationOptions: { header: null, gesturesEnabled: false } },
-  Game: { screen: GameScreen, navigationOptions: { header: null, gesturesEnabled: false } },
-  Home: { screen: PlayerNavigator }
+  Game: { screen: GameScreen, navigationOptions: { header: null, gesturesEnabled: false , } },
+  Home: { screen: PlayerNavigator, navigationOptions: { header: null, gesturesEnabled: false } }
 }, {
   transitionConfig: () => ({
     screenInterpolator: (props) => {

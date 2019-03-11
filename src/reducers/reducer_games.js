@@ -5,8 +5,9 @@ const initialState = {
   questions: [],
   score: [],
   ranking: [],
+  leaderboards: [],
   type: 'ready',
-  user_score: null
+  user_score: []
 }
 
 export default function(state = initialState, action) {
@@ -55,6 +56,10 @@ export default function(state = initialState, action) {
     case 'FETCH_GAME_RANKING':
       return Object.assign({}, state, {
         ranking: action.payload,
+      })
+    case 'FETCH_LEADERBOARDS':
+      return Object.assign({}, state, {
+        leaderboards: action.payload,
       })
     case 'USER_JOIN':
       return Object.assign({}, state, {

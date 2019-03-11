@@ -81,6 +81,12 @@ export function fetchGameRanking(ranking){
   }
 }
 
+export function fetchLeaderboards(leaderboards){
+  return {
+    type: 'FETCH_LEADERBOARDS',
+    payload: leaderboards
+  }
+}
 export function update_type(type) {
   return {
     type: 'UPDATE_TYPE',
@@ -264,6 +270,32 @@ export function fetch_active_game(token, id) {
     })
     .catch(error => {
       dispatch(fetchGamesFailed())
+      ALERT.alert('Server error. Please contact the admin.');
+      console.log(error)
+    })
+  }
+}
+
+export function fetch_leaderboards(token, id) {
+  return dispatch => {
+    dispatch(fetchGames())
+    fetch(`${API_KEY}/leaderboards`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'X-Access-Type': 'User',
+        'X-Access-Token': token
+      },
+    })
+    .then(response => response.json())
+    .then(responsejson => {
+      if (responsejson.status == "unauthorized") {
+        ALERT.alert('You are not allowed to access this.');
+      } else {
+        dispatch(fetchLeaderboards(responsejson.data))
+      }
+    })
+    .catch(error => {
       ALERT.alert('Server error. Please contact the admin.');
       console.log(error)
     })

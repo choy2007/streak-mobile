@@ -45,11 +45,16 @@ class PlayerQuestion extends Component {
     clearInterval(this.state.interval)
   }
 
+
   getChoices() {
     const { game, auth, game_actions } = this.props;
       return game.questions.find(question => question.active === true).choices.map(choice => {
         return (
-          <TouchableOpacity onPress={() => game_actions.answerQuestion(choice, game.questions.find(question => question.active === true).id, auth.user.user.id)} key={choice}>
+          <TouchableOpacity disabled={this.state.disabled} onPress={() => { 
+            game_actions.answerQuestion(choice, game.questions.find(question => question.active === true).id, auth.user.user.id);
+            this.setState({disabled: true});
+            } 
+          } key={choice}>
             {choice != ''? <View style={styles.listContainer1}>
               <Text style={styles.listTitle}>{choice}</Text>
             </View>:null}

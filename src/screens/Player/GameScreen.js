@@ -60,7 +60,7 @@ class GameScreen extends Component{
 
   _handleReceivedCable(game) {
     const { auth, navigation: { navigate } } = this.props;
-    if (game.stats == "Ready"){
+    if (game.status == "Ready"){
       this.props.game_actions.update_type('ready');
     }
     if (game.status == "Ingame") {
@@ -68,9 +68,12 @@ class GameScreen extends Component{
     }
     if (game.status == "Ranking"){
       this.props.game_actions.update_type('ranking');
-      this.setState({score: this.getScore()})
+      const { game, auth } = this.props;
+      this.props.game_actions.fetch_user_score(game.activeGame[0].id, auth.user.user.id);
+      console.log(`USER SCORE IS`, game)
+      this.setState({score: game.user_score})
     }
-    if (game.stats == "Done"){
+    if (game.status == "Done"){
       this.props.game_actions.update_type('top_scorer');
     }
   }

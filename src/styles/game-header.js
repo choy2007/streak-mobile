@@ -19,7 +19,8 @@ module.exports = StyleSheet.create({
   //   fontSize: 20,
   // },
   exitButtonStyle: {
-    marginTop: height*.08,
+    marginTop: height*.04,
+    marginLeft: width/12
   },
     buttonContainer: {
     backgroundColor: '#ffda82',
@@ -34,7 +35,7 @@ module.exports = StyleSheet.create({
     textAlign: 'center',
   },
   questionTimer: {
-    marginTop: height*.02,
+    marginTop: height*.04,
     // color: '#000',
     // fontWeight: 'bold',
     // justifyContent: 'center',
@@ -50,9 +51,7 @@ module.exports = StyleSheet.create({
   },
   scoreContainer:{
     marginTop: height*.04,
-    backgroundColor: '#9c9c9b',
     borderRadius: 20,
-    height: height*.075,
     width: width*.135,
   }
 })

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView, ImageBackground, Alert } from 'react-native';
 import styles from '../../styles/home';
+import headerstyles from '../../styles/game-header';
 import PlayerHeader from '../../components/Player/Header';
-import vars from '../../styles/variables'
+import vars from '../../styles/variables';
 import Loading from '../../components/Loading';
-
 import * as gameActions from '../../actions/game_actions';
 
 import { ACTION_CABLE_URL } from '../../config/api';
@@ -17,7 +17,7 @@ import { bindActionCreators } from 'redux';
 class HomeScreen extends Component{
   static navigationOptions = {
     tabBarIcon: ({tintColor}) => (
-      <Image source={require('../../img/home-icon.png')} style={{tintColor}} />
+      <Image source={require('../../img/f-home.png')} style={{tintColor}} />
     )
   }
 
@@ -41,7 +41,6 @@ class HomeScreen extends Component{
 
   _handleActiveGame() {
     this.subscription = this.cable.subscriptions.create('GameRoomChannel', {
-      connected: Alert.alert(''),
       received: (data) => this._handleReceivedCable(data.game),
     })
   }
@@ -72,7 +71,6 @@ class HomeScreen extends Component{
 
     return (
         <View>
-
           <ActionCable channel={{channel: 'GameRoomChannel'}} onReceived={this.onReceived} />
           { game.activeGame.length > 0 
             ?
@@ -91,7 +89,7 @@ class HomeScreen extends Component{
                 </ImageBackground>
               // </TouchableOpacity>
             :
-              <ImageBackground source={require('../../img/home-bg.png')} resizeMode='cover' style={styles.listContainer}>
+              <ImageBackground source={require('../../img/bg.png')} resizeMode='cover' style={styles.listContainer}>
                 <View style={styles.overlay}/>
                 {/* <View style={styles.logoContainer}> */}
                   <Image source={require('../../img/f-logo-1.png')} style={styles.logoStyle} resizeMode='contain'/>
