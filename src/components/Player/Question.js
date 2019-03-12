@@ -20,7 +20,6 @@ class PlayerQuestion extends Component {
     this.state = {
       choices: '',
       timer: null,
-      disabled: false
     }
   }
 
@@ -48,14 +47,19 @@ class PlayerQuestion extends Component {
 
   getChoices() {
     const { game, auth, game_actions } = this.props;
-      return game.questions.find(question => question.active === true).choices.map(choice => {
+      return game.questions.find(question => question.active === true).choices.map((choice, key) => {
         return (
-          <TouchableOpacity disabled={this.state.disabled} onPress={() => { 
-            game_actions.answerQuestion(choice, game.questions.find(question => question.active === true).id, auth.user.user.id);
-            this.setState({disabled: true});
+          <TouchableOpacity disabled={this.state.disabled} 
+            onPress={() => { 
+              game_actions.answerQuestion(choice, game.questions.find(question => question.active === true).id, auth.user.user.id);
+              this.setState({["disabled_" + key]: true, ["styleCounter_" + key]: 1});
             } 
           } key={choice}>
-            {choice != ''? <View style={styles.listContainer1}>
+            {choice != ''? <View key={key} style={
+              (this.state.hasOwnProperty("styleCounter_" + key) &&
+              this.state.hasOwnProperty("disabled_" + key) &&
+              this.state["disabled_" + key]) ? styles.listContainer2 : styles.listContainer1
+            }>
               <Text style={styles.listTitle}>{choice}</Text>
             </View>:null}
           </TouchableOpacity>

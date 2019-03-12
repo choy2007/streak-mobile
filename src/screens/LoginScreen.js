@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { API_KEY } from  '../config/api';
 import { 
   View, 
   Image, 
   TextInput,
   TouchableOpacity,
   Platform,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Linking,
+  Navigator
 } from 'react-native';
 import { Button, Headline, Text } from 'react-native-paper';
 
@@ -86,9 +89,13 @@ class LoginScreen extends Component {
               </View>
             </TouchableOpacity>
         
-            <View style={styles.otherLinks}>
-              <Text style={{color: '#000', fontWeight: 'bold' }}>Forgot Password?</Text>
-            </View>
+            <TouchableOpacity onPress={() => Linking.openURL('http://139.162.37.236/users/password/new')}>
+              <View style={styles.otherLinks}>
+                <Text style={{color: '#000', fontWeight: 'bold' }}>Forgot Password?</Text>
+              </View>
+            </TouchableOpacity>
+
+          
           </KeyboardAvoidingView>
 
         </MainBackground>
