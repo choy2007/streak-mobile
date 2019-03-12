@@ -8,6 +8,7 @@ module.exports = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    // marginBottom: -30
     // marginTop: 30
   },
   // question: {
@@ -15,18 +16,19 @@ module.exports = StyleSheet.create({
   // },
   choiceContainer: {
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    paddingBottom: 30
   },
   listContainer1: {
     //backgroundColor: vars.colorPrimary,
     backgroundColor: '#EB9592',
-    borderRadius: 50,
+    borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
     width: (width/2)+75,
-    height: (height/7),
-    margin: 5
+    height: (height/7)+5,
+    margin: 5,
   },
   listContainer2: {
     backgroundColor: '#796367',

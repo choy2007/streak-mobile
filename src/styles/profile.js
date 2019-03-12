@@ -6,7 +6,6 @@ import RF from "react-native-responsive-fontsize";
 module.exports = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: vars.colorWhite,
   },
   listContainer: {
     height: height/1,
@@ -14,9 +13,7 @@ module.exports = StyleSheet.create({
     justifyContent: 'center',
   },
   overlay: {
-    flex: 1,
     position: 'absolute',
-    flex: 1,
     top: 0,
     right: 0,
     bottom: 0,
@@ -25,13 +22,13 @@ module.exports = StyleSheet.create({
     opacity: 0.70
   },
   logoContainer: {
-    padding: 25,
+    padding: 10,
     alignItems: 'center',
     justifyContent: 'center'
   },
   logoStyle: {
-    width: width/9,
-    height: height/9,
+    width: width/6,
+    height: height/6,
   },
   accountContainer: {
     flex: 1,

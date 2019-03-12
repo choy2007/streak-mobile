@@ -8,9 +8,10 @@ module.exports = StyleSheet.create({
     flex: 1,
   },
   listContainer: {
-    height: height/1,
+    flex: 1,
     backgroundColor: 'white',
-    justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
   },
   listTitle: {
     fontSize: RF(4),
@@ -30,12 +31,28 @@ module.exports = StyleSheet.create({
     opacity: 0.70
   },
   logoContainer: {
-    padding: 25,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   logoStyle: {
-    width: width/9,
-    height: height/9,
+    width: width/6,
+    height: height/6,
+  },
+  buttonContainer: {
+    backgroundColor: '#fdded4',
+    borderRadius: 40,
+    width: width/2,
+    paddingHorizontal: 40,
+    paddingVertical: 6,
+    shadowOffset: { width: 0.5, height: 0.5 },
+    shadowOpacity: 0.5,
+    shadowRadius: 0.5,
+  },
+  buttonText: {
+    textAlign: 'center',
+    fontFamily: variables.fontFamily,
+    fontSize: RF(2.5),
+    fontWeight: 'bold',
+    color: '#000',
   },
 })

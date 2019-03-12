@@ -4,11 +4,11 @@ import variables from './variables';
 import RF from "react-native-responsive-fontsize";
 
 module.exports = StyleSheet.create({
-  headerContainer: {
-    position: 'absolute',
-    left: 15,
-    top: 20
-  },
+  // headerContainer: {
+  //   position: 'absolute',
+  //   left: 15,
+  //   top: 20
+  // },
   logoContainer: {
     flex: 1,
     alignItems: 'center',
@@ -28,30 +28,31 @@ module.exports = StyleSheet.create({
   inputContainer: {
     backgroundColor: '#fff',  
     borderColor: '#000', 
-    borderRadius: 50, 
+    borderRadius: 40, 
     padding: 12.5, 
     flexDirection: 'row',
     marginVertical: 5,
     shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 0.5,
     shadowRadius: 0.5,
+    width: width-(width/12),
   },
   buttonContainer: {
     //backgroundColor: variables.colorSecondary,
     backgroundColor: '#ffda82',
-    borderRadius: 50,
+    borderRadius: 40,
     padding: 10,
     marginVertical: 10,
     shadowOffset: { width: 0.5, height: 0.5 },
     shadowOpacity: 0.5,
     shadowRadius: 0.5,
   },
-  orStyle: {
-    marginVertical: 10,
-    textAlign: 'center',
-    color: variables.colorText,
-    fontSize: RF(3),
-  },
+  // orStyle: {
+  //   marginVertical: 10,
+  //   textAlign: 'center',
+  //   color: variables.colorText,
+  //   fontSize: RF(3),
+  // },
   buttonText: {
     textAlign: 'center',
     fontFamily: variables.fontFamily,

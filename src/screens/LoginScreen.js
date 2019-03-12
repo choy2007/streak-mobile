@@ -21,6 +21,8 @@ import { bindActionCreators } from 'redux';
 import * as loginActions from '../actions/login_actions';
 import { retrieveData } from '../utils/storage';
 
+import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
+
 class LoginScreen extends Component {
   constructor(){
     super();
@@ -48,20 +50,16 @@ class LoginScreen extends Component {
     const { navigation: { navigate }, login_actions  } = this.props
     return (
         <MainBackground>
-        
-          
-        
           <KeyboardAvoidingView
             style={styles.formContainer}
             behavior={Platform.OS === "ios" ? "padding" : null}
           >
             <View style={styles.logoContainer}>
-              <View style={styles.headerContainer}>
-              </View>
+              {/* <View style={styles.headerContainer}>
+              </View> */}
               <Image source={require('../img/f-logo-1.png')} style={styles.logoStyle} resizeMode='contain'/>
             </View>
             <View style={styles.inputContainer}>
-
               <TextInput
                 autoCapitalize="none"
                 autoCorrect={false}
@@ -73,7 +71,6 @@ class LoginScreen extends Component {
               />
             </View>
             <View style={styles.inputContainer}>
-              
               <TextInput
                 value={this.state.password}
                 onChangeText={password => this.setState({ password })}
