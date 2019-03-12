@@ -5,6 +5,8 @@ import headerstyles from '../../styles/game-header';
 import PlayerHeader from '../../components/Player/Header';
 import vars from '../../styles/variables';
 import Loading from '../../components/Loading';
+import GameHeader from '../../components/Player/GameHeader';
+
 import * as gameActions from '../../actions/game_actions';
 
 import { ACTION_CABLE_URL } from '../../config/api';
@@ -70,7 +72,8 @@ class HomeScreen extends Component{
     const { game, auth, navigation: { navigate } } = this.props;
 
     return (
-        <View>
+        <View style={styles.container}>
+          <GameHeader />
           <ActionCable channel={{channel: 'GameRoomChannel'}} onReceived={this.onReceived} />
           { game.activeGame.length > 0 
             ?
@@ -89,11 +92,11 @@ class HomeScreen extends Component{
                 </ImageBackground>
               // </TouchableOpacity>
             :
-              <ImageBackground source={require('../../img/bg.png')} resizeMode='cover' style={styles.listContainer}>
+              <ImageBackground source={require('../../img/home-bg.png')} resizeMode='cover' style={styles.listContainer}>
                 <View style={styles.overlay}/>
-                {/* <View style={styles.logoContainer}> */}
+                <View style={styles.logoContainer}>
                   <Image source={require('../../img/f-logo-1.png')} style={styles.logoStyle} resizeMode='contain'/>
-                {/* </View>   */}
+                </View>  
                   <Text style={styles.listTitle}>No current games ongoing!</Text>
               </ImageBackground>
 
@@ -104,9 +107,7 @@ class HomeScreen extends Component{
 
   render(){
     const { game, navigation: {navigate}} = this.props;
-    if (game.isFetching) {
-      return <Loading />
-    }
+    
     return(
       <View style={styles.container}>
         {this.getGame()}

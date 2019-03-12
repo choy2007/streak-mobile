@@ -22,13 +22,13 @@ module.exports = StyleSheet.create({
     opacity: 0.70
   },
   logoContainer: {
-    padding: 25,
+    padding: 10,
     alignItems: 'center',
     justifyContent: 'center'
   },
   logoStyle: {
-    width: width/9,
-    height: height/9,
+    width: width/6,
+    height: height/6,
   },
   accountContainer: {
     flex: 1,
