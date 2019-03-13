@@ -200,7 +200,7 @@ export function fetch_game_ranking(game_id){
 
 export function fetch_user_score(game_id, user_id){
   return dispatch => {
-    fetch(`${API_KEY}/games_user/score?game_id=${game_id}&user_id${user_id}`, {
+    fetch(`${API_KEY}/games_user/score?user_id=${user_id}&game_id=${game_id}`, {
       method: 'GET',
       header: {
         Accept: 'application/json',

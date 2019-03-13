@@ -7,7 +7,7 @@ const initialState = {
   ranking: [],
   leaderboards: [],
   type: 'ready',
-  user_score: []
+  user_score: null
 }
 
 export default function(state = initialState, action) {
@@ -49,6 +49,7 @@ export default function(state = initialState, action) {
         isFetching: false
       })
     case 'FETCH_USER_SCORE':
+      console.log(action.payload, "action.payload")
       return Object.assign({}, state, {
         user_score: action.payload,
         isFetching: true

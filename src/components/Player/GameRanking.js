@@ -32,9 +32,42 @@ class GameRanking extends Component {
   render() {
     const { game } = this.props;
     console.log(game)
-    return game.ranking.map(player => {
+    return game.ranking.map((player, key) => {
       return(
-          <Text key={player.user} style={{backgroundColor: 'red'}}>{player.user}{player.score}</Text>
+          <View style={styles.container}>
+            { key == 0
+            ? 
+            <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+              <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
+                <Text> {player.user} </Text>
+              </View>
+            </View>
+            : key == 1 ?
+              <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                <View style={{flex: 1, alignItems: 'center'}}>
+                  <Text> {player.user} </Text>
+                </View>
+              </View>
+            : key == 2 ?
+              <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                <View style={{flex: 1, alignItems: 'center'}}>
+                  <Text> {player.user} </Text>
+                </View>
+              </View>
+            : key == 3 ?
+              <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                <View style={{flex: 1, alignItems: 'center'}}>
+                  <Text> {player.user} </Text>
+                </View>
+              </View>
+            : 
+              <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                <View style={{flex: 1, alignItems: 'center'}}>
+                  <Text> {player.user} </Text>
+                </View>
+              </View>
+            }
+          </View>
         )
     })
   }
