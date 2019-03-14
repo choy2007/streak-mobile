@@ -31,7 +31,7 @@ module.exports = StyleSheet.create({
   prizeText: {
     textAlign: 'center',
     //color: vars.colorBlack,
-    color: '#fdded4',
+    color: '#EB9592',
     fontSize: RF(10),
     fontWeight: 'bold',
     textTransform: 'uppercase',

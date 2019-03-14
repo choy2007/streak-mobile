@@ -2,32 +2,32 @@ import {StyleSheet, Dimensions} from 'react-native';
 const {width, height} = Dimensions.get('window');
 
 module.exports = StyleSheet.create({
-container: {
+  container: {
     flex: 1,
-    flexDirection: 'column'
-    },
-    header: {
+    // flexDirection: 'column'
+  },
+  header: {
     flex: 0.15,
     justifyContent: 'center',
     backgroundColor: '#FBFBFB',
     shadowColor: '#000000',
     shadowOffset: {
-        width: 0,
-        height: 0
-    },
+      width: 0,
+      height: 0
+  },
     shadowOpacity: 1,
     borderBottomColor: '#999999',
     borderBottomWidth: 0.3
-    },
-headerText: {
+  },
+  headerText: {
     paddingTop: 5,
     fontSize: 30,
     color: 'black',
     textAlign: 'center',
     fontWeight: 'bold'
-    },
-logoContainer: {
-    padding: 10,
+  },
+  logoContainer: {
+    // padding: 10,
     alignItems: 'center',
     justifyContent: 'center'
   },

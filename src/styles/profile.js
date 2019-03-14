@@ -22,7 +22,7 @@ module.exports = StyleSheet.create({
     opacity: 0.70
   },
   logoContainer: {
-    padding: 10,
+    // padding: 10,
     alignItems: 'center',
     justifyContent: 'center'
   },

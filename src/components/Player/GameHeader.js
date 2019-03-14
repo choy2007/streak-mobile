@@ -99,6 +99,9 @@ class GameHeader extends Component{
           </Text>
         </View>
         <View style={styles.scoreContainer}>
+          <Text style={styles.subText}>
+            SCORE
+          </Text>
           <Text style={styles.currentScore}> 
             {this.props.score ? this.props.score : "0"}
           </Text>

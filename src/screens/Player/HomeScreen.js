@@ -82,12 +82,14 @@ class HomeScreen extends Component{
                   <View style={styles.logoContainer}>
                     <Image source={require('../../img/f-logo-1.png')} style={styles.logoStyle} resizeMode='contain'/>
                   </View>
-                  <Text style={styles.listTitle}>{game.activeGame && game.activeGame[0] && game.activeGame[0].name}</Text>
-                  <TouchableOpacity onPress={() => this.clickGame(game, auth)}>
-                    <View style={styles.buttonContainer}>
-                      <Text style={styles.buttonText}>PLAY</Text>
-                    </View>
-                  </TouchableOpacity>
+                    <Text style={styles.listTitle}>{game.activeGame && game.activeGame[0] && game.activeGame[0].name}</Text>
+                    <TouchableOpacity onPress={() => this.clickGame(game, auth)}>
+                      <View styles={styles.playButtonContainer}>
+                        <View style={styles.buttonContainer}>
+                          <Text style={styles.buttonText}>PLAY</Text>
+                        </View>
+                      </View>   
+                    </TouchableOpacity>
                 </ImageBackground>
               // </TouchableOpacity>
             :

@@ -19,6 +19,9 @@ module.exports = StyleSheet.create({
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
+    shadowOffset: { width: 1.25, height: 1.25 },
+    shadowOpacity: 0.25,
+    shadowRadius: 0.25,
   },
   logoStyle: {
     width: width/9,

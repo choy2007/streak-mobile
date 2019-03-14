@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Image, ListItem } from 'react-native';
-import styles from '../../styles/point';
+import styles from '../../styles/game-ranking';
 
 import { ACTION_CABLE_URL } from '../../config/api';
 import RNActionCable from 'react-native-actioncable';
@@ -16,6 +16,26 @@ class GameRanking extends Component {
     super();
 
     this.state = {
+      test: [{
+        user: "choy",
+        score: "10"
+      },
+      {
+        user: "jasper",
+        score: "9"
+      },
+      {
+        user: "pat",
+        score: "8"
+      },
+      {
+        user: "almikka",
+        score: "7"
+      },
+      {
+        user: "odette",
+        score: "6"
+      }]
     }
   }
 
@@ -32,42 +52,26 @@ class GameRanking extends Component {
   render() {
     const { game } = this.props;
     console.log(game)
-    return game.ranking.map((player, key) => {
+    return this.state.test.map(player => {
       return(
-          <View style={styles.container}>
-            { key == 0
-            ? 
-            <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-              <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
-                <Text> {player.user} </Text>
-              </View>
+        <View style={styles.container}>
+          {/* <View style={styles.titleContainer}>
+            <Text style={styles.titleText}>
+              Game Ranking
+            </Text>
+          </View> */}
+          <View style={styles.playerContainer}>  
+            <View style={styles.pointsContainer}>  
+              <Text key={player.user} style={styles.playerScore}> {player.score}</Text>
+              <Text style={styles.subText}>
+                POINTS
+              </Text>
+            </View> 
+            <View style={styles.nameContainer} >
+              <Text key={player.user} style={styles.playerName}> {player.user}</Text>
             </View>
-            : key == 1 ?
-              <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-                <View style={{flex: 1, alignItems: 'center'}}>
-                  <Text> {player.user} </Text>
-                </View>
-              </View>
-            : key == 2 ?
-              <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-                <View style={{flex: 1, alignItems: 'center'}}>
-                  <Text> {player.user} </Text>
-                </View>
-              </View>
-            : key == 3 ?
-              <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-                <View style={{flex: 1, alignItems: 'center'}}>
-                  <Text> {player.user} </Text>
-                </View>
-              </View>
-            : 
-              <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-                <View style={{flex: 1, alignItems: 'center'}}>
-                  <Text> {player.user} </Text>
-                </View>
-              </View>
-            }
           </View>
+        </View>
         )
     })
   }

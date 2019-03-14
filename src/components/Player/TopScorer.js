@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Image, ListItem } from 'react-native';
-import styles from '../../styles/point';
+import styles from '../../styles/top-scorer';
 
 import { ACTION_CABLE_URL } from '../../config/api';
 import RNActionCable from 'react-native-actioncable';
@@ -34,7 +34,23 @@ class TopScorer extends Component {
     console.log(game)
     return game.ranking.map(player => {
       return(
-          <Text key={player.user} style={{backgroundColor: 'red'}}>{player.user}{player.score}</Text>
+          // <Text key={player.user} style={styles.playerName} > {player.user}</Text>
+          // <Text key={player.user} style={styles.playerScore} > {player.score}</Text>
+        <View style={{flex: 1}}>
+          <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+            <View style={{flex: 1, alignItems: 'center'}}>
+              <Text key={player.user} style={styles.playerName} > {player.user}</Text>  
+            </View>
+          </View>
+          <View style={{flex:2, flexDirection: 'row', justifyContent: 'center'}}>
+            <View style={{flex: 1, flexDirection: 'column', alignItems: 'center'}}>
+              <Text> Rank 2 </Text>
+            </View>
+            <View style={{flex: 1, flexDirection: 'column', alignItems: 'center'}}>
+              <Text> Rank 2 </Text>
+            </View>
+          </View>
+        </View>    
         )
     })
   }
