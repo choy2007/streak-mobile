@@ -21,6 +21,9 @@ class ExitButton extends React.Component {
     return(
       <TouchableOpacity style={styles.exitButtonStyle} onPress={()=>this.button()}>
           <Text style={styles.exit}>X</Text>
+          <Text style={styles.subText}>
+            EXIT
+          </Text>
       </TouchableOpacity>
     )
   }

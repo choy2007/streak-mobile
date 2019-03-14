@@ -8,12 +8,12 @@ module.exports = StyleSheet.create({
     flex: 1,
   },
   listContainer: {
-    flex: 1,
+    height: height/1,
     backgroundColor: 'white',
     alignItems: 'center',
-    justifyContent: 'space-evenly',
   },
   listTitle: {
+    paddingTop: height/3.5, 
     fontSize: RF(4),
     fontFamily: 'Avenir',
     color: '#000',
@@ -37,6 +37,9 @@ module.exports = StyleSheet.create({
   logoStyle: {
     width: width/6,
     height: height/6,
+  },
+  playButtonContainer: {
+    paddingTop: height/4, 
   },
   buttonContainer: {
     backgroundColor: '#fdded4',
