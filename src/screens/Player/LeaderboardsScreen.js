@@ -28,26 +28,6 @@ class LeaderboardsScreen extends Component{
 
     this.state = {
       connected: false,
-      // test: [{
-      //   user: "choy",
-      //   score: "10"
-      // },
-      // {
-      //   user: "jasper",
-      //   score: "9"
-      // },
-      // {
-      //   user: "pat",
-      //   score: "8"
-      // },
-      // {
-      //   user: "almikka",
-      //   score: "7"
-      // },
-      // {
-      //   user: "odette",
-      //   score: "6"
-      // }]
     }
   }
 
@@ -108,45 +88,34 @@ class LeaderboardsScreen extends Component{
     const auth = this.props.auth;
     return game.leaderboards.map((player, index, array) => {
       return(
-        //   <View>
-        //   { player.score > 0 
-        //     ?
-        //       <Text> { player.first_name} {player.score} </Text>
-            
-        //     :
-        //       <Text />
-        //   }
-        // </View>
-        <View key={index} style={styles.listItem}>
-        <View style={this.styleRank(index)}>
-          <Text style={styles.styleRankNumber}>
-            {this.giveMedalToRank(index)}
-            {index + 1}
-          </Text>
+        <View>
+          { player.score !== null && player.score !== 0
+            ?
+              <View key={'mainItem'+index} style={styles.listItem}>
+                <View key={'styleRank'+index} style={this.styleRank(index)}>
+                  <Text key={'textRank'+index} style={styles.styleRankNumber}>
+                    {this.giveMedalToRank(index)}
+                    {index + 1}
+                  </Text>
+                </View>
+                <View key={'leaderboards'+index} style={styles.playersStats}>
+                  <View key={'nameRank'+index} style={styles.playersName}>
+                    <Text key={'textRank'+index} style={styles.nameText}>{player.first_name} {player.last_name} </Text>
+                  </View>
+                  <View key={'listItem'+index} style={styles.styleListItemProps}>
+                    <Text key={'listScore'+index} style={styles.listItemPoints}>
+                      {player.score}-Streak
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            :
+              <View key={'nullRank'+index}>
+              </View>
+          }
         </View>
 
-        <View style={styles.playersStats}>
-          <View style={styles.playersName}>
-            <Text style={styles.nameText}>{player.first_name} {player.last_name} </Text>
-          </View>
 
-          <View style={styles.styleListItemProps}>
-            <Text style={styles.listItemPoints}>
-              {/* <Image style={styles.coin} source={require('../assets/img/DUcoin.png')} /> */}
-              {player.score}-Streak
-              {/* {this.props.styleFlame(index)} */}
-            </Text>
-          </View>
-
-          {/* <View style={styles.styleListItemPropsRight}>
-            <Text style={styles.listItemPointsRight}>
-              <Image style={styles.coinRight} source={require('../assets/img/DUcoin.png')} />
-              {data.userXP}
-            </Text>
-            <Text style={styles.listItemCommentRight}>Total</Text>
-          </View> */}
-        </View>
-      </View>
         )
     })
   }
@@ -155,28 +124,6 @@ class LeaderboardsScreen extends Component{
     const { game, navigation: {navigate}} = this.props;
     const auth = this.props.auth;
     console.log('GAME STATUS', game);
-    // return this.state.test.map(player => {
-      // return(
-    //     <View style={styles.container}>
-    //       {/* <View style={styles.titleContainer}>
-    //         <Text style={styles.titleText}>
-    //           Game Ranking
-    //         </Text>
-    //       </View> */}
-    //       <View style={styles.playerContainer}>  
-    //         <View style={styles.pointsContainer}>  
-    //           <Text key={player.user} style={styles.playerScore}> {player.score}</Text>
-    //           <Text style={styles.subText}>
-    //             POINTS
-    //           </Text>
-    //         </View> 
-    //         <View style={styles.nameContainer} >
-    //           <Text key={player.user} style={styles.playerName}> {player.user}</Text>
-    //         </View>
-    //       </View>
-    //     </View>
-    //     )
-    // })
     return(
       <View style={styles.container}>
         <ImageBackground source={require('../../img/f-bg.png')} style={styles.listContainer}>

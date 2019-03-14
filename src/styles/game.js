@@ -32,12 +32,12 @@ module.exports = StyleSheet.create({
   },
   listContainer2: {
     backgroundColor: '#796367',
-    borderRadius: 50,
+    borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
     width: (width/2)+75,
-    height: (height/7),
+    height: (height/7)+5,
     margin: 5
   },
   listTitle: {

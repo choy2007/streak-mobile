@@ -41,7 +41,7 @@ class Point extends Component {
       <View style={styles.container}>
         <View style={styles.readyContainer}>
           <Text style={styles.titleText}>
-            { game.score } SCORE
+            { game.score } 
           </Text>
         </View>
       </View>

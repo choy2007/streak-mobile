@@ -22,7 +22,7 @@ const TabPlayerRoutes = TabNavigator({
       style: {
         backgroundColor: '#fff', // Makes Android tab bar white instead of standard blue
         height: (Platform.OS === 'ios') ? 40 : 50,
-        padding: 10
+        padding: (Platform.OS === 'ios') ? 10 : 5
       }
     },
     tabBarPosition: Platform.OS === 'android' ? 'bottom' : 'bottom'

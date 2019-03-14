@@ -52,22 +52,22 @@ class GameRanking extends Component {
   render() {
     const { game } = this.props;
     console.log(game)
-    return this.state.test.map(player => {
+    return game.ranking.map(player => {
       return(
-        <View style={styles.container}>
+        <View key={player.user} style={styles.container}>
           {/* <View style={styles.titleContainer}>
             <Text style={styles.titleText}>
               Game Ranking
             </Text>
           </View> */}
-          <View style={styles.playerContainer}>  
-            <View style={styles.pointsContainer}>  
+          <View key={player.user} style={styles.playerContainer}>  
+            <View key={player.user} style={styles.pointsContainer}>  
               <Text key={player.user} style={styles.playerScore}> {player.score}</Text>
-              <Text style={styles.subText}>
+              <Text key={player.user} style={styles.subText}>
                 POINTS
               </Text>
             </View> 
-            <View style={styles.nameContainer} >
+            <View key={player.id} style={styles.nameContainer} >
               <Text key={player.user} style={styles.playerName}> {player.user}</Text>
             </View>
           </View>
