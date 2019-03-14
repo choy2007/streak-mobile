@@ -18,12 +18,11 @@ const TabPlayerRoutes = TabNavigator({
       inactiveTintColor: 'gray',
       showIcon: 'true', // Shows an icon for both iOS and Android
       showLabel: (Platform.OS !== 'android'), //No label for Android
-      labelStyle: {
-        fontSize: 11,
-      },
+      showLabel: (Platform.OS !== 'ios'),
       style: {
         backgroundColor: '#fff', // Makes Android tab bar white instead of standard blue
-        height: (Platform.OS === 'ios') ? 40 : 50 
+        height: (Platform.OS === 'ios') ? 40 : 50,
+        padding: 10
       }
     },
     tabBarPosition: Platform.OS === 'android' ? 'bottom' : 'bottom'

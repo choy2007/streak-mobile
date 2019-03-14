@@ -78,8 +78,8 @@ class LeaderboardsScreen extends Component{
 
   giveMedalToRank = (rank) => {
     if (rank + 1 === 1) return '🥇';
-    else if (rank === 2) return '🥈';
-    else if (rank === 3) return '🥉';
+    else if (rank + 1 === 2) return '🥈';
+    else if (rank + 1 === 3) return '🥉';
   }
 
 
@@ -141,8 +141,7 @@ class LeaderboardsScreen extends Component{
         <View style={styles.logoContainer}>
           <Image source={require('../../img/f-logo-1.png')} style={styles.logoStyle} resizeMode='contain'/>
         </View>
-        
-        { this.getLeaderboards()}
+        { this.getLeaderboards() }
         </ImageBackground>
       </View>
     )

@@ -73,7 +73,6 @@ class HomeScreen extends Component{
 
     return (
         <View style={styles.container}>
-          <GameHeader />
           <ActionCable channel={{channel: 'GameRoomChannel'}} onReceived={this.onReceived} />
           { game.activeGame.length > 0 
             ?
