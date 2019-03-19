@@ -62,13 +62,11 @@ class GameRanking extends Component {
           </View> */}
           <View style={styles.playerContainer}>  
             <View style={styles.pointsContainer}>  
-              <Text key={player.user} style={styles.playerScore}> {player.score}</Text>
-              <Text style={styles.subText}>
-                POINTS
-              </Text>
+              <Text key={player.user} style={styles.playerScore}>{player.score}</Text>
+              <Text style={styles.subText}>POINTS</Text>
             </View> 
             <View style={styles.nameContainer} >
-              <Text key={player.user} style={styles.playerName}> {player.user}</Text>
+              <Text key={player.user} style={styles.playerName}>{player.user}</Text>
             </View>
           </View>
         </View>

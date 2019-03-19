@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView, ImageBackground, Alert } from 'react-native';
 import { NavigationEvents } from 'react-navigation';
-import styles from '../../styles/leaderboards';
+// import styles from '../../styles/leaderboards';
 // import styles from '../../styles/game-ranking';
+import styles from '../../styles/top-scorer';
 import PlayerHeader from '../../components/Player/Header';
 import vars from '../../styles/variables'
 import Loading from '../../components/Loading';
@@ -28,7 +29,7 @@ class LeaderboardsScreen extends Component{
 
     this.state = {
       connected: false,
-      // test: [{
+      test: [{
       //   user: "choy",
       //   score: "10"
       // },
@@ -45,9 +46,9 @@ class LeaderboardsScreen extends Component{
       //   score: "7"
       // },
       // {
-      //   user: "odette",
-      //   score: "6"
-      // }]
+        user: "odette",
+        score: "6"
+      }]
     }
   }
 
@@ -155,28 +156,43 @@ class LeaderboardsScreen extends Component{
     const { game, navigation: {navigate}} = this.props;
     const auth = this.props.auth;
     console.log('GAME STATUS', game);
-    // return this.state.test.map(player => {
-      // return(
-    //     <View style={styles.container}>
-    //       {/* <View style={styles.titleContainer}>
-    //         <Text style={styles.titleText}>
-    //           Game Ranking
-    //         </Text>
-    //       </View> */}
-    //       <View style={styles.playerContainer}>  
-    //         <View style={styles.pointsContainer}>  
-    //           <Text key={player.user} style={styles.playerScore}> {player.score}</Text>
-    //           <Text style={styles.subText}>
-    //             POINTS
-    //           </Text>
-    //         </View> 
-    //         <View style={styles.nameContainer} >
-    //           <Text key={player.user} style={styles.playerName}> {player.user}</Text>
-    //         </View>
-    //       </View>
-    //     </View>
-    //     )
-    // })
+    return this.state.test.map(player => {
+      return(
+        // <View style={styles.container}>
+        //   <View style={styles.titleContainer}>
+        //     <Text style={styles.titleText}>
+        //       Game Ranking
+        //     </Text>
+        //   </View>
+        //   <View style={styles.playerContainer}>  
+        //     <View style={styles.pointsContainer}>  
+        //       <Text key={player.user} style={styles.playerScore}> {player.score}</Text>
+        //       <Text style={styles.subText}>
+        //         POINTS
+        //       </Text>
+        //     </View> 
+        //     <View style={styles.nameContainer} >
+        //       <Text key={player.user} style={styles.playerName}> {player.user}</Text>
+        //     </View>
+        //   </View>
+        // </View>
+        <View style={styles.container}>
+          <View style={styles.topContainer}>
+            <View style={styles.topStyle}>
+              <Text key={player.user} style={styles.playerName}>{player.user}</Text>  
+            </View>
+          </View>
+          <View style={styles.bottomContainer}>
+            <View style={styles.leftContainer}>
+              <Text style={styles.playerName}>Rank 2</Text>
+            </View>
+            <View style={styles.rightContainer}>
+              <Text style={styles.playerName}>Rank 3</Text>
+            </View>
+          </View>
+        </View>
+        )
+    })
     return(
       <View style={styles.container}>
         <ImageBackground source={require('../../img/f-bg.png')} style={styles.listContainer}>

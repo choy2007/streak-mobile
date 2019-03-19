@@ -27,9 +27,14 @@ module.exports = StyleSheet.create({
         backgroundColor: '#EB9592',
         height: height/15,
         width: (width/2)+115,
+        shadowOffset: { width: 1.25, height: 1.25 },
+        shadowOpacity: 0.25,
+        shadowRadius: 0.25,
     },
     pointsContainer: {
-        flexDirection: 'column',
+        flexDirection: 'column', 
+        paddingLeft: width/15,
+        alignItems: 'center'
     },
     nameContainer: {
         paddingLeft: width/3

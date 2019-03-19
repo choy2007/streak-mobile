@@ -20,6 +20,7 @@ module.exports = StyleSheet.create({
     fontWeight: 'bold',
     textTransform: 'uppercase',
     textAlign: 'center',
+    padding: 10
   },
   overlay: {
     position: 'absolute',

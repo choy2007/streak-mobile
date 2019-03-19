@@ -36,21 +36,21 @@ class TopScorer extends Component {
       return(
           // <Text key={player.user} style={styles.playerName} > {player.user}</Text>
           // <Text key={player.user} style={styles.playerScore} > {player.score}</Text>
-        <View style={{flex: 1}}>
-          <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-            <View style={{flex: 1, alignItems: 'center'}}>
-              <Text key={player.user} style={styles.playerName} > {player.user}</Text>  
+        <View style={styles.container}>
+          <View style={styles.topContainer}>
+            <View style={styles.topStyle}>
+              <Text key={player.user} style={styles.playerName}>{player.user}</Text>  
             </View>
           </View>
-          <View style={{flex:2, flexDirection: 'row', justifyContent: 'center'}}>
-            <View style={{flex: 1, flexDirection: 'column', alignItems: 'center'}}>
-              <Text> Rank 2 </Text>
+          <View style={styles.bottomContainer}>
+            <View style={styles.leftContainer}>
+              <Text style={styles.playerName}>Rank 2</Text>
             </View>
-            <View style={{flex: 1, flexDirection: 'column', alignItems: 'center'}}>
-              <Text> Rank 2 </Text>
+            <View style={styles.rightContainer}>
+              <Text style={styles.playerName}>Rank 3</Text>
             </View>
           </View>
-        </View>    
+        </View>
         )
     })
   }
