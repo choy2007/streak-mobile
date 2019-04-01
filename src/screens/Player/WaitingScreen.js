@@ -34,8 +34,17 @@ class WaitingScreen extends Component{
   }
 
   _handleGameStart() {
-    this.subscription = this.cable.subscriptions.create('GameRoomChannel', {
+    const { game } = this.props;
+    console.log(game);
+    this.subscription = this.cable.subscriptions.create({
+      channel: 'PlayRoomChannel',
+      id: game.activeGame[0].id
+    },
+    {
+      connected: Alert.alert('connected'),
+      disconnected: Alert.alert('disconnected'),
       received: (data) => this._handleReceivedCable(data.game),
+
     })
   }
 
@@ -43,7 +52,10 @@ class WaitingScreen extends Component{
     const { auth, navigation: { navigate } } = this.props;
     if (game.status == "Prize") {
       navigate('Prize');
-    } 
+    }
+    if (game.status == "Ingame") {
+      navigate('Game')
+    }
     console.log(`GAME STATUS CABLE IS`, game)
   }
 

@@ -22,6 +22,8 @@ class GameHeader extends Component{
       type: 'ready',
       setIntervalTimer: null,
     }
+
+
   }
 
   getTimer(){
@@ -89,10 +91,10 @@ class GameHeader extends Component{
   }
 
   render() {
-    const { title, back, close, navigate }  = this.props;
+    const { title, back, close, navigate, game }  = this.props;
     return(
       <View style={styles.container}>
-        <ExitButton navigate={navigate} styles={styles.exitButtonStyle}/>
+        <ExitButton subscription={this.props.subscription} navigate={navigate} game={game} styles={styles.exitButtonStyle}/>
         <View style={styles.timerContainer}>
           <Text style={styles.questionTimer}> 
             {this.state.timer? this.state.timer : "0" }

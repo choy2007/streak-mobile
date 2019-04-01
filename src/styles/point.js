@@ -6,7 +6,7 @@ import RF from "react-native-responsive-fontsize";
 module.exports = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    flexDirection: 'row',
     justifyContent: 'center',
     marginTop: height*.07,
   },
@@ -14,18 +14,16 @@ module.exports = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  readyLogo: {
-    width: 175,
-    height: 175,
-    position: 'relative', 
-    marginBottom: height*.025,
-    marginTop: height*.025,
-  },
   titleText: {
     textAlign: 'center',
     color: vars.colorBlack,
     fontSize: RF(4),
     fontWeight: 'bold',
     textTransform: 'uppercase',
+  },
+  logoStyle: {
+    width: width/4,
+    height: height/4,
+
   },
 })

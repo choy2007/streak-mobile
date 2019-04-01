@@ -30,7 +30,6 @@ class ProfileScreen extends Component{
     return(
       <View style={styles.container}>
         <ImageBackground source={require('../../img/home-bg.png')} resizeMode='cover' style={styles.listContainer}>
-        
         <View style={styles.overlay}/>
           <ScrollView>
           <View style={styles.logoContainer}>

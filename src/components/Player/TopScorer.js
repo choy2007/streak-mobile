@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, ListItem } from 'react-native';
 import styles from '../../styles/top-scorer';
+import Loading from '../../components/Loading';
 
 import { ACTION_CABLE_URL } from '../../config/api';
 import RNActionCable from 'react-native-actioncable';
@@ -29,30 +30,45 @@ class TopScorer extends Component {
     this._mounted = false;
   }
 
-  render() {
+  getRankingUsers(){
     const { game } = this.props;
     console.log(game)
-    return game.ranking.map(player => {
+    return game.ranking.slice(0, 3).map(player => {
       return(
-          // <Text key={player.user} style={styles.playerName} > {player.user}</Text>
-          // <Text key={player.user} style={styles.playerScore} > {player.score}</Text>
-        <View style={{flex: 1}}>
-          <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-            <View style={{flex: 1, alignItems: 'center'}}>
-              <Text key={player.user} style={styles.playerName} > {player.user}</Text>  
-            </View>
+          <View style={styles.userContainer} key={player.user}>  
+            <Text key={player.user} style={styles.userText} > {player} </Text>
           </View>
-          <View style={{flex:2, flexDirection: 'row', justifyContent: 'center'}}>
-            <View style={{flex: 1, flexDirection: 'column', alignItems: 'center'}}>
-              <Text> Rank 2 </Text>
-            </View>
-            <View style={{flex: 1, flexDirection: 'column', alignItems: 'center'}}>
-              <Text> Rank 2 </Text>
-            </View>
-          </View>
-        </View>    
         )
     })
+  }
+
+  getRankingScores(){
+    const { game } = this.props;
+    console.log(game)
+    return game.ranking_score.slice(0, 3).map(score => {
+      return(
+        <View style={styles.scoreContainer} key={score.score}>
+          <Text key={score.score} style={styles.pointText} > {score} </Text>
+        </View>
+      )
+    })
+  }
+
+  render(){
+    const { game } = this.props;
+    if(game.isFetching){
+      return <Loading />
+    }
+    return(
+      <View style={styles.container}>
+        <View>
+          { this.getRankingUsers() }
+        </View>
+        <View>
+          { this.getRankingScores() }
+        </View>
+      </View>
+    )
   }
 }
 

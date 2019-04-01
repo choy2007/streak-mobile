@@ -5,6 +5,8 @@ const initialState = {
   questions: [],
   score: [],
   ranking: [],
+  ranking_score: [],
+  player: [],
   leaderboards: [],
   type: 'ready',
   user_score: null
@@ -56,7 +58,17 @@ export default function(state = initialState, action) {
       })
     case 'FETCH_GAME_RANKING':
       return Object.assign({}, state, {
-        ranking: action.payload,
+        ranking: action.payload.user,
+        ranking_score: action.payload.score,
+        isFetching: true
+
+      })
+    case 'FETCH_GAME_RANKING_SUCCESS':
+      return Object.assign({}, state, {
+        ranking: action.payload.user,
+        ranking_score: action.payload.score,
+        isFetching: false
+
       })
     case 'FETCH_LEADERBOARDS':
       return Object.assign({}, state, {

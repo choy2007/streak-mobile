@@ -34,7 +34,12 @@ class PrizeScreen extends Component{
   }
 
   _handleGameStart() {
-    this.subscription = this.cable.subscriptions.create('GameRoomChannel', {
+    const { game } = this.props;
+    this.subscription = this.cable.subscriptions.create({
+      channel: 'PlayRoomChannel',
+      id: game.activeGame[0].id
+    },
+    {
       received: (data) => this._handleReceivedCable(data.game),
     })
   }
@@ -43,7 +48,7 @@ class PrizeScreen extends Component{
     const { auth, navigation: { navigate } } = this.props;
     if (game.status == "Ready") {
       navigate('Game');
-    } 
+    }
     console.log(`GAME STATUS CABLE IS`, game)
   }
 

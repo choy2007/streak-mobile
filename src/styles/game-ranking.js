@@ -5,9 +5,16 @@ var { width, height } = Dimensions.get('window');
 
 module.exports = StyleSheet.create({
     container: {
-        flex: 1,
-        // alignItems: 'center',
-        justifyContent: 'center',
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'center',
+      width: width,
+      height: 85,
+      shadowColor: '#000000',
+      shadowOffset: {
+        width: 0,
+        height: 3
+      }
     },
     titleContainer: {
         alignItems: 'center',
@@ -21,6 +28,7 @@ module.exports = StyleSheet.create({
         textTransform: 'uppercase',
     },
     playerContainer: {
+        flex: 1,
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'flex-start',
@@ -46,5 +54,24 @@ module.exports = StyleSheet.create({
     subText: {
         fontSize: RF(1.25),
         color: vars.colorWhite
+    },
+    scoreContainer: {
+      paddingTop: height/7
+    },
+    userContainer:{
+      paddingTop: height/7
+    },
+    score2Container: {
+      paddingRight: width/3
+    },
+    pointText: {
+      fontSize: RF(3),
+      color: '#796367',
+      fontWeight: 'bold', 
+    },
+    userText:{
+      fontSize: RF(3),
+      color: '#000',
+      fontWeight: 'bold'
     }
 })

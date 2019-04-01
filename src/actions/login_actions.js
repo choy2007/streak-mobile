@@ -1,7 +1,7 @@
 import { Alert, AlertIOS, Platform } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 
-import { storeData, removeData } from '../utils/storage';
+import { storeData, removeData, retrieveData } from '../utils/storage';
 import { API_KEY } from  '../config/api';
 
 const ALERT = (Platform.OS === 'ios') ? AlertIOS : Alert;
@@ -48,41 +48,83 @@ export function login(state) {
   console.log("state", state)
   return dispatch => {
     dispatch(sessionRequest())
-    fetch(`${API_KEY}/sessions/login`, {
-      method: 'POST',
-      headers: {
-        'X-Access-Type': "User",
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: state.email,
-        password: state.password,
-      }),
-    })
-    .then(response => response.json())
-    .then(responsejson => {
-      console.log(responsejson)
-      if (responsejson.status === 200) {
-        dispatch(sessionRequest(responsejson));
-        dispatch(loginSuccess(responsejson));
+    if(Platform.OS==="android"){
+      fetch(`${API_KEY}/sessions/login`, {
+        method: 'POST',
+        headers: {
+          'X-Access-Type': "User",
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: state.email,
+          password: state.password,
+          fcmToken: state.fcmToken
+        }),
+      })
+      .then(response => response.json())
+      .then(responsejson => {
+        console.log(responsejson)
+        if (responsejson.status === 200) {
+          dispatch(sessionRequest(responsejson));
+          dispatch(loginSuccess(responsejson));
 
-        storeData('email', state.email);
-        storeData('password', state.password);
+          storeData('email', state.email);
+          storeData('password', state.password);
+          if(Platform.OS==="android"){
+            storeData('fcmToken', state.fcmToken);
+          }
 
-        if (responsejson.data.user.role == 'Player') {
-          dispatch(NavigationActions.navigate({ routeName: 'Home' }));
-        } 
-      } else {
+          if (responsejson.data.user.role == 'Player') {
+            dispatch(NavigationActions.navigate({ routeName: 'Home' }));
+          } 
+        } else {
+          dispatch(sessionFailed())
+          ALERT.alert('Username/Password Incorrect');
+        }
+      })
+      .catch(error => {
         dispatch(sessionFailed())
-        ALERT.alert('Username/Password Incorrect');
-      }
-    })
-    .catch(error => {
-      dispatch(sessionFailed())
-      ALERT.alert('Server error. Please contact the admin.');
-      console.log(error)
-    })
+        ALERT.alert('Server error. Please contact the admin.');
+        console.log(error)
+      })
+    } else {
+      fetch(`${API_KEY}/sessions/login`, {
+        method: 'POST',
+        headers: {
+          'X-Access-Type': "User",
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: state.email,
+          password: state.password,
+        }),
+      })
+      .then(response => response.json())
+      .then(responsejson => {
+        console.log(responsejson)
+        if (responsejson.status === 200) {
+          dispatch(sessionRequest(responsejson));
+          dispatch(loginSuccess(responsejson));
+
+          storeData('email', state.email);
+          storeData('password', state.password);
+          
+          if (responsejson.data.user.role == 'Player') {
+            dispatch(NavigationActions.navigate({ routeName: 'Home' }));
+          } 
+        } else {
+          dispatch(sessionFailed())
+          ALERT.alert('Username/Password Incorrect');
+        }
+      })
+      .catch(error => {
+        dispatch(sessionFailed())
+        ALERT.alert('Server error. Please contact the admin.');
+        console.log(error)
+      })
+    }
   }
 }
 
@@ -93,7 +135,7 @@ export function change_password(password){
 }
 export function logout(auth) {
   return dispatch => {
-    removeData('username');
+    removeData('email');
     removeData('password');
     removeData('token');
     dispatch(NavigationActions.navigate({ routeName: 'Login' }));

@@ -31,7 +31,7 @@ class PlayerQuestion extends Component {
 
   componentDidMount(){
     const { game, auth, game_actions } = this.props;
-    this._mounted = true;
+    this._mounted = true
   }
 
 
@@ -41,8 +41,8 @@ class PlayerQuestion extends Component {
 
 
   componentWillUnmount(){
-    this._mounted = false;
-    clearInterval(this.state.interval)
+    const { game, auth } = this.props;
+    this._mounted = false;   
   }
 
 

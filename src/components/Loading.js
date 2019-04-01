@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ActivityIndicator } from 'react-native';
+import { Text, ActivityIndicator, View } from 'react-native';
 
 export default class Loading extends Component {
   render() {

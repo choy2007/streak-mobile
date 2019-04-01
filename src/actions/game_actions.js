@@ -81,12 +81,20 @@ export function fetchGameRanking(ranking){
   }
 }
 
+export function fetchGameRankingSuccess(ranking){
+  return {
+    type: 'FETCH_GAME_RANKING_SUCCESS',
+    payload: ranking
+  }
+}
+
 export function fetchLeaderboards(leaderboards){
   return {
     type: 'FETCH_LEADERBOARDS',
     payload: leaderboards
   }
 }
+
 export function update_type(type) {
   return {
     type: 'UPDATE_TYPE',
@@ -170,6 +178,7 @@ export function fetch_score(user_id, question_id){
       console.log(`responsejson`, responsejson)
       if (responsejson.status === 200) {
         dispatch(fetchScore(responsejson.message))
+        dispatch(fetchScoreSuccess(responsejson.message))
       } else {
         ALERT.alert('You are not allowed to access this.');
       }
@@ -179,7 +188,7 @@ export function fetch_score(user_id, question_id){
 
 export function fetch_game_ranking(game_id){
   return dispatch => {
-    fetch(`${API_KEY}/games_users/?game_id=${game_id}`, {
+    fetch(`${API_KEY}/games_users?game_id=${game_id}`, {
       method: 'GET',
       header: {
         Accept: 'application/json',
@@ -191,8 +200,9 @@ export function fetch_game_ranking(game_id){
     .then(responsejson => {
       if (responsejson.status === 200){
         dispatch(fetchGameRanking(responsejson.data))
+        dispatch(fetchGameRankingSuccess(responsejson.data))
       } else {
-        ALERT.alert('You are not allowed to access this.');
+        
       }
     })
   }

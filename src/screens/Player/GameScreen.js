@@ -10,6 +10,7 @@ import PlayerQuestion from '../../components/Player/Question';
 import PlayerPoint from '../../components/Player/Point';
 import GameRanking from '../../components/Player/GameRanking';
 import TopScorer from '../../components/Player/TopScorer';
+import Loading from '../../components/Loading';
 
 
 import vars from '../../styles/variables'
@@ -54,7 +55,12 @@ class GameScreen extends Component{
   }
 
   _handleGameStart() {
-    this.subscription = this.cable.subscriptions.create('GameRoomChannel', {
+    const { game } = this.props;
+    this.subscription = this.cable.subscriptions.create({
+      channel: 'PlayRoomChannel',
+      id: game.activeGame[0].id
+    },
+    {
       received: (data) => this._handleReceivedCable(data.game),
     })
   }
@@ -99,7 +105,7 @@ class GameScreen extends Component{
     console.log(`USER SC0RE`, this.props.game && this.props.game.user_score);
     return(
       <View style={styles.container}>
-        <GameHeader navigate={navigate} score={this.props.game && this.props.game.user_score ? this.props.game.user_score : "0"} />
+        <GameHeader subscription={this.subscription} navigate={navigate} score={this.props.game && this.props.game.user_score ? this.props.game.user_score : "0"} />
         <GameBackground>
           { this.getView() }
         </GameBackground>

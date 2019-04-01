@@ -6,6 +6,7 @@ import PlayerHeader from '../../components/Player/Header';
 import vars from '../../styles/variables';
 import Loading from '../../components/Loading';
 import GameHeader from '../../components/Player/GameHeader';
+import { NavigationActions } from 'react-navigation'
 
 import * as gameActions from '../../actions/game_actions';
 
@@ -37,12 +38,16 @@ class HomeScreen extends Component{
 
   componentDidMount() {
     const auth = this.props.auth;
+    const { game } = this.props;
     this.props.game_actions.fetch_active_game(auth);
     this._handleActiveGame();
+    console.log(`GAME STATUS`, game);
   }
 
   _handleActiveGame() {
     this.subscription = this.cable.subscriptions.create('GameRoomChannel', {
+      connected: Alert.alert('connected home'),
+      disconnected: Alert.alert('disconnected home'),
       received: (data) => this._handleReceivedCable(data.game),
     })
   }

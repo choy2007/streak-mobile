@@ -29,16 +29,4 @@ const TabPlayerRoutes = TabNavigator({
   }
 )
 
-const PlayerNavigator = DrawerNavigator({
-  Player: TabPlayerRoutes 
-}, {
-    drawerPosition: 'right',
-    drawerWidth: 250,
-  }
-)
-
-PlayerNavigator.navigationOptions = {
-  header: null
-}
-
-export default PlayerNavigator;
+export default TabPlayerRoutes;

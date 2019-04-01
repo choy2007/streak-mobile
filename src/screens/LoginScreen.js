@@ -29,7 +29,7 @@ class LoginScreen extends Component {
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
     }
   }
 
@@ -38,12 +38,11 @@ class LoginScreen extends Component {
 
     let email = await retrieveData('email');
     let password = await retrieveData('password');
-    console.log(email, password)
-
+    let fcmToken = await retrieveData('fcmToken');
+    console.log(email, password, fcmToken)
     if (email && password) {
-      login_actions.login({ email: email, password: password });
+      login_actions.login({ email: email, password: password, fcmToken: fcmToken});
     }
-
   }
 
   render() {

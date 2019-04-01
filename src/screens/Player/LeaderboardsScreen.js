@@ -46,31 +46,31 @@ class LeaderboardsScreen extends Component{
     } else if (rank + 1=== 2) {
       return {
         flex: 0.09,
-        backgroundColor: '#00BBF0',
+        backgroundColor: '#b3b1b0',
         justifyContent: 'center'
       };
     } else if (rank + 1=== 3) {
       return {
         flex: 0.09,
-        backgroundColor: '#F12D2D',
+        backgroundColor: '#b3b1b0',
         justifyContent: 'center'
       };
     } else if (rank + 1=== 4) {
       return {
         flex: 0.09,
-        backgroundColor: '#989898',
+        backgroundColor: '#b3b1b0',
         justifyContent: 'center'
       };
     } else if (rank + 1 === 5) {
       return {
         flex: 0.09,
-        backgroundColor: '#B8B8B8',
+        backgroundColor: '#b3b1b0',
         justifyContent: 'center'
       };
     } else {
       return {
         flex: 0.09,
-        backgroundColor: '#D8D8D8',
+        backgroundColor: '#b3b1b0',
         justifyContent: 'center'
       };
     }
