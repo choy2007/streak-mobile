@@ -36,13 +36,8 @@ class WaitingScreen extends Component{
   _handleGameStart() {
     const { game } = this.props;
     console.log(game);
-    this.subscription = this.cable.subscriptions.create({
-      channel: 'PlayRoomChannel',
-      id: game.activeGame[0].id
-    },
+    this.subscription = this.cable.subscriptions.create('GameRoomChannel',
     {
-      connected: Alert.alert('connected'),
-      disconnected: Alert.alert('disconnected'),
       received: (data) => this._handleReceivedCable(data.game),
 
     })

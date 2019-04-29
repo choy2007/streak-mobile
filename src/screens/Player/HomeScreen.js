@@ -46,8 +46,6 @@ class HomeScreen extends Component{
 
   _handleActiveGame() {
     this.subscription = this.cable.subscriptions.create('GameRoomChannel', {
-      connected: Alert.alert('connected home'),
-      disconnected: Alert.alert('disconnected home'),
       received: (data) => this._handleReceivedCable(data.game),
     })
   }

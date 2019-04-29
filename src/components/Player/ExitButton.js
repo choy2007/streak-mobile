@@ -24,9 +24,10 @@ class ExitButton extends React.Component {
         {text: 'NO', style: 'cancel'},
         {text: 'YES', onPress: () => 
           { 
-            NavigationActions.reset({index: 0, actions: [navigate('Home')]});
-            console.log(this.props.subscription, 'asdd')
+            this.props.game_actions.after_game_state();
             console.log(this.cable.subscriptions.remove(this.props.subscription), 'asdasd');
+            this.cable.subscriptions.remove(this.props.subscription);
+            NavigationActions.reset({index: 1, actions: [navigate('Home')]});
           }
         },
           

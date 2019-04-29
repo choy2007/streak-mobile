@@ -18,6 +18,15 @@ export default function(state = initialState, action) {
       return Object.assign({}, state, {
         type: action.payload
       })
+    case 'AFTER_GAME_STATE':
+      return Object.assign({}, state, {
+        questions: [],
+        ranking: [],
+        ranking_score: [],
+        score: [],
+        type: 'ready',
+        user_score: null
+      })
     case 'FETCH_GAME_REQUEST':
       return Object.assign({}, state, {
         isFetching: true

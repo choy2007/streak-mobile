@@ -94,7 +94,7 @@ class GameHeader extends Component{
     const { title, back, close, navigate, game }  = this.props;
     return(
       <View style={styles.container}>
-        <ExitButton subscription={this.props.subscription} navigate={navigate} game={game} styles={styles.exitButtonStyle}/>
+        <ExitButton subscription={this.props.subscription} game_actions={this.props.game_actions} navigate={navigate} game={game} styles={styles.exitButtonStyle}/>
         <View style={styles.timerContainer}>
           <Text style={styles.questionTimer}> 
             {this.state.timer? this.state.timer : "0" }

@@ -56,10 +56,7 @@ class GameScreen extends Component{
 
   _handleGameStart() {
     const { game } = this.props;
-    this.subscription = this.cable.subscriptions.create({
-      channel: 'PlayRoomChannel',
-      id: game.activeGame[0].id
-    },
+    this.subscription = this.cable.subscriptions.create('GameRoomChannel',
     {
       received: (data) => this._handleReceivedCable(data.game),
     })

@@ -102,6 +102,13 @@ export function update_type(type) {
   }
 }
 
+export function after_game_state() {
+  return {
+    type: 'AFTER_GAME_STATE',
+  }
+}
+
+
 
 export function fetch_question(game_id){
   return dispatch => {
