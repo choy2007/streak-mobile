@@ -8,7 +8,6 @@ module.exports = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: height*.07,
   },
   pointContainer: {
     alignItems: 'center',
@@ -24,6 +23,5 @@ module.exports = StyleSheet.create({
   logoStyle: {
     width: width/4,
     height: height/4,
-
   },
 })

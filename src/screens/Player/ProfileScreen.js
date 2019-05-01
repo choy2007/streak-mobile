@@ -42,7 +42,13 @@ class ProfileScreen extends Component{
             <View style={styles.detailsContainer}>
               <Text style={styles.nameStyle}>{auth.user.user.first_name} {auth.user.user.last_name}</Text>
               <Text style={styles.otherNameStyle}>{auth.user.user.email}</Text>
+              <Text style={styles.otherNameStyle}>STREAK</Text>
             </View>
+            <TouchableOpacity onPress={() => this.props.login_actions.logout()}>
+              <View style={styles.buttonContainer}>
+                <Text style={styles.buttonText}>CHANGE PASSWORD</Text>
+              </View>
+            </TouchableOpacity>
             <TouchableOpacity onPress={() => this.props.login_actions.logout()}>
               <View style={styles.buttonContainer}>
                 <Text style={styles.buttonText}>LOGOUT</Text>
@@ -50,16 +56,6 @@ class ProfileScreen extends Component{
             </TouchableOpacity>
           </View>
           </ScrollView>
-          {/*<TouchableOpacity onPress={() => this.props.login_actions.logout()} style={{flex: 1, borderColor: '#fff', borderBottomWidth: 0}}>
-              <View style={styles.buttonContainer}>
-                <Image source={require('../../img/logout.png')} style={styles.iconStyle}/>
-                <Text>LOGOUT</Text>
-              </View>
-              <View style={styles.settingTextContainer}>
-                <Text>Logout</Text>
-              </View>
-          </TouchableOpacity>*/}
-          
         </ImageBackground>
       </View>
     )

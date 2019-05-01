@@ -50,46 +50,46 @@ class GameRanking extends Component {
     this._mounted = false;
   }
 
-  getRankingUsers(){
-    const { game } = this.props;
-    console.log(game)
-    return game.ranking.map(player => {
-      return(
-          <View style={styles.userContainer} key={player.user}>  
-            <Text style={styles.userText} key={player.user} > {player} </Text>
-          </View>
-        )
-    })
-  }
-
   getRankingScores(){
     const { game } = this.props;
     console.log(game)
     return game.ranking_score.map(score => {
       return(
-        <View style={styles.scoreContainer} key={score.score}>
-          <Text style={styles.pointText} key={score.score} > {score} </Text>
+        <View key={score.score}>
+          <Text style={styles.playerScore} key={score.score}>{score} </Text>
         </View>
       )
+    })
+  }
+
+  getRankingUsers(){
+    const { game } = this.props;
+    console.log(game)
+    return game.ranking.map(player => {
+      return(
+          <View key={player.user}>  
+            <Text style={styles.playerName} key={player.user} numberOfLines={2}>{player} </Text>
+          </View>
+        )
     })
   }
 
   render(){
     const { game } = this.props;
     if(game.isFetching == false){
-      return <Loading />
+      return <Loading/>
     }
     return(
-      <View style={styles.container}>
-        <View>
+      <View style={styles.playerContainer}>
+        <View style={styles.pointsContainer}>
+          { this.getRankingScores() }
+          <Text style={styles.subText}>POINTS</Text>
+        </View>
+        <View style={styles.imageStyle}/>
+        <View style={styles.nameContainer}>
           { this.getRankingUsers() }
         </View>
-        <View>
-          { this.getRankingScores() }
-        </View>
-
       </View>
-
     )
   }
 }

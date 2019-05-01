@@ -8,13 +8,13 @@ module.exports = StyleSheet.create({
       flex: 1,
       flexDirection: 'row',
       justifyContent: 'center',
-      width: width,
-      height: 85,
-      shadowColor: '#000000',
-      shadowOffset: {
-        width: 0,
-        height: 3
-      }
+      // width: width,
+      // height: 85,
+      // shadowColor: '#000000',
+      // shadowOffset: {
+      //   width: 0,
+      //   height: 3
+      // }
     },
     titleContainer: {
         alignItems: 'center',
@@ -28,13 +28,11 @@ module.exports = StyleSheet.create({
         textTransform: 'uppercase',
     },
     playerContainer: {
-        flex: 1,
-        alignItems: 'center',
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        backgroundColor: '#EB9592',
-        height: height/15,
-        width: (width/2)+115,
+        // flex: 1,
+        // alignItems: 'center',
+        flexDirection: 'column',
+        // height: height/15,
+        // width: (width/2)+115,
     },
     pointsContainer: {
         flexDirection: 'column',
@@ -55,23 +53,29 @@ module.exports = StyleSheet.create({
         fontSize: RF(1.25),
         color: vars.colorWhite
     },
-    scoreContainer: {
-      paddingTop: height/7
+    imageStyle: {
+      borderRadius: 100,
+      width: 50,
+      height: 50,
+      backgroundColor: vars.colorPrimary
     },
-    userContainer:{
-      paddingTop: height/7
-    },
-    score2Container: {
-      paddingRight: width/3
-    },
-    pointText: {
-      fontSize: RF(3),
-      color: '#796367',
-      fontWeight: 'bold', 
-    },
-    userText:{
-      fontSize: RF(3),
-      color: '#000',
-      fontWeight: 'bold'
-    }
+    // scoreContainer: {
+    //   paddingTop: height/7
+    // },
+    // userContainer:{
+    //   paddingTop: height/7 
+    // },
+    // score2Container: {
+    //   paddingRight: width/3
+    // },
+    // pointText: {
+    //   fontSize: RF(3),
+    //   color: '#796367',
+    //   fontWeight: 'bold', 
+    // },
+    // userText:{
+    //   fontSize: RF(3),
+    //   color: '#000',
+    //   fontWeight: 'bold'
+    // }
 })

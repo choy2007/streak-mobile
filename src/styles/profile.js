@@ -76,6 +76,7 @@ module.exports = StyleSheet.create({
     shadowRadius: 0.5,
   },
   buttonText: {
+    width: width/2,
     textAlign: 'center',
     fontFamily: variables.fontFamily,
     fontSize: RF(2.5),
