@@ -43,7 +43,7 @@ module.exports = StyleSheet.create({
     paddingTop: height/4, 
   },
   buttonContainer: {
-    backgroundColor: '#fdded4',
+    backgroundColor: 'black',
     borderRadius: 40,
     width: width/2,
     paddingHorizontal: 40,
@@ -57,6 +57,6 @@ module.exports = StyleSheet.create({
     fontFamily: variables.fontFamily,
     fontSize: RF(2.5),
     fontWeight: 'bold',
-    color: '#000',
+    color: variables.colorPrimary,
   },
 })

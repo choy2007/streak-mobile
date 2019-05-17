@@ -54,11 +54,6 @@ class ProfileScreen extends Component{
             <Text/>
             <TouchableOpacity onPress={() => this.props.login_actions.logout()}>
               <View style={styles.buttonContainer}>
-                <Text style={styles.buttonText}>CHANGE PASSWORD</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.props.login_actions.logout()}>
-              <View style={styles.buttonContainer}>
                 <Text style={styles.buttonText}>LOGOUT</Text>
               </View>
             </TouchableOpacity>

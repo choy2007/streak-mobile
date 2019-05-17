@@ -25,7 +25,7 @@ module.exports = StyleSheet.create({
   },
   exit: {
     fontSize: RF(3),
-    color: '#796367',
+    color: 'black',
     fontWeight: 'bold',
   },
   timerContainer: {
@@ -41,7 +41,7 @@ module.exports = StyleSheet.create({
     shadowRadius: 0.5,
   },
   questionTimer: {
-    color: '#796367',
+    color: 'black',
     fontWeight: 'bold', 
     fontSize: RF(3.5),
   },
@@ -60,11 +60,11 @@ module.exports = StyleSheet.create({
   },
   currentScore: {
     fontSize: RF(3),
-    color: '#796367',
+    color: 'black',
     fontWeight: 'bold', 
   },
   subText: {
     fontSize: RF(1.25),
-    color: '#796367',
+    color: 'black',
   }
 })

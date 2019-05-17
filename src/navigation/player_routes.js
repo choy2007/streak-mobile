@@ -13,7 +13,7 @@ const TabPlayerRoutes = TabNavigator({
     lazy: false,
     tabBarOptions: {
       //activeTintColor: vars.colorPrimary,  // Color of tab when pressed
-      activeTintColor: '#eb9592',
+      activeTintColor: '#FDC326',
       //inactiveTintColor: '#b5b5b5', // Color of tab when not pressed
       inactiveTintColor: 'gray',
       showIcon: 'true', // Shows an icon for both iOS and Android

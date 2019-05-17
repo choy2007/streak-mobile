@@ -1,6 +1,6 @@
 export default vars = {
-  colorPrimary: "#fdb602",
-  colorSecondary: "#fdb602",
+  colorPrimary: "#FDC326",
+  colorSecondary: "#FDC326",
   colorText: "#FFF",
   colorWhite: "#FFF",
   colorGray: "#A8B6C8",

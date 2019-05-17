@@ -20,8 +20,7 @@ module.exports = StyleSheet.create({
     paddingBottom: 30
   },
   listContainer1: {
-    //backgroundColor: vars.colorPrimary,
-    backgroundColor: '#EB9592',
+    backgroundColor: vars.colorBlack,
     borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
@@ -31,7 +30,7 @@ module.exports = StyleSheet.create({
     margin: 5,
   },
   listContainer2: {
-    backgroundColor: '#796367',
+    backgroundColor: vars.colorPrimary,
     borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
@@ -43,7 +42,7 @@ module.exports = StyleSheet.create({
   listTitle: {
     fontSize: RF(2.75),
     fontFamily: 'Avenir',
-    color: vars.colorText,
+    color: vars.colorWhite,
     fontWeight: 'bold',
     textAlign: 'center',
     lineHeight: 20,

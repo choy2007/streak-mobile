@@ -11,6 +11,6 @@ module.exports = StyleSheet.create({
     bottom: 0, 
     right: 0, 
     width: 'auto', 
-    height: 'auto' 
+    height: 'auto',
   }
 })

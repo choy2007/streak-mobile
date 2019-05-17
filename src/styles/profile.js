@@ -57,7 +57,7 @@ module.exports = StyleSheet.create({
     fontFamily: vars.fontFamily,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: '#EB9592',
+    color: vars.colorBlack,
   },
   otherNameStyle: {
     fontSize: RF(2.5),
@@ -67,7 +67,7 @@ module.exports = StyleSheet.create({
     textAlign: 'center',
   },
   buttonContainer: {
-    backgroundColor: '#fdded4',
+    backgroundColor: 'black',
     borderRadius: 40,
     paddingHorizontal: 40,
     paddingVertical: 6,
@@ -81,7 +81,7 @@ module.exports = StyleSheet.create({
     fontFamily: variables.fontFamily,
     fontSize: RF(2.5),
     fontWeight: 'bold',
-    color: '#000',
+    color: vars.colorPrimary,
   },
   // settingsContainer: {
   //   flex: 3,

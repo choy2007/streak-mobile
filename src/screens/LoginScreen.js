@@ -56,7 +56,7 @@ class LoginScreen extends Component {
             <View style={styles.logoContainer}>
               {/* <View style={styles.headerContainer}>
               </View> */}
-              <Image source={require('../img/f-logo-1.png')} style={styles.logoStyle} resizeMode='contain'/>
+              <Image source={require('../img/f-logo.png')} style={styles.logoStyle} resizeMode='contain'/>
             </View>
             <View style={styles.inputContainer}>
               <TextInput

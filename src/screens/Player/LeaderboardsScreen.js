@@ -126,7 +126,7 @@ class LeaderboardsScreen extends Component{
     console.log('GAME STATUS', game);
     return(
       <View style={styles.container}>
-        <ImageBackground source={require('../../img/f-bg.png')} style={styles.listContainer}>
+        <ImageBackground source={require('../../img/home-bg.png')} style={styles.listContainer}>
         <View style={styles.logoContainer}>
           <Image source={require('../../img/f-logo-1.png')} style={styles.logoStyle} resizeMode='contain'/>
         </View>

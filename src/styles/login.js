@@ -39,7 +39,7 @@ module.exports = StyleSheet.create({
   },
   buttonContainer: {
     //backgroundColor: variables.colorSecondary,
-    backgroundColor: '#ffda82',
+    backgroundColor: 'black',
     borderRadius: 40,
     padding: 10,
     marginVertical: 10,
@@ -58,7 +58,7 @@ module.exports = StyleSheet.create({
     fontFamily: variables.fontFamily,
     fontSize: RF(3),
     fontWeight: 'bold',
-    color: '#FFF'
+    color: '#FDC326'
   },
   otherLinks: {
     flexDirection: 'row',

@@ -30,8 +30,7 @@ module.exports = StyleSheet.create({
   },
   readyText: {
     textAlign: 'center',
-    //color: vars.colorPrimary,
-    color: '#EB9592',
+    color: vars.colorPrimary,
     fontSize: RF(10),
     fontWeight: 'bold',
     textTransform: 'uppercase',
