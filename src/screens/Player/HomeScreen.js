@@ -42,6 +42,8 @@ class HomeScreen extends Component{
     this.props.game_actions.fetch_active_game(auth);
     this._handleActiveGame();
     console.log(`GAME STATUS`, game);
+    var response_time_1 = new Date().getTime(); 
+    console.log(`RESPONSE TIME`, response_time_1);
   }
 
   _handleActiveGame() {

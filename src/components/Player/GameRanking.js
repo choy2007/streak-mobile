@@ -50,52 +50,58 @@ class GameRanking extends Component {
     this._mounted = false;
   }
 
-  getRankingUsers(){
-    const { game } = this.props;
-    console.log(game)
-    return game.ranking.map(player => {
-      return(
-          <View style={styles.userContainer} key={player.user}>  
-            <Text style={styles.userText} key={player.user} > {player} </Text>
-          </View>
-        )
-    })
-  }
-
   getRankingScores(){
     const { game } = this.props;
     console.log(game)
     return game.ranking_score.map(score => {
       return(
-        <View style={styles.scoreContainer} key={score.score}>
-          <Text style={styles.pointText} key={score.score} > {score} </Text>
+        <View key={score.score}>
+          <Text key={score.score} style={styles.playerScore}> {score} </Text>
         </View>
       )
+    })
+  }
+
+  getRankingUsers(){
+    const { game } = this.props;
+    console.log(game)
+    return game.ranking.map(player => {
+      return(
+          <View key={player.user}>
+            <Text style={styles.playerName} key={player.user}>{player.substr(0,player.indexOf(' '))} </Text>
+          </View>
+        )
     })
   }
 
   render(){
     const { game } = this.props;
     if(game.isFetching == false){
-      return <Loading />
+      return <Loading/>
     }
     return(
       <View style={styles.container}>
-        <View>
-          { this.getRankingUsers() }
+        <View style={styles.titleContainer}>
+          <Text style={styles.titleText}>
+            Game Ranking
+          </Text>
         </View>
-        <View>
-          { this.getRankingScores() }
+        <Text />
+        <View style={styles.rankingContainer}>
+          <View style={styles.pointsContainer}>
+            { this.getRankingScores() }
+          </View>
+          <View style={styles.userContainer}>
+            { this.getRankingUsers() }
+          </View>
         </View>
-
       </View>
-
     )
   }
 }
 
 function mapStateToProps(state){
-  console.log(`STATE IS`, state)
+  console.log(`STATE IS`, state);
   return{
     auth: state.auth,
     game: state.game

@@ -26,7 +26,8 @@ class ProfileScreen extends Component{
 
   render(){
     const { auth } = this.props;
-    const { navigate } = this.props;
+    const { navigate } = this.props.navigation;
+
     return(
       <View style={styles.container}>
         <ImageBackground source={require('../../img/home-bg.png')} resizeMode='cover' style={styles.listContainer}>
@@ -42,7 +43,15 @@ class ProfileScreen extends Component{
             <View style={styles.detailsContainer}>
               <Text style={styles.nameStyle}>{auth.user.user.first_name} {auth.user.user.last_name}</Text>
               <Text style={styles.otherNameStyle}>{auth.user.user.email}</Text>
+              <Text style={styles.otherNameStyle}>{auth.user.user.score} wins</Text>
             </View>
+            <Text/>
+            <TouchableOpacity onPress={() => navigate('ChangePassword')}>
+              <View style={styles.buttonContainer}>
+                <Text style={styles.buttonText}>CHANGE PASSWORD</Text>
+              </View>
+            </TouchableOpacity>
+            <Text/>
             <TouchableOpacity onPress={() => this.props.login_actions.logout()}>
               <View style={styles.buttonContainer}>
                 <Text style={styles.buttonText}>LOGOUT</Text>

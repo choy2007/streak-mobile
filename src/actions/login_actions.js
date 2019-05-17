@@ -128,11 +128,32 @@ export function login(state) {
   }
 }
 
-export function change_password(password){
-  return dispath => {
-
+export function change_password(user_id, password){
+  return dispatch => {
+    fetch(`${API_KEY}/users/${user_id}?password=${password}`, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'X-Access-Type': "User",
+        'X-Access-Token': 'application/json'
+      },
+    })
+    .then(response => response.json())
+    .then(responsejson => {
+      console.log(`responsejson`, responsejson)
+      if (responsejson.status === 200) {
+        removeData('email');
+        removeData('password');
+        removeData('token');
+        dispatch(NavigationActions.navigate({ routeName: 'Login' }));
+        ALERT.alert('Password changed.')
+      } else {
+        ALERT.alert('You are not allowed to access this.');
+      }
+    })
   }
 }
+
 export function logout(auth) {
   return dispatch => {
     removeData('email');

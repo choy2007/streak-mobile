@@ -44,6 +44,7 @@ class PrizeScreen extends Component{
   _handleReceivedCable(game) {
     const { auth, navigation: { navigate } } = this.props;
     if (game.status == "Ready") {
+      this.cable.subscriptions.remove(this.subscription);
       navigate('Game');
     }
     console.log(`GAME STATUS CABLE IS`, game)

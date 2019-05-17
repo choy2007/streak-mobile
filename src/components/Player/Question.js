@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, Image, ScrollView, ImageBackground,Dimens
 import styles from '../../styles/game';
 import vars from '../../styles/variables'
 import * as gameActions from '../../actions/game_actions';
+import moment from 'moment';
 
 import { ACTION_CABLE_URL } from '../../config/api';
 import RNActionCable from 'react-native-actioncable';
@@ -21,6 +22,8 @@ class PlayerQuestion extends Component {
       choices: '',
       timer: null,
       disabled: false,
+      response_time_1: null,
+      response_time_2: null
     }
   }
 
@@ -32,30 +35,32 @@ class PlayerQuestion extends Component {
   componentDidMount(){
     const { game, auth, game_actions } = this.props;
     this._mounted = true
+    this.setState({response_time_1: new Date().getTime()}); 
   }
-
 
   _answerQuestion(){
     const { game, auth, game_actions } = this.props;
   }
-
 
   componentWillUnmount(){
     const { game, auth } = this.props;
     this._mounted = false;   
   }
 
-
   getChoices() {
     const { game, auth, game_actions } = this.props;
       return game.questions.find(question => question.active === true).choices.map((choice, key) => {
         return (
           <TouchableOpacity disabled={this.state.disabled} 
-            onPress={() => { 
-              game_actions.answerQuestion(choice, game.questions.find(question => question.active === true).id, auth.user.user.id);
+            onPress={() => {
+              var startDate = moment(this.state.response_time_1);
+              var timeEnd = moment(new Date().getTime());
+              var diff = timeEnd.diff(startDate, 'seconds', true);
+              // var diffDuration = moment.duration(diff);
+              game_actions.answerQuestion(choice, game.questions.find(question => question.active === true).id, auth.user.user.id, diff);
               this.setState({["styleCounter_" + key]: 1});
               this.setState({disabled: true});
-            } 
+            }
           } key={choice}>
             {choice != ''? <View key={key} style={
               (this.state.hasOwnProperty("styleCounter_" + key)) ? styles.listContainer2 : styles.listContainer1
@@ -74,7 +79,6 @@ class PlayerQuestion extends Component {
         <View style={styles.choiceContainer}>
           { this.getChoices() }
         </View>
-        
       </View>
     )
   }

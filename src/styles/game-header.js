@@ -50,7 +50,7 @@ module.exports = StyleSheet.create({
     marginRight: width/12,
     backgroundColor: '#f0ede7',
     borderRadius: 10,
-    width: width/9,
+    width: width/6,
     height: height/15,  
     justifyContent: 'center',
     alignItems: 'center',
