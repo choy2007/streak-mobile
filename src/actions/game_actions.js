@@ -152,7 +152,7 @@ export function userJoin(auth, game_id) {
   }
 }
 
-export function answerQuestion(choice, question_id, user_id) {
+export function answerQuestion(choice, question_id, user_id, response_time) {
   return dispatch => {
     fetch(`${API_KEY}/questions/answer`,{
       method: 'POST',
@@ -164,6 +164,7 @@ export function answerQuestion(choice, question_id, user_id) {
         answer: choice,
         user_id: user_id,
         question_id: question_id,
+        response_time: response_time
       })
     })
     .then(response => response.json())
@@ -184,8 +185,8 @@ export function fetch_score(user_id, question_id){
     .then(responsejson => {
       console.log(`responsejson`, responsejson)
       if (responsejson.status === 200) {
-        dispatch(fetchScore(responsejson.message))
-        dispatch(fetchScoreSuccess(responsejson.message))
+        dispatch(fetchScore(responsejson.data))
+        dispatch(fetchScoreSuccess(responsejson.data))
       } else {
         ALERT.alert('You are not allowed to access this.');
       }

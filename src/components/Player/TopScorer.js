@@ -35,8 +35,8 @@ class TopScorer extends Component {
     console.log(game)
     return game.ranking.slice(0, 3).map(player => {
       return(
-          <View key={player.user}>  
-            <Text key={player.playerName} style={styles.userText}>{player} </Text>
+          <View key={player.user}>
+            <Text key={player.playerName} style={styles.playerName}>{player.substr(0,player.indexOf(' '))} </Text>
           </View>
         )
     })
@@ -48,7 +48,7 @@ class TopScorer extends Component {
     return game.ranking_score.slice(0, 3).map(score => {
       return(
         <View key={score.score}>
-          <Text key={score.playerScore} style={styles.pointText}>{score} POINTS</Text>
+          <Text key={score.playerScore} style={styles.playerScore}>{score}</Text>
         </View>
       )
     })
@@ -61,15 +61,20 @@ class TopScorer extends Component {
     }
     return(
       <View style={styles.container}>
-        <View style={styles.imageStyle}/>
-        <View style={styles.playerContainer}>
-          <View>
+        <View style={styles.titleContainer}>
+          <Text style={styles.titleText}>
+            Top Scorer
+          </Text>
+        </View>
+        <Text />
+        <View style={styles.rankingContainer}>
+          <View style={styles.userContainer}>
             { this.getRankingUsers() }
           </View>
-          <View>
+          <View style={styles.pointsContainer}>
             { this.getRankingScores() }
           </View>
-        </View>  
+        </View>
       </View>
     )
   }

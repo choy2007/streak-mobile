@@ -43,32 +43,16 @@ class Point extends Component {
     }
     return (
       <View style={styles.container}>
-        { game.score && game.score === "You got it right, first! 2 POINTS"
+        { game.score && game.score > 0
           ?
             <View style={styles.pointContainer}>
               <Image source={require('../../img/check-mark.png')} style={styles.logoStyle} resizeMode='contain'/>
               <Text style={styles.titleText}>
-                {game.score}
+                You got it right! {game.score} points
               </Text>
             </View>
-          : game.score && game.score === "Your answer is correct! 1 POINT" 
-          ?
-            <View style={styles.pointContainer}>
-              <Image source={require('../../img/check-mark.png')} style={styles.logoStyle} resizeMode='contain'/>
-              <Text style={styles.titleText}>
-                {game.score}
-              </Text>
-            </View>
-          : game.score && game.score === "Incorrect answer! 0 POINT" 
-          ?
-            <View style={styles.pointContainer}>
-              <Image source={require('../../img/x-mark.png')} style={styles.logoStyle} resizeMode='contain'/>
-              <Text style={styles.titleText}>
-                Wrong Answer! 0 POINT
-              </Text>
-            </View>
-          : game.score && game.score.length == 0 && game.isFetching
-          ?
+          : 
+          game.score && game.score == 0 ?
             <View style={styles.pointContainer}>
               <Image source={require('../../img/x-mark.png')} style={styles.logoStyle} resizeMode='contain'/>
               <Text style={styles.titleText}>
@@ -76,8 +60,8 @@ class Point extends Component {
               </Text>
             </View>
           :
-          <Text>
-          </Text>
+          <View>
+          </View>
         } 
       </View>
     )

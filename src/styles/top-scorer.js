@@ -6,8 +6,7 @@ var { width, height } = Dimensions.get('window');
 module.exports = StyleSheet.create({
     container: {
       flex: 1,
-      flexDirection: 'row',
-      justifyContent: 'center',
+      // justifyContent: 'flex-start',
       // width: width,
       // height: 85,
       // shadowColor: '#000000',
@@ -17,8 +16,9 @@ module.exports = StyleSheet.create({
       // }
     },
     titleContainer: {
-        alignItems: 'center',
-        justifyContent: 'center',
+      flexDirection: 'row',
+      alignItems: 'center',
+      alignSelf: 'flex-start'
     },
     titleText: {
         textAlign: 'center',
@@ -35,6 +35,7 @@ module.exports = StyleSheet.create({
         // width: (width/2)+115,
     },
     pointsContainer: {
+        flex: 2,
         flexDirection: 'column',
     },
     nameContainer: {
@@ -46,7 +47,7 @@ module.exports = StyleSheet.create({
     },
     playerScore: {
         fontSize: RF(3),
-        color: vars.colorWhite,
+        color: vars.colorBlack,
         fontWeight: 'bold'
     },
     subText: {
@@ -62,9 +63,14 @@ module.exports = StyleSheet.create({
     // scoreContainer: {
     //   paddingTop: height/7
     // },
-    // userContainer:{
-    //   paddingTop: height/7 
-    // },
+    userContainer:{
+      flex: 3,
+      flexDirection: 'column', 
+    },
+    rankingContainer:{
+      flex: 1,
+      flexDirection: 'row',
+    }
     // score2Container: {
     //   paddingRight: width/3
     // },

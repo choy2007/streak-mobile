@@ -6,39 +6,39 @@ var { width, height } = Dimensions.get('window');
 module.exports = StyleSheet.create({
     container: {
       flex: 1,
-      flexDirection: 'row',
-      justifyContent: 'center',
-      width: width,
-      height: 85,
-      shadowColor: '#000000',
-      shadowOffset: {
-        width: 0,
-        height: 3
-      }
+      //justifyContent: 'flex-start',
+      // height: 85,
+      // shadowColor: '#000000',
+      // shadowOffset: {
+      //   width: 0,
+      //   height: 3
+      // }
     },
-    // titleContainer: {
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    // },
-    // titleText: {
-    //     textAlign: 'center',
-    //     color: vars.colorBlack,
-    //     fontSize: RF(3.5),
-    //     fontWeight: 'bold',
-    //     textTransform: 'uppercase',
-    // },
+    titleContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        alignSelf: 'flex-start'
+    },
+    titleText: {
+        textAlign: 'center',
+        color: vars.colorBlack,
+        fontSize: RF(3.5),
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+    },
     playerContainer: {
         // alignItems: 'flex-start',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        flex: 1,
+        justifyContent: 'flex-start',
         // height: height/15,
         // width: (width/2)+115,
     },
     pointsContainer: {
-        alignItems: 'center',
+      flex: 4,
+      flexDirection: 'column'
     },
     nameContainer: {
-        justifyContent: 'center'
+        justifyContent: 'flex-start'
     },
     playerName: {
         fontSize: RF(2.5),
@@ -61,6 +61,14 @@ module.exports = StyleSheet.create({
       backgroundColor: vars.colorPrimary,
       
     },
+    userContainer:{
+      flex: 5,
+      flexDirection: 'column'
+    },
+    rankingContainer:{
+      flex: 1,
+      flexDirection: 'row'
+    }
     // scoreContainer: {
     //   paddingTop: height/7
     // },

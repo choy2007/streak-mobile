@@ -20,6 +20,7 @@ class Ready extends Component {
     this.state = {
       timer: 5
     }
+    this.cable = RNActionCable.createConsumer(`${ACTION_CABLE_URL}`);
   }
 
   // componentDidMount() {

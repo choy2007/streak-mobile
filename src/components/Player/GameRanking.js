@@ -56,7 +56,7 @@ class GameRanking extends Component {
     return game.ranking_score.map(score => {
       return(
         <View key={score.score}>
-          <Text style={styles.playerScore} key={score.score}>{score} </Text>
+          <Text key={score.score} style={styles.playerScore}> {score} </Text>
         </View>
       )
     })
@@ -67,8 +67,8 @@ class GameRanking extends Component {
     console.log(game)
     return game.ranking.map(player => {
       return(
-          <View key={player.user}>  
-            <Text style={styles.playerName} key={player.user} numberOfLines={2}>{player} </Text>
+          <View key={player.user}>
+            <Text style={styles.playerName} key={player.user}>{player.substr(0,player.indexOf(' '))} </Text>
           </View>
         )
     })
@@ -80,14 +80,20 @@ class GameRanking extends Component {
       return <Loading/>
     }
     return(
-      <View style={styles.playerContainer}>
-        <View style={styles.pointsContainer}>
-          { this.getRankingScores() }
-          <Text style={styles.subText}>POINTS</Text>
+      <View style={styles.container}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.titleText}>
+            Game Ranking
+          </Text>
         </View>
-        <View style={styles.imageStyle}/>
-        <View style={styles.nameContainer}>
-          { this.getRankingUsers() }
+        <Text />
+        <View style={styles.rankingContainer}>
+          <View style={styles.pointsContainer}>
+            { this.getRankingScores() }
+          </View>
+          <View style={styles.userContainer}>
+            { this.getRankingUsers() }
+          </View>
         </View>
       </View>
     )
@@ -95,7 +101,7 @@ class GameRanking extends Component {
 }
 
 function mapStateToProps(state){
-  console.log(`STATE IS`, state)
+  console.log(`STATE IS`, state);
   return{
     auth: state.auth,
     game: state.game

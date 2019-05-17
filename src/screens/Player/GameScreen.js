@@ -76,6 +76,7 @@ class GameScreen extends Component{
       console.log(`USER SCORE IS`, this.props.game.user_score);
     }
     if (game.status == "Done"){
+      this.cable.subscriptions.remove(this.subscription);
       this.props.game_actions.update_type('top_scorer');
     }
   }
@@ -84,7 +85,7 @@ class GameScreen extends Component{
     const { game } = this.props;
     switch(game.type){
       case 'ready':
-        return <PlayerReady />
+        return <PlayerReady subscription={this.subscription}/>
       case 'game':
         return <PlayerQuestion game={game}/>
       case 'point':
