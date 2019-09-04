@@ -1,6 +1,11 @@
 import { StackNavigator } from "react-navigation";
 import SplashScreen from "../screens/SplashScreen";
 import LoginScreen from "../screens/LoginScreen";
+import WaitingScreen from "../screens/Player/WaitingScreen";
+import PrizeScreen from "../screens/Player/PrizeScreen";
+import ReadyScreen from "../screens/Player/ReadyScreen";
+import GameScreen from "../screens/Player/GameScreen";
+import ChangePasswordScreen from "../screens/Player/ChangePasswordScreen";
 
 import PlayerNavigator from './player_routes';
 import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator';
@@ -27,7 +32,12 @@ const fade = (props) => {
 const navigator = StackNavigator({
   Splash: { screen: SplashScreen, navigationOptions: { header: null } },
   Login: { screen: LoginScreen, navigationOptions: { header: null } },
-  Home: { screen: PlayerNavigator }
+  Waiting: { screen: WaitingScreen, navigationOptions: { header: null, gesturesEnabled: false } },
+  Prize: { screen: PrizeScreen, navigationOptions: { header: null, gesturesEnabled: false } },
+  Ready: { screen: ReadyScreen, navigationOptions: { header: null, gesturesEnabled: false } },
+  Game: { screen: GameScreen, navigationOptions: { header: null, gesturesEnabled: false , } },
+  Home: { screen: PlayerNavigator, navigationOptions: { header: null, gesturesEnabled: false } },
+  ChangePassword: { screen: ChangePasswordScreen, navigationOptions: { header: null } }
 }, {
   transitionConfig: () => ({
     screenInterpolator: (props) => {

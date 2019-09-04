@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView, ImageBackground, Alert } from 'react-native';
 import styles from '../../styles/home';
+import headerstyles from '../../styles/game-header';
 import PlayerHeader from '../../components/Player/Header';
-import vars from '../../styles/variables'
+import vars from '../../styles/variables';
+import Loading from '../../components/Loading';
+import GameHeader from '../../components/Player/GameHeader';
+import { NavigationActions } from 'react-navigation'
 
 import * as gameActions from '../../actions/game_actions';
 
@@ -16,7 +20,7 @@ import { bindActionCreators } from 'redux';
 class HomeScreen extends Component{
   static navigationOptions = {
     tabBarIcon: ({tintColor}) => (
-      <Image source={require('../../img/home-icon.png')} style={{tintColor}} />
+      <Image source={require('../../img/f-home.png')} style={{tintColor}} />
     )
   }
 
@@ -28,20 +32,22 @@ class HomeScreen extends Component{
       
     }
     this.cable = RNActionCable.createConsumer(`${ACTION_CABLE_URL}`)
-    this.componentDidMount = this.componentDidMount.bind(this)
     this._handleReceivedCable = this._handleReceivedCable.bind(this)
     this._handleActiveGame = this._handleActiveGame.bind(this)
   }
 
   componentDidMount() {
     const auth = this.props.auth;
+    const { game } = this.props;
     this.props.game_actions.fetch_active_game(auth);
     this._handleActiveGame();
+    console.log(`GAME STATUS`, game);
+    var response_time_1 = new Date().getTime(); 
+    console.log(`RESPONSE TIME`, response_time_1);
   }
 
   _handleActiveGame() {
     this.subscription = this.cable.subscriptions.create('GameRoomChannel', {
-      connected: Alert.alert(''),
       received: (data) => this._handleReceivedCable(data.game),
     })
   }
@@ -61,32 +67,61 @@ class HomeScreen extends Component{
     this.setState({ game: data.name, ...this.state.game })
   }
 
+  clickGame(game, auth) {
+    const { navigate } = this.props.navigation; 
+    this.props.game_actions.userJoin(auth, game.activeGame[0].id)
+    navigate('Waiting', { game });
+  }
+
   getGame(){
-    const { game } = this.props;
+    const { game, auth, navigation: { navigate } } = this.props;
 
     return (
-      <TouchableOpacity>
-        <ImageBackground source={require('../../img/game-bg-1.png')} resizeMode='cover' style={styles.listContainer}>
-          <View style={styles.overlay}/>
+        <View style={styles.container}>
           <ActionCable channel={{channel: 'GameRoomChannel'}} onReceived={this.onReceived} />
-          <Text style={styles.listTitle}>Game: {game.activeGame && game.activeGame[0] && game.activeGame[0].name}</Text>
-        </ImageBackground>
-      </TouchableOpacity>
+          { game.activeGame.length > 0 
+            ?
+              // <TouchableOpacity onPress={() => this.clickGame(game, auth)}>
+                <ImageBackground source={require('../../img/home-bg.png')} resizeMode='cover' style={styles.listContainer}>
+                  <View style={styles.overlay}/>
+                  <View style={styles.logoContainer}>
+                    <Image source={require('../../img/f-logo-1.png')} style={styles.logoStyle} resizeMode='contain'/>
+                  </View>
+                    <Text style={styles.listTitle}>{game.activeGame && game.activeGame[0] && game.activeGame[0].name}</Text>
+                    <TouchableOpacity onPress={() => this.clickGame(game, auth)}>
+                      <View styles={styles.playButtonContainer}>
+                        <View style={styles.buttonContainer}>
+                          <Text style={styles.buttonText}>PLAY</Text>
+                        </View>
+                      </View>   
+                    </TouchableOpacity>
+                </ImageBackground>
+              // </TouchableOpacity>
+            :
+              <ImageBackground source={require('../../img/home-bg.png')} resizeMode='cover' style={styles.listContainer}>
+                <View style={styles.overlay}/>
+                <View style={styles.logoContainer}>
+                  <Image source={require('../../img/f-logo-1.png')} style={styles.logoStyle} resizeMode='contain'/>
+                </View>  
+                  <Text style={styles.listTitle}>No current games ongoing!</Text>
+              </ImageBackground>
+
+          }
+        </View>
     )
   }
 
   render(){
-    const { navigate } = this.props.navigation;
+    const { game, navigation: {navigate}} = this.props;
+    
     return(
       <View style={styles.container}>
-        <PlayerHeader title="Home" />
-        <ScrollView>
-          {this.getGame()}
-        </ScrollView>
+        {this.getGame()}
       </View>
     )
   }
 }
+
 function mapStateToProps(state){
   console.log(`STATE IS`, state)
   return{

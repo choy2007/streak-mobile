@@ -1,56 +1,68 @@
 import { StyleSheet, Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
 import variables from './variables';
+import RF from "react-native-responsive-fontsize";
 
 module.exports = StyleSheet.create({
-  headerContainer: {
-    position: 'absolute',
-    left: 15,
-    top: 20
-  },
+  // headerContainer: {
+  //   position: 'absolute',
+  //   left: 15,
+  //   top: 20
+  // },
   logoContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
   },
   logoStyle: {
-    resizeMode: 'contain',
+    width: width/2,
+    height: height/2,
+    flex: 1,
+    position: 'relative'
   },
   formContainer: {
-    flex: 2,
+    flex: 1,
     marginHorizontal: 30,
+    marginVertical: height/5
   },
   inputContainer: {
     backgroundColor: '#fff',  
     borderColor: '#000', 
-    borderRadius: 10, 
-    padding: 15, 
+    borderRadius: 40, 
+    padding: 12.5, 
     flexDirection: 'row',
-    marginVertical: 5 
-
+    marginVertical: 5,
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 0.5,
+    shadowRadius: 0.5,
+    width: width-(width/12),
   },
   buttonContainer: {
-    backgroundColor: variables.colorSecondary,
-    borderRadius: 20,
-    padding: 15,
-    marginVertical: 10
-  },
-  orStyle: {
+    //backgroundColor: variables.colorSecondary,
+    backgroundColor: '#ffda82',
+    borderRadius: 40,
+    padding: 10,
     marginVertical: 10,
-    textAlign: 'center',
-    color: variables.colorText,
-    fontSize: 16
+    shadowOffset: { width: 0.5, height: 0.5 },
+    shadowOpacity: 0.5,
+    shadowRadius: 0.5,
   },
+  // orStyle: {
+  //   marginVertical: 10,
+  //   textAlign: 'center',
+  //   color: variables.colorText,
+  //   fontSize: RF(3),
+  // },
   buttonText: {
     textAlign: 'center',
     fontFamily: variables.fontFamily,
-    fontSize: 16 
+    fontSize: RF(3),
+    fontWeight: 'bold',
+    color: '#FFF'
   },
   otherLinks: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 10
   }
 })

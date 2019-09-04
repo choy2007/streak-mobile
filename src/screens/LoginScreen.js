@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import { API_KEY } from  '../config/api';
 import { 
   View, 
   Image, 
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform,
+  KeyboardAvoidingView,
+  Linking,
+  Navigator
 } from 'react-native';
 import { Button, Headline, Text } from 'react-native-paper';
 
@@ -16,13 +21,15 @@ import { bindActionCreators } from 'redux';
 import * as loginActions from '../actions/login_actions';
 import { retrieveData } from '../utils/storage';
 
+import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
+
 class LoginScreen extends Component {
   constructor(){
     super();
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
     }
   }
 
@@ -31,10 +38,10 @@ class LoginScreen extends Component {
 
     let email = await retrieveData('email');
     let password = await retrieveData('password');
-    console.log(email, password)
-
+    let fcmToken = await retrieveData('fcmToken');
+    console.log(email, password, fcmToken)
     if (email && password) {
-      login_actions.login({ email: email, password: password });
+      login_actions.login({ email: email, password: password, fcmToken: fcmToken});
     }
   }
 
@@ -42,31 +49,33 @@ class LoginScreen extends Component {
     const { navigation: { navigate }, login_actions  } = this.props
     return (
         <MainBackground>
-          <View style={styles.logoContainer}>
-            <View style={styles.headerContainer}>
-              
+          <KeyboardAvoidingView
+            style={styles.formContainer}
+            behavior={Platform.OS === "ios" ? "padding" : null}
+          >
+            <View style={styles.logoContainer}>
+              {/* <View style={styles.headerContainer}>
+              </View> */}
+              <Image source={require('../img/f-logo-1.png')} style={styles.logoStyle} resizeMode='contain'/>
             </View>
-            <Image source={require('../img/home-icon.png')} style={styles.logoStyle}/>
-          </View>
-          <View style={styles.formContainer}>
             <View style={styles.inputContainer}>
-
               <TextInput
                 autoCapitalize="none"
                 autoCorrect={false}
                 value={this.state.email}
                 onChangeText={email => this.setState({ email })}
-                style={{ flex: 8 }}
+                style={{ flex: 1, color: "black" }}
+                underlineColorAndroid="#D3D3D3"
                 placeholder="Email"
               />
             </View>
             <View style={styles.inputContainer}>
-              
               <TextInput
                 value={this.state.password}
                 onChangeText={password => this.setState({ password })}
-                style={{ flex: 8 }}
+                style={{ flex: 1, height: Platform.OS == 'android' ? 40 : 20}}
                 placeholder="Password"
+                underlineColorAndroid="#D3D3D3"
                 secureTextEntry={true}
               />
             </View>
@@ -76,10 +85,15 @@ class LoginScreen extends Component {
               </View>
             </TouchableOpacity>
         
-            <View style={styles.otherLinks}>
-              <Text style={{flex: 1, color: '#FFF' }}>Forgot Password</Text>
-            </View>
-          </View>
+            <TouchableOpacity onPress={() => Linking.openURL('http://139.162.37.236/users/password/new')}>
+              <View style={styles.otherLinks}>
+                <Text style={{color: '#000', fontWeight: 'bold' }}>Forgot Password?</Text>
+              </View>
+            </TouchableOpacity>
+
+          
+          </KeyboardAvoidingView>
+
         </MainBackground>
     )
   }
@@ -98,5 +112,3 @@ function mapDispatchToProps(dispatch){
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
-
-

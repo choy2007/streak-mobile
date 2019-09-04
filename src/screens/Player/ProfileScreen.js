@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ImageBackground, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { connect } from 'react-redux';
@@ -16,28 +16,60 @@ import styles from '../../styles/profile';
 class ProfileScreen extends Component{
   static navigationOptions = {
     tabBarIcon: ({tintColor}) => (
-      <Image source={require('../../img/profile-icon.png')} style={{tintColor}} />
+      <Image source={require('../../img/f-profile.png')} style={{tintColor}} resizeMode='cover'/>
     )
   }
 
+  componentDidMount(){
+    const auth = this.props.auth;
+  }
+
   render(){
-    const { 
-      navigation: { navigate }, 
-      auth: { user },
-      login_actions
-    } = this.props
+    const { auth } = this.props;
+    const { navigate } = this.props.navigation;
+
     return(
       <View style={styles.container}>
-        <PlayerHeader title="Profile" />
-        <Text> Profile </Text>
-        <TouchableOpacity onPress={() => this.props.login_actions.logout()} style={{flex: 1, flexDirection: 'row', borderColor: '#fff', borderBottomWidth: 0}}>
-            <View style={styles.iconContainer}>
-              <Image source={require('../../img/logout.png')} style={styles.iconStyle}/>
+        <ImageBackground source={require('../../img/home-bg.png')} resizeMode='cover' style={styles.listContainer}>
+        <View style={styles.overlay}/>
+          <ScrollView>
+          <View style={styles.logoContainer}>
+            <Image source={require('../../img/f-logo-1.png')} style={styles.logoStyle} resizeMode='contain'/>
+          </View>
+          <View style={styles.accountContainer}>
+            <View style={styles.imageContainer}>
+              <View style={styles.imageStyle}/>
             </View>
-            <View style={styles.settingTextContainer}>
-              <Text>Logout</Text>
+            <View style={styles.detailsContainer}>
+              <Text style={styles.nameStyle}>{auth.user.user.first_name} {auth.user.user.last_name}</Text>
+              <Text style={styles.otherNameStyle}>{auth.user.user.email}</Text>
+              <Text style={styles.otherNameStyle}>{auth.user.user.score} wins</Text>
             </View>
-          </TouchableOpacity>
+            <Text/>
+            <TouchableOpacity onPress={() => navigate('ChangePassword')}>
+              <View style={styles.buttonContainer}>
+                <Text style={styles.buttonText}>CHANGE PASSWORD</Text>
+              </View>
+            </TouchableOpacity>
+            <Text/>
+            <TouchableOpacity onPress={() => this.props.login_actions.logout()}>
+              <View style={styles.buttonContainer}>
+                <Text style={styles.buttonText}>LOGOUT</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+          </ScrollView>
+          {/*<TouchableOpacity onPress={() => this.props.login_actions.logout()} style={{flex: 1, borderColor: '#fff', borderBottomWidth: 0}}>
+              <View style={styles.buttonContainer}>
+                <Image source={require('../../img/logout.png')} style={styles.iconStyle}/>
+                <Text>LOGOUT</Text>
+              </View>
+              <View style={styles.settingTextContainer}>
+                <Text>Logout</Text>
+              </View>
+          </TouchableOpacity>*/}
+          
+        </ImageBackground>
       </View>
     )
   }
