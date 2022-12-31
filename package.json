@@ -13,7 +13,7 @@
     "moment": "^2.24.0",
     "react": "16.5.0",
     "react-actioncable-provider": "^1.0.3",
-    "react-native": "^0.57.2",
+    "react-native": "^0.57.8",
     "react-native-actioncable": "0.0.3",
     "react-native-animated-ellipsis": "^1.1.0",
     "react-native-elements": "^0.19.1",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
-    "jest": "23.6.0",
+    "jest": "29.3.1",
     "metro-react-native-babel-preset": "0.48.0",
     "react-test-renderer": "16.5.0"
   },
